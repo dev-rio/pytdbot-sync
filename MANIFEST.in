@@ -1,0 +1,3 @@
+include README.md LICENSE requirements.txt pytdbot_sync/td_api.*
+recursive-include pytdbot *.py
+exclude examples/
