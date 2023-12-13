@@ -33,7 +33,7 @@ def create(func: Callable) -> Filter:
 
             # Create a filter by a decorator
             @filters.create
-            async def filter_photo(_, event) -> bool:
+            def filter_photo(_, event) -> bool:
                 if event.content_type == "messagePhoto":
                     return True
                 return False
@@ -47,8 +47,8 @@ def create(func: Callable) -> Filter:
             filter_photo = filters.create(lambda _, event: event.content_type == "messagePhoto")
 
             @client.on_updateNewMessage(filters=filter_photo)
-            async def photo_handler(c,update):
-                await update.reply_text('I got a photo!')
+            def photo_handler(c,update):
+                update.reply_text('I got a photo!')
 
             client.run()
 
