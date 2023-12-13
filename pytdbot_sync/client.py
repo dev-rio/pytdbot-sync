@@ -172,6 +172,14 @@ class Client(Decorators, Methods):
         self._retry_after_prefex = "Too Many Requests: retry after "
         self.__authorization_state = None
         self.__authorization = None
+        self.__local_handlers = {
+            "updateAuthorizationState": self.__handle_authorization_state,
+            "updateMessageSendSucceeded": self.__handle_update_message_succeeded,
+            "updateMessageSendFailed": self.__handle_update_message_failed,
+            "updateConnectionState": self.__handle_connection_state,
+            "updateOption": self.__handle_update_option,
+            "updateUser": self.__handle_update_user,
+        }
         self.__login = False
         self.__is_closing = False
 
@@ -327,7 +335,7 @@ class Client(Decorators, Methods):
                 from pytdbot_sync import Client
 
                 with Client(...) as client:
-                    res = await client.invoke({"@type": "getOption", "name": "version"})
+                    res = client.invoke({"@type": "getOption", "name": "version"})
                     if not res.is_error:
                         print(res)
 
@@ -407,7 +415,7 @@ class Client(Decorators, Methods):
                 from pytdbot_sync import Client
 
                 with Client(...) as client:
-                    res = await client.call_method("getOption", name="version"})
+                    res = client.call_method("getOption", name="version"})
                     if not res.is_error:
                         print(res)
 
@@ -435,7 +443,7 @@ class Client(Decorators, Methods):
 
                 @client.on_updateNewMessage()
                 def new_message(c,update):
-                    await update.reply_text('Hello!')
+                    update.reply_text('Hello!')
 
                 client.run()
 
@@ -492,7 +500,7 @@ class Client(Decorators, Methods):
         )  # tdjson.send is non-blocking method, So we don't need run_in_executor. This improves performance
 
     def __receive(self, timeout: float = 2.0) -> dict:
-        # return await self.loop.run_in_executor(
+        # return self.loop.run_in_executor(
         #     self._executor, self._tdjson.receive, timeout
         # )
         return self._tdjson.receive(timeout)
@@ -620,18 +628,10 @@ class Client(Decorators, Methods):
             elif update["@type"] == "error" and "option" in update["@extra"]:
                 logger.error(f"{update['@extra']['option']}: {update['message']}")
         else:
-            if update["@type"] == "updateAuthorizationState":
-                self.workers.submit(self.__handle_authorization_state, update)
-            elif update["@type"] == "updateMessageSendSucceeded":
-                self.__handle_update_message_succeeded(update)
-            elif update["@type"] == "updateMessageSendFailed":
-                self.__handle_update_message_failed(update)
-            elif update["@type"] == "updateConnectionState":
-                self.__handle_connection_state(update)
-            elif update["@type"] == "updateOption":
-                self.__handle_update_option(update)
-            elif update["@type"] == "updateUser":
-                self.__handle_update_user(update)
+            update_handler = self.__local_handlers.get(update["@type"])
+            if update_handler:
+                t = Thread(target=update_handler, args=(update,))
+                t.start()
 
             self.workers.submit(self._update_worker, update)
 
