@@ -174,7 +174,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result
+        new_result.wait()
         return new_result
 
     def sendAnimation(
@@ -349,7 +349,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result
+        new_result.wait()
         return new_result
 
     def sendAudio(
@@ -517,7 +517,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result
+        new_result.wait()
         return new_result
 
     def sendDocument(
@@ -672,7 +672,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result
+        new_result.wait()
         return new_result
 
     def sendPhoto(
@@ -847,7 +847,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result
+        new_result.wait()
         return new_result
 
     def sendVideo(
@@ -1032,7 +1032,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result
+        new_result.wait()
         return new_result
 
     def sendVideoNote(
@@ -1164,7 +1164,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result
+        new_result.wait()
         return new_result
 
     def sendVoice(
@@ -1319,7 +1319,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result
+        new_result.wait()
         return new_result
 
     def sendSticker(
@@ -1455,7 +1455,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result
+        new_result.wait()
         return new_result
 
     def sendCopy(
@@ -1596,7 +1596,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result
+        new_result.wait()
         return new_result
 
     def forwardMessage(
@@ -1647,7 +1647,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result
+        new_result.wait()
         return new_result
 
     def editTextMessage(
