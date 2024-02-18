@@ -9,7 +9,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AuthorizationState``)
+            :class:`~pytdbot_sync.types.Result` (``AuthorizationState``)
         """
 
         data = {
@@ -34,8 +34,6 @@ class TDLibFunctions:
         device_model: str,
         system_version: str,
         application_version: str,
-        enable_storage_optimizer: bool,
-        ignore_file_names: bool,
     ) -> Result:
         """Sets the parameters for TDLib initialization\. Works only when the current authorization state is authorizationStateWaitTdlibParameters
 
@@ -82,15 +80,9 @@ class TDLibFunctions:
             application_version (``str``):
                 Application version; must be non\-empty
 
-            enable_storage_optimizer (``bool``):
-                Pass true to automatically delete old files in background
-
-            ignore_file_names (``bool``):
-                Pass true to ignore original file names for downloaded files\. Otherwise, downloaded files are saved under names as close as possible to the original name
-
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -109,8 +101,6 @@ class TDLibFunctions:
             "device_model": device_model,
             "system_version": system_version,
             "application_version": application_version,
-            "enable_storage_optimizer": enable_storage_optimizer,
-            "ignore_file_names": ignore_file_names,
         }
 
         return self.invoke(data)
@@ -129,7 +119,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -149,7 +139,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -164,7 +154,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -182,7 +172,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -201,7 +191,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -220,7 +210,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -230,7 +220,9 @@ class TDLibFunctions:
 
         return self.invoke(data)
 
-    def registerUser(self, first_name: str, last_name: str) -> Result:
+    def registerUser(
+        self, first_name: str, last_name: str, disable_notification: bool
+    ) -> Result:
         """Finishes user registration\. Works only when the current authorization state is authorizationStateWaitRegistration
 
         Args:
@@ -240,15 +232,19 @@ class TDLibFunctions:
             last_name (``str``):
                 The last name of the user; 0\-64 characters
 
+            disable_notification (``bool``):
+                Pass true to disable notification about the current user joining Telegram for other users that added them to contact list
+
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
             "@type": "registerUser",
             "first_name": first_name,
             "last_name": last_name,
+            "disable_notification": disable_notification,
         }
 
         return self.invoke(data)
@@ -258,7 +254,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -276,7 +272,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -291,7 +287,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -311,7 +307,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -338,7 +334,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -359,7 +355,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -378,7 +374,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -393,7 +389,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -407,7 +403,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -421,7 +417,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -439,7 +435,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Session``)
+            :class:`~pytdbot_sync.types.Result` (``Session``)
         """
 
         data = {
@@ -454,7 +450,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Updates``)
+            :class:`~pytdbot_sync.types.Result` (``Updates``)
         """
 
         data = {
@@ -472,7 +468,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -487,7 +483,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PasswordState``)
+            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
         """
 
         data = {
@@ -524,7 +520,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PasswordState``)
+            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
         """
 
         data = {
@@ -547,7 +543,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``EmailAddressAuthenticationCodeInfo``)
+            :class:`~pytdbot_sync.types.Result` (``EmailAddressAuthenticationCodeInfo``)
         """
 
         data = {
@@ -562,7 +558,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``EmailAddressAuthenticationCodeInfo``)
+            :class:`~pytdbot_sync.types.Result` (``EmailAddressAuthenticationCodeInfo``)
         """
 
         data = {
@@ -580,7 +576,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -599,7 +595,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``RecoveryEmailAddress``)
+            :class:`~pytdbot_sync.types.Result` (``RecoveryEmailAddress``)
         """
 
         data = {
@@ -623,7 +619,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PasswordState``)
+            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
         """
 
         data = {
@@ -643,7 +639,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PasswordState``)
+            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
         """
 
         data = {
@@ -658,11 +654,25 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PasswordState``)
+            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
         """
 
         data = {
             "@type": "resendRecoveryEmailAddressCode",
+        }
+
+        return self.invoke(data)
+
+    def cancelRecoveryEmailAddressVerification(self) -> Result:
+        """Cancels verification of the 2\-step verification recovery email address
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
+        """
+
+        data = {
+            "@type": "cancelRecoveryEmailAddressVerification",
         }
 
         return self.invoke(data)
@@ -672,7 +682,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``EmailAddressAuthenticationCodeInfo``)
+            :class:`~pytdbot_sync.types.Result` (``EmailAddressAuthenticationCodeInfo``)
         """
 
         data = {
@@ -690,7 +700,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -717,7 +727,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PasswordState``)
+            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
         """
 
         data = {
@@ -734,7 +744,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ResetPasswordResult``)
+            :class:`~pytdbot_sync.types.Result` (``ResetPasswordResult``)
         """
 
         data = {
@@ -748,7 +758,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -769,7 +779,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``TemporaryPasswordState``)
+            :class:`~pytdbot_sync.types.Result` (``TemporaryPasswordState``)
         """
 
         data = {
@@ -785,7 +795,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``TemporaryPasswordState``)
+            :class:`~pytdbot_sync.types.Result` (``TemporaryPasswordState``)
         """
 
         data = {
@@ -799,7 +809,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``User``)
+            :class:`~pytdbot_sync.types.Result` (``User``)
         """
 
         data = {
@@ -817,7 +827,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``User``)
+            :class:`~pytdbot_sync.types.Result` (``User``)
         """
 
         data = {
@@ -836,7 +846,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``UserFullInfo``)
+            :class:`~pytdbot_sync.types.Result` (``UserFullInfo``)
         """
 
         data = {
@@ -855,7 +865,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``BasicGroup``)
+            :class:`~pytdbot_sync.types.Result` (``BasicGroup``)
         """
 
         data = {
@@ -874,7 +884,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``BasicGroupFullInfo``)
+            :class:`~pytdbot_sync.types.Result` (``BasicGroupFullInfo``)
         """
 
         data = {
@@ -893,7 +903,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Supergroup``)
+            :class:`~pytdbot_sync.types.Result` (``Supergroup``)
         """
 
         data = {
@@ -912,7 +922,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``SupergroupFullInfo``)
+            :class:`~pytdbot_sync.types.Result` (``SupergroupFullInfo``)
         """
 
         data = {
@@ -931,7 +941,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``SecretChat``)
+            :class:`~pytdbot_sync.types.Result` (``SecretChat``)
         """
 
         data = {
@@ -950,7 +960,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chat``)
+            :class:`~pytdbot_sync.types.Result` (``Chat``)
         """
 
         data = {
@@ -972,7 +982,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -995,7 +1005,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -1007,7 +1017,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def getRepliedMessage(self, chat_id: int, message_id: int) -> Result:
-        """Returns information about a non\-bundled message that is replied by a given message\. Also, returns the pinned message, the game message, the invoice message, the message with a previously set same background, and the topic creation message for messages of the types messagePinMessage, messageGameScore, messagePaymentSuccessful, messageChatSetBackground and topic messages without non\-bundled replied message respectively
+        """Returns information about a non\-bundled message that is replied by a given message\. Also, returns the pinned message, the game message, the invoice message, the message with a previously set same background, the giveaway message, and the topic creation message for messages of the types messagePinMessage, messageGameScore, messagePaymentSuccessful, messageChatSetBackground, messagePremiumGiveawayCompleted and topic messages without non\-bundled replied message respectively
 
         Args:
             chat_id (``int``):
@@ -1018,7 +1028,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -1038,7 +1048,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -1065,7 +1075,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -1089,7 +1099,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Messages``)
+            :class:`~pytdbot_sync.types.Result` (``Messages``)
         """
 
         data = {
@@ -1112,11 +1122,34 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``MessageThreadInfo``)
+            :class:`~pytdbot_sync.types.Result` (``MessageThreadInfo``)
         """
 
         data = {
             "@type": "getMessageThread",
+            "chat_id": chat_id,
+            "message_id": message_id,
+        }
+
+        return self.invoke(data)
+
+    def getMessageReadDate(self, chat_id: int, message_id: int) -> Result:
+        """Returns read date of a recent outgoing message in a private chat\. The method can be called if message\.can\_get\_read\_date \=\= true and the message is read
+
+        Args:
+            chat_id (``int``):
+                Chat identifier
+
+            message_id (``int``):
+                Identifier of the message
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``MessageReadDate``)
+        """
+
+        data = {
+            "@type": "getMessageReadDate",
             "chat_id": chat_id,
             "message_id": message_id,
         }
@@ -1135,7 +1168,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``MessageViewers``)
+            :class:`~pytdbot_sync.types.Result` (``MessageViewers``)
         """
 
         data = {
@@ -1155,7 +1188,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``File``)
+            :class:`~pytdbot_sync.types.Result` (``File``)
         """
 
         data = {
@@ -1179,7 +1212,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``File``)
+            :class:`~pytdbot_sync.types.Result` (``File``)
         """
 
         data = {
@@ -1202,7 +1235,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -1225,7 +1258,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -1245,7 +1278,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chat``)
+            :class:`~pytdbot_sync.types.Result` (``Chat``)
         """
 
         data = {
@@ -1264,7 +1297,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -1286,7 +1319,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -1309,7 +1342,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -1329,7 +1362,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatsNearby``)
+            :class:`~pytdbot_sync.types.Result` (``ChatsNearby``)
         """
 
         data = {
@@ -1348,7 +1381,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -1370,13 +1403,36 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Count``)
+            :class:`~pytdbot_sync.types.Result` (``Count``)
         """
 
         data = {
             "@type": "getChatSimilarChatCount",
             "chat_id": chat_id,
             "return_local": return_local,
+        }
+
+        return self.invoke(data)
+
+    def openChatSimilarChat(self, chat_id: int, opened_chat_id: int) -> Result:
+        """Informs TDLib that a chat was opened from the list of similar chats\. The method is independent from openChat and closeChat methods
+
+        Args:
+            chat_id (``int``):
+                Identifier of the original chat, which similar chats were requested
+
+            opened_chat_id (``int``):
+                Identifier of the opened chat
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "openChatSimilarChat",
+            "chat_id": chat_id,
+            "opened_chat_id": opened_chat_id,
         }
 
         return self.invoke(data)
@@ -1393,7 +1449,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -1416,7 +1472,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -1439,7 +1495,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -1459,7 +1515,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -1478,7 +1534,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -1493,7 +1549,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -1511,7 +1567,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -1533,7 +1589,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``CheckChatUsernameResult``)
+            :class:`~pytdbot_sync.types.Result` (``CheckChatUsernameResult``)
         """
 
         data = {
@@ -1553,7 +1609,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -1572,7 +1628,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -1587,7 +1643,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -1601,11 +1657,188 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
             "@type": "getInactiveSupergroupChats",
+        }
+
+        return self.invoke(data)
+
+    def loadSavedMessagesTopics(self, limit: int) -> Result:
+        """Loads more Saved Messages topics\. The loaded topics will be sent through updateSavedMessagesTopic\. Topics are sorted by their topic\.order in descending order\. Returns a 404 error if all topics have been loaded
+
+        Args:
+            limit (``int``):
+                The maximum number of topics to be loaded\. For optimal performance, the number of loaded topics is chosen by TDLib and can be smaller than the specified limit, even if the end of the list is not reached
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "loadSavedMessagesTopics",
+            "limit": limit,
+        }
+
+        return self.invoke(data)
+
+    def getSavedMessagesTopicHistory(
+        self,
+        saved_messages_topic_id: int,
+        from_message_id: int,
+        offset: int,
+        limit: int,
+    ) -> Result:
+        """Returns messages in a Saved Messages topic\. The messages are returned in a reverse chronological order \(i\.e\., in order of decreasing message\_id\)
+
+        Args:
+            saved_messages_topic_id (``int``):
+                Identifier of Saved Messages topic which messages will be fetched
+
+            from_message_id (``int``):
+                Identifier of the message starting from which messages must be fetched; use 0 to get results from the last message
+
+            offset (``int``):
+                Specify 0 to get results from exactly the message from\_message\_id or a negative offset up to 99 to get additionally some newer messages
+
+            limit (``int``):
+                The maximum number of messages to be returned; must be positive and can't be greater than 100\. If the offset is negative, the limit must be greater than or equal to \-offset\. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Messages``)
+        """
+
+        data = {
+            "@type": "getSavedMessagesTopicHistory",
+            "saved_messages_topic_id": saved_messages_topic_id,
+            "from_message_id": from_message_id,
+            "offset": offset,
+            "limit": limit,
+        }
+
+        return self.invoke(data)
+
+    def getSavedMessagesTopicMessageByDate(
+        self, saved_messages_topic_id: int, date: int
+    ) -> Result:
+        """Returns the last message sent in a Saved Messages topic no later than the specified date
+
+        Args:
+            saved_messages_topic_id (``int``):
+                Identifier of Saved Messages topic which message will be returned
+
+            date (``int``):
+                Point in time \(Unix timestamp\) relative to which to search for messages
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Message``)
+        """
+
+        data = {
+            "@type": "getSavedMessagesTopicMessageByDate",
+            "saved_messages_topic_id": saved_messages_topic_id,
+            "date": date,
+        }
+
+        return self.invoke(data)
+
+    def deleteSavedMessagesTopicHistory(
+        self, saved_messages_topic_id: int
+    ) -> Result:
+        """Deletes all messages in a Saved Messages topic
+
+        Args:
+            saved_messages_topic_id (``int``):
+                Identifier of Saved Messages topic which messages will be deleted
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "deleteSavedMessagesTopicHistory",
+            "saved_messages_topic_id": saved_messages_topic_id,
+        }
+
+        return self.invoke(data)
+
+    def deleteSavedMessagesTopicMessagesByDate(
+        self, saved_messages_topic_id: int, min_date: int, max_date: int
+    ) -> Result:
+        """Deletes all messages between the specified dates in a Saved Messages topic\. Messages sent in the last 30 seconds will not be deleted
+
+        Args:
+            saved_messages_topic_id (``int``):
+                Identifier of Saved Messages topic which messages will be deleted
+
+            min_date (``int``):
+                The minimum date of the messages to delete
+
+            max_date (``int``):
+                The maximum date of the messages to delete
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "deleteSavedMessagesTopicMessagesByDate",
+            "saved_messages_topic_id": saved_messages_topic_id,
+            "min_date": min_date,
+            "max_date": max_date,
+        }
+
+        return self.invoke(data)
+
+    def toggleSavedMessagesTopicIsPinned(
+        self, saved_messages_topic_id: int, is_pinned: bool
+    ) -> Result:
+        """Changes the pinned state of a Saved Messages topic\. There can be up to getOption\("pinned\_saved\_messages\_topic\_count\_max"\) pinned topics\. The limit can be increased with Telegram Premium
+
+        Args:
+            saved_messages_topic_id (``int``):
+                Identifier of Saved Messages topic to pin or unpin
+
+            is_pinned (``bool``):
+                Pass true to pin the topic; pass false to unpin it
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "toggleSavedMessagesTopicIsPinned",
+            "saved_messages_topic_id": saved_messages_topic_id,
+            "is_pinned": is_pinned,
+        }
+
+        return self.invoke(data)
+
+    def setPinnedSavedMessagesTopics(
+        self, saved_messages_topic_ids: list
+    ) -> Result:
+        """Changes the order of pinned Saved Messages topics
+
+        Args:
+            saved_messages_topic_ids (``list``):
+                Identifiers of the new pinned Saved Messages topics
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setPinnedSavedMessagesTopics",
+            "saved_messages_topic_ids": saved_messages_topic_ids,
         }
 
         return self.invoke(data)
@@ -1627,7 +1860,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -1657,7 +1890,7 @@ class TDLibFunctions:
                 Identifier of the message starting from which history must be fetched; use 0 to get results from the last message
 
             offset (``int``):
-                Specify 0 to get results from exactly the from\_message\_id or a negative offset up to 99 to get additionally some newer messages
+                Specify 0 to get results from exactly the message from\_message\_id or a negative offset up to 99 to get additionally some newer messages
 
             limit (``int``):
                 The maximum number of messages to be returned; must be positive and can't be greater than 100\. If the offset is negative, the limit must be greater than or equal to \-offset\. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
@@ -1667,7 +1900,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Messages``)
+            :class:`~pytdbot_sync.types.Result` (``Messages``)
         """
 
         data = {
@@ -1702,14 +1935,14 @@ class TDLibFunctions:
                 Identifier of the message starting from which history must be fetched; use 0 to get results from the last message
 
             offset (``int``):
-                Specify 0 to get results from exactly the from\_message\_id or a negative offset up to 99 to get additionally some newer messages
+                Specify 0 to get results from exactly the message from\_message\_id or a negative offset up to 99 to get additionally some newer messages
 
             limit (``int``):
                 The maximum number of messages to be returned; must be positive and can't be greater than 100\. If the offset is negative, the limit must be greater than or equal to \-offset\. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Messages``)
+            :class:`~pytdbot_sync.types.Result` (``Messages``)
         """
 
         data = {
@@ -1740,7 +1973,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -1761,7 +1994,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -1779,6 +2012,7 @@ class TDLibFunctions:
         offset: int,
         limit: int,
         message_thread_id: int,
+        saved_messages_topic_id: int,
         sender_id: dict = None,
         filter: dict = None,
     ) -> Result:
@@ -1795,13 +2029,16 @@ class TDLibFunctions:
                 Identifier of the message starting from which history must be fetched; use 0 to get results from the last message
 
             offset (``int``):
-                Specify 0 to get results from exactly the from\_message\_id or a negative offset to get the specified message and some newer messages
+                Specify 0 to get results from exactly the message from\_message\_id or a negative offset to get the specified message and some newer messages
 
             limit (``int``):
                 The maximum number of messages to be returned; must be positive and can't be greater than 100\. If the offset is negative, the limit must be greater than \-offset\. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
 
             message_thread_id (``int``):
                 If not 0, only messages in the specified thread will be returned; supergroups only
+
+            saved_messages_topic_id (``int``):
+                If not 0, only messages in the specified Saved Messages topic will be returned; pass 0 to return all messages, or for chats other than Saved Messages
 
             sender_id (``MessageSender``, *optional*):
                 Identifier of the sender of messages to search for; pass null to search for messages from any sender\. Not supported in secret chats
@@ -1811,7 +2048,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FoundChatMessages``)
+            :class:`~pytdbot_sync.types.Result` (``FoundChatMessages``)
         """
 
         data = {
@@ -1824,6 +2061,7 @@ class TDLibFunctions:
             "limit": limit,
             "filter": filter,
             "message_thread_id": message_thread_id,
+            "saved_messages_topic_id": saved_messages_topic_id,
         }
 
         return self.invoke(data)
@@ -1864,7 +2102,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FoundMessages``)
+            :class:`~pytdbot_sync.types.Result` (``FoundMessages``)
         """
 
         data = {
@@ -1903,7 +2141,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FoundMessages``)
+            :class:`~pytdbot_sync.types.Result` (``FoundMessages``)
         """
 
         data = {
@@ -1913,6 +2151,53 @@ class TDLibFunctions:
             "offset": offset,
             "limit": limit,
             "filter": filter,
+        }
+
+        return self.invoke(data)
+
+    def searchSavedMessages(
+        self,
+        saved_messages_topic_id: int,
+        query: str,
+        from_message_id: int,
+        offset: int,
+        limit: int,
+        tag: dict = None,
+    ) -> Result:
+        """Searches for messages tagged by the given reaction and with the given words in the Saved Messages chat; for Telegram Premium users only\. Returns the results in reverse chronological order, i\.e\. in order of decreasing message\_id For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+
+        Args:
+            saved_messages_topic_id (``int``):
+                If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages
+
+            query (``str``):
+                Query to search for
+
+            from_message_id (``int``):
+                Identifier of the message starting from which messages must be fetched; use 0 to get results from the last message
+
+            offset (``int``):
+                Specify 0 to get results from exactly the message from\_message\_id or a negative offset to get the specified message and some newer messages
+
+            limit (``int``):
+                The maximum number of messages to be returned; must be positive and can't be greater than 100\. If the offset is negative, the limit must be greater than \-offset\. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+
+            tag (``ReactionType``, *optional*):
+                Tag to search for; pass null to return all suitable messages
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``FoundChatMessages``)
+        """
+
+        data = {
+            "@type": "searchSavedMessages",
+            "saved_messages_topic_id": saved_messages_topic_id,
+            "tag": tag,
+            "query": query,
+            "from_message_id": from_message_id,
+            "offset": offset,
+            "limit": limit,
         }
 
         return self.invoke(data)
@@ -1934,7 +2219,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FoundMessages``)
+            :class:`~pytdbot_sync.types.Result` (``FoundMessages``)
         """
 
         data = {
@@ -1958,7 +2243,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FoundMessages``)
+            :class:`~pytdbot_sync.types.Result` (``FoundMessages``)
         """
 
         data = {
@@ -1978,7 +2263,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -2002,7 +2287,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Messages``)
+            :class:`~pytdbot_sync.types.Result` (``Messages``)
         """
 
         data = {
@@ -2018,7 +2303,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Messages``)
+            :class:`~pytdbot_sync.types.Result` (``Messages``)
         """
 
         data = {
@@ -2039,7 +2324,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -2051,7 +2336,12 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def getChatSparseMessagePositions(
-        self, chat_id: int, filter: dict, from_message_id: int, limit: int
+        self,
+        chat_id: int,
+        filter: dict,
+        from_message_id: int,
+        limit: int,
+        saved_messages_topic_id: int,
     ) -> Result:
         """Returns sparse positions of messages of the specified type in the chat to be used for shared media scroll implementation\. Returns the results in reverse chronological order \(i\.e\., in order of decreasing message\_id\)\. Cannot be used in secret chats or with searchMessagesFilterFailedToSend filter without an enabled message database
 
@@ -2068,9 +2358,12 @@ class TDLibFunctions:
             limit (``int``):
                 The expected number of message positions to be returned; 50\-2000\. A smaller number of positions can be returned, if there are not enough appropriate messages
 
+            saved_messages_topic_id (``int``):
+                If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages
+
 
         Returns:
-            :class:`~pytdbot.types.Result` (``MessagePositions``)
+            :class:`~pytdbot_sync.types.Result` (``MessagePositions``)
         """
 
         data = {
@@ -2079,12 +2372,17 @@ class TDLibFunctions:
             "filter": filter,
             "from_message_id": from_message_id,
             "limit": limit,
+            "saved_messages_topic_id": saved_messages_topic_id,
         }
 
         return self.invoke(data)
 
     def getChatMessageCalendar(
-        self, chat_id: int, filter: dict, from_message_id: int
+        self,
+        chat_id: int,
+        filter: dict,
+        from_message_id: int,
+        saved_messages_topic_id: int,
     ) -> Result:
         """Returns information about the next messages of the specified type in the chat split by days\. Returns the results in reverse chronological order\. Can return partial result for the last returned day\. Behavior of this method depends on the value of the option "utc\_time\_offset"
 
@@ -2098,9 +2396,12 @@ class TDLibFunctions:
             from_message_id (``int``):
                 The message identifier from which to return information about messages; use 0 to get results from the last message
 
+            saved_messages_topic_id (``int``):
+                If not0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages
+
 
         Returns:
-            :class:`~pytdbot.types.Result` (``MessageCalendar``)
+            :class:`~pytdbot_sync.types.Result` (``MessageCalendar``)
         """
 
         data = {
@@ -2108,12 +2409,17 @@ class TDLibFunctions:
             "chat_id": chat_id,
             "filter": filter,
             "from_message_id": from_message_id,
+            "saved_messages_topic_id": saved_messages_topic_id,
         }
 
         return self.invoke(data)
 
     def getChatMessageCount(
-        self, chat_id: int, filter: dict, return_local: bool
+        self,
+        chat_id: int,
+        filter: dict,
+        saved_messages_topic_id: int,
+        return_local: bool,
     ) -> Result:
         """Returns approximate number of messages of the specified type in the chat
 
@@ -2124,25 +2430,34 @@ class TDLibFunctions:
             filter (``SearchMessagesFilter``):
                 Filter for message content; searchMessagesFilterEmpty is unsupported in this function
 
+            saved_messages_topic_id (``int``):
+                If not 0, only messages in the specified Saved Messages topic will be counted; pass 0 to count all messages, or for chats other than Saved Messages
+
             return_local (``bool``):
                 Pass true to get the number of messages without sending network requests, or \-1 if the number of messages is unknown locally
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Count``)
+            :class:`~pytdbot_sync.types.Result` (``Count``)
         """
 
         data = {
             "@type": "getChatMessageCount",
             "chat_id": chat_id,
             "filter": filter,
+            "saved_messages_topic_id": saved_messages_topic_id,
             "return_local": return_local,
         }
 
         return self.invoke(data)
 
     def getChatMessagePosition(
-        self, chat_id: int, message_id: int, filter: dict, message_thread_id: int
+        self,
+        chat_id: int,
+        message_id: int,
+        filter: dict,
+        message_thread_id: int,
+        saved_messages_topic_id: int,
     ) -> Result:
         """Returns approximate 1\-based position of a message among messages, which can be found by the specified filter in the chat\. Cannot be used in secret chats
 
@@ -2159,9 +2474,12 @@ class TDLibFunctions:
             message_thread_id (``int``):
                 If not 0, only messages in the specified thread will be considered; supergroups only
 
+            saved_messages_topic_id (``int``):
+                If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all relevant messages, or for chats other than Saved Messages
+
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Count``)
+            :class:`~pytdbot_sync.types.Result` (``Count``)
         """
 
         data = {
@@ -2170,6 +2488,7 @@ class TDLibFunctions:
             "message_id": message_id,
             "filter": filter,
             "message_thread_id": message_thread_id,
+            "saved_messages_topic_id": saved_messages_topic_id,
         }
 
         return self.invoke(data)
@@ -2183,7 +2502,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Messages``)
+            :class:`~pytdbot_sync.types.Result` (``Messages``)
         """
 
         data = {
@@ -2202,7 +2521,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``SponsoredMessages``)
+            :class:`~pytdbot_sync.types.Result` (``SponsoredMessages``)
         """
 
         data = {
@@ -2224,7 +2543,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -2249,7 +2568,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -2274,7 +2593,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -2313,7 +2632,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``MessageLink``)
+            :class:`~pytdbot_sync.types.Result` (``MessageLink``)
         """
 
         data = {
@@ -2344,7 +2663,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -2365,7 +2684,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``MessageLinkInfo``)
+            :class:`~pytdbot_sync.types.Result` (``MessageLinkInfo``)
         """
 
         data = {
@@ -2387,7 +2706,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FormattedText``)
+            :class:`~pytdbot_sync.types.Result` (``FormattedText``)
         """
 
         data = {
@@ -2415,7 +2734,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FormattedText``)
+            :class:`~pytdbot_sync.types.Result` (``FormattedText``)
         """
 
         data = {
@@ -2439,7 +2758,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -2467,7 +2786,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -2488,7 +2807,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatMessageSenders``)
+            :class:`~pytdbot_sync.types.Result` (``ChatMessageSenders``)
         """
 
         data = {
@@ -2512,7 +2831,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -2539,7 +2858,7 @@ class TDLibFunctions:
                 Target chat
 
             message_thread_id (``int``):
-                If not 0, a message thread identifier in which the message will be sent
+                If not 0, the message thread identifier in which the message will be sent
 
             input_message_content (``InputMessageContent``):
                 The content of the message to be sent
@@ -2555,7 +2874,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -2585,7 +2904,7 @@ class TDLibFunctions:
                 Target chat
 
             message_thread_id (``int``):
-                If not 0, a message thread identifier in which the messages will be sent
+                If not 0, the message thread identifier in which the messages will be sent
 
             input_message_contents (``list``):
                 Contents of messages to be sent\. At most 10 messages can be added to an album
@@ -2598,7 +2917,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Messages``)
+            :class:`~pytdbot_sync.types.Result` (``Messages``)
         """
 
         data = {
@@ -2615,7 +2934,7 @@ class TDLibFunctions:
     def sendBotStartMessage(
         self, bot_user_id: int, chat_id: int, parameter: str
     ) -> Result:
-        """Invites a bot to a chat \(if it is not yet a member\) and sends it the /start command\. Bots can't be invited to a private chat other than the chat with the bot\. Bots can't be invited to channels \(although they can be added as admins\) and secret chats\. Returns the sent message
+        """Invites a bot to a chat \(if it is not yet a member\) and sends it the /start command; requires can\_invite\_users member right\. Bots can't be invited to a private chat other than the chat with the bot\. Bots can't be invited to channels \(although they can be added as admins\) and secret chats\. Returns the sent message
 
         Args:
             bot_user_id (``int``):
@@ -2629,7 +2948,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -2658,7 +2977,7 @@ class TDLibFunctions:
                 Target chat
 
             message_thread_id (``int``):
-                If not 0, a message thread identifier in which the message will be sent
+                If not 0, the message thread identifier in which the message will be sent
 
             query_id (``int``):
                 Identifier of the inline query
@@ -2677,7 +2996,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -2710,7 +3029,7 @@ class TDLibFunctions:
                 Identifier of the chat to which to forward messages
 
             message_thread_id (``int``):
-                If not 0, a message thread identifier in which the message will be sent; for forum threads only
+                If not 0, the message thread identifier in which the message will be sent; for forum threads only
 
             from_chat_id (``int``):
                 Identifier of the chat from which to forward messages
@@ -2729,7 +3048,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Messages``)
+            :class:`~pytdbot_sync.types.Result` (``Messages``)
         """
 
         data = {
@@ -2762,7 +3081,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Messages``)
+            :class:`~pytdbot_sync.types.Result` (``Messages``)
         """
 
         data = {
@@ -2802,7 +3121,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -2833,7 +3152,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -2857,7 +3176,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -2888,7 +3207,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -2925,7 +3244,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -2970,7 +3289,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -3009,7 +3328,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -3046,7 +3365,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -3076,7 +3395,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -3108,7 +3427,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3148,7 +3467,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3182,7 +3501,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3211,7 +3530,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3237,7 +3556,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3265,7 +3584,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3282,7 +3601,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stickers``)
+            :class:`~pytdbot_sync.types.Result` (``Stickers``)
         """
 
         data = {
@@ -3292,7 +3611,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def createForumTopic(self, chat_id: int, name: str, icon: dict) -> Result:
-        """Creates a topic in a forum supergroup chat; requires can\_manage\_topics rights in the supergroup
+        """Creates a topic in a forum supergroup chat; requires can\_manage\_topics administrator or can\_create\_topics member right in the supergroup
 
         Args:
             chat_id (``int``):
@@ -3306,7 +3625,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ForumTopicInfo``)
+            :class:`~pytdbot_sync.types.Result` (``ForumTopicInfo``)
         """
 
         data = {
@@ -3326,7 +3645,7 @@ class TDLibFunctions:
         edit_icon_custom_emoji: bool,
         icon_custom_emoji_id: int,
     ) -> Result:
-        """Edits title and icon of a topic in a forum supergroup chat; requires can\_manage\_topics administrator right in the supergroup unless the user is creator of the topic
+        """Edits title and icon of a topic in a forum supergroup chat; requires can\_manage\_topics right in the supergroup unless the user is creator of the topic
 
         Args:
             chat_id (``int``):
@@ -3346,7 +3665,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3372,7 +3691,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ForumTopic``)
+            :class:`~pytdbot_sync.types.Result` (``ForumTopic``)
         """
 
         data = {
@@ -3395,7 +3714,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``MessageLink``)
+            :class:`~pytdbot_sync.types.Result` (``MessageLink``)
         """
 
         data = {
@@ -3438,7 +3757,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ForumTopics``)
+            :class:`~pytdbot_sync.types.Result` (``ForumTopics``)
         """
 
         data = {
@@ -3470,7 +3789,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3485,7 +3804,7 @@ class TDLibFunctions:
     def toggleForumTopicIsClosed(
         self, chat_id: int, message_thread_id: int, is_closed: bool
     ) -> Result:
-        """Toggles whether a topic is closed in a forum supergroup chat; requires can\_manage\_topics administrator right in the supergroup unless the user is creator of the topic
+        """Toggles whether a topic is closed in a forum supergroup chat; requires can\_manage\_topics right in the supergroup unless the user is creator of the topic
 
         Args:
             chat_id (``int``):
@@ -3499,7 +3818,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3514,7 +3833,7 @@ class TDLibFunctions:
     def toggleGeneralForumTopicIsHidden(
         self, chat_id: int, is_hidden: bool
     ) -> Result:
-        """Toggles whether a General topic is hidden in a forum supergroup chat; requires can\_manage\_topics administrator right in the supergroup
+        """Toggles whether a General topic is hidden in a forum supergroup chat; requires can\_manage\_topics right in the supergroup
 
         Args:
             chat_id (``int``):
@@ -3525,7 +3844,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3539,7 +3858,7 @@ class TDLibFunctions:
     def toggleForumTopicIsPinned(
         self, chat_id: int, message_thread_id: int, is_pinned: bool
     ) -> Result:
-        """Changes the pinned state of a forum topic; requires can\_manage\_topics administrator right in the supergroup\. There can be up to getOption\("pinned\_forum\_topic\_count\_max"\) pinned forum topics
+        """Changes the pinned state of a forum topic; requires can\_manage\_topics right in the supergroup\. There can be up to getOption\("pinned\_forum\_topic\_count\_max"\) pinned forum topics
 
         Args:
             chat_id (``int``):
@@ -3553,7 +3872,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3568,7 +3887,7 @@ class TDLibFunctions:
     def setPinnedForumTopics(
         self, chat_id: int, message_thread_ids: list
     ) -> Result:
-        """Changes the order of pinned forum topics
+        """Changes the order of pinned forum topics; requires can\_manage\_topics right in the supergroup
 
         Args:
             chat_id (``int``):
@@ -3579,7 +3898,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3602,7 +3921,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3614,7 +3933,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def getEmojiReaction(self, emoji: str) -> Result:
-        """Returns information about a emoji reaction\. Returns a 404 error if the reaction is not found
+        """Returns information about an emoji reaction\. Returns a 404 error if the reaction is not found
 
         Args:
             emoji (``str``):
@@ -3622,7 +3941,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``EmojiReaction``)
+            :class:`~pytdbot_sync.types.Result` (``EmojiReaction``)
         """
 
         data = {
@@ -3637,7 +3956,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stickers``)
+            :class:`~pytdbot_sync.types.Result` (``Stickers``)
         """
 
         data = {
@@ -3663,7 +3982,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AvailableReactions``)
+            :class:`~pytdbot_sync.types.Result` (``AvailableReactions``)
         """
 
         data = {
@@ -3680,7 +3999,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3697,7 +4016,7 @@ class TDLibFunctions:
         is_big: bool,
         update_recent_reactions: bool,
     ) -> Result:
-        """Adds a reaction to a message\. Use getMessageAvailableReactions to receive the list of available reactions for the message
+        """Adds a reaction or a tag to a message\. Use getMessageAvailableReactions to receive the list of available reactions for the message
 
         Args:
             chat_id (``int``):
@@ -3713,11 +4032,11 @@ class TDLibFunctions:
                 Pass true if the reaction is added with a big animation
 
             update_recent_reactions (``bool``):
-                Pass true if the reaction needs to be added to recent reactions
+                Pass true if the reaction needs to be added to recent reactions; tags are never added to the list of recent reactions
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3748,7 +4067,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -3756,6 +4075,39 @@ class TDLibFunctions:
             "chat_id": chat_id,
             "message_id": message_id,
             "reaction_type": reaction_type,
+        }
+
+        return self.invoke(data)
+
+    def setMessageReactions(
+        self, chat_id: int, message_id: int, reaction_types: list, is_big: bool
+    ) -> Result:
+        """Sets reactions on a message; for bots only
+
+        Args:
+            chat_id (``int``):
+                Identifier of the chat to which the message belongs
+
+            message_id (``int``):
+                Identifier of the message
+
+            reaction_types (``list``):
+                Types of the reaction to set
+
+            is_big (``bool``):
+                Pass true if the reactions are added with a big animation
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setMessageReactions",
+            "chat_id": chat_id,
+            "message_id": message_id,
+            "reaction_types": reaction_types,
+            "is_big": is_big,
         }
 
         return self.invoke(data)
@@ -3788,7 +4140,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AddedReactions``)
+            :class:`~pytdbot_sync.types.Result` (``AddedReactions``)
         """
 
         data = {
@@ -3811,12 +4163,54 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
             "@type": "setDefaultReactionType",
             "reaction_type": reaction_type,
+        }
+
+        return self.invoke(data)
+
+    def getSavedMessagesTags(self, saved_messages_topic_id: int) -> Result:
+        """Returns tags used in Saved Messages or a Saved Messages topic
+
+        Args:
+            saved_messages_topic_id (``int``):
+                Identifier of Saved Messages topic which tags will be returned; pass 0 to get all Saved Messages tags
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``SavedMessagesTags``)
+        """
+
+        data = {
+            "@type": "getSavedMessagesTags",
+            "saved_messages_topic_id": saved_messages_topic_id,
+        }
+
+        return self.invoke(data)
+
+    def setSavedMessagesTagLabel(self, tag: dict, label: str) -> Result:
+        """Changes label of a Saved Messages tag; for Telegram Premium users only
+
+        Args:
+            tag (``ReactionType``):
+                The tag which label will be changed
+
+            label (``str``):
+                New label for the tag; 0\-12 characters
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setSavedMessagesTagLabel",
+            "tag": tag,
+            "label": label,
         }
 
         return self.invoke(data)
@@ -3836,7 +4230,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FoundPosition``)
+            :class:`~pytdbot_sync.types.Result` (``FoundPosition``)
         """
 
         data = {
@@ -3857,7 +4251,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``TextEntities``)
+            :class:`~pytdbot_sync.types.Result` (``TextEntities``)
         """
 
         data = {
@@ -3879,7 +4273,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FormattedText``)
+            :class:`~pytdbot_sync.types.Result` (``FormattedText``)
         """
 
         data = {
@@ -3899,7 +4293,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FormattedText``)
+            :class:`~pytdbot_sync.types.Result` (``FormattedText``)
         """
 
         data = {
@@ -3918,12 +4312,31 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FormattedText``)
+            :class:`~pytdbot_sync.types.Result` (``FormattedText``)
         """
 
         data = {
             "@type": "getMarkdownText",
             "text": text,
+        }
+
+        return self.invoke(data)
+
+    def getCountryFlagEmoji(self, country_code: str) -> Result:
+        """Returns an emoji for the given country\. Returns an empty string on failure\. Can be called synchronously
+
+        Args:
+            country_code (``str``):
+                A two\-letter ISO 3166\-1 alpha\-2 country code as received from getCountries
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Text``)
+        """
+
+        data = {
+            "@type": "getCountryFlagEmoji",
+            "country_code": country_code,
         }
 
         return self.invoke(data)
@@ -3937,7 +4350,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -3956,7 +4369,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -3975,7 +4388,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -4009,7 +4422,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``LanguagePackStringValue``)
+            :class:`~pytdbot_sync.types.Result` (``LanguagePackStringValue``)
         """
 
         data = {
@@ -4031,7 +4444,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``JsonValue``)
+            :class:`~pytdbot_sync.types.Result` (``JsonValue``)
         """
 
         data = {
@@ -4050,7 +4463,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -4069,7 +4482,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -4096,7 +4509,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -4131,7 +4544,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``MessageSenders``)
+            :class:`~pytdbot_sync.types.Result` (``MessageSenders``)
         """
 
         data = {
@@ -4162,7 +4575,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -4183,7 +4596,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -4210,7 +4623,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``LoginUrlInfo``)
+            :class:`~pytdbot_sync.types.Result` (``LoginUrlInfo``)
         """
 
         data = {
@@ -4242,7 +4655,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``HttpUrl``)
+            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -4255,15 +4668,15 @@ class TDLibFunctions:
 
         return self.invoke(data)
 
-    def shareUserWithBot(
+    def shareUsersWithBot(
         self,
         chat_id: int,
         message_id: int,
         button_id: int,
-        shared_user_id: int,
+        shared_user_ids: list,
         only_check: bool,
     ) -> Result:
-        """Shares a user after pressing a keyboardButtonTypeRequestUser button with the bot
+        """Shares users after pressing a keyboardButtonTypeRequestUsers button with the bot
 
         Args:
             chat_id (``int``):
@@ -4275,23 +4688,23 @@ class TDLibFunctions:
             button_id (``int``):
                 Identifier of the button
 
-            shared_user_id (``int``):
-                Identifier of the shared user
+            shared_user_ids (``list``):
+                Identifiers of the shared users
 
             only_check (``bool``):
-                Pass true to check that the user can be shared by the button instead of actually sharing them
+                Pass true to check that the users can be shared by the button instead of actually sharing them
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
-            "@type": "shareUserWithBot",
+            "@type": "shareUsersWithBot",
             "chat_id": chat_id,
             "message_id": message_id,
             "button_id": button_id,
-            "shared_user_id": shared_user_id,
+            "shared_user_ids": shared_user_ids,
             "only_check": only_check,
         }
 
@@ -4325,7 +4738,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -4367,7 +4780,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``InlineQueryResults``)
+            :class:`~pytdbot_sync.types.Result` (``InlineQueryResults``)
         """
 
         data = {
@@ -4413,7 +4826,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -4440,7 +4853,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FoundWebApp``)
+            :class:`~pytdbot_sync.types.Result` (``FoundWebApp``)
         """
 
         data = {
@@ -4487,7 +4900,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``HttpUrl``)
+            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -4523,7 +4936,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``HttpUrl``)
+            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -4553,7 +4966,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -4591,7 +5004,7 @@ class TDLibFunctions:
                 Short name of the application; 0\-64 English letters, digits, and underscores
 
             message_thread_id (``int``):
-                If not 0, a message thread identifier in which the message will be sent
+                If not 0, the message thread identifier in which the message will be sent
 
             theme (``themeParameters``, *optional*):
                 Preferred Web App theme; pass null to use the default theme
@@ -4601,7 +5014,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``WebAppInfo``)
+            :class:`~pytdbot_sync.types.Result` (``WebAppInfo``)
         """
 
         data = {
@@ -4626,7 +5039,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -4648,7 +5061,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``SentWebAppMessage``)
+            :class:`~pytdbot_sync.types.Result` (``SentWebAppMessage``)
         """
 
         data = {
@@ -4676,7 +5089,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``CallbackQueryAnswer``)
+            :class:`~pytdbot_sync.types.Result` (``CallbackQueryAnswer``)
         """
 
         data = {
@@ -4716,7 +5129,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -4747,7 +5160,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -4773,7 +5186,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -4816,7 +5229,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Message``)
+            :class:`~pytdbot_sync.types.Result` (``Message``)
         """
 
         data = {
@@ -4859,7 +5272,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -4890,7 +5303,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``GameHighScores``)
+            :class:`~pytdbot_sync.types.Result` (``GameHighScores``)
         """
 
         data = {
@@ -4916,7 +5329,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``GameHighScores``)
+            :class:`~pytdbot_sync.types.Result` (``GameHighScores``)
         """
 
         data = {
@@ -4939,7 +5352,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -4960,14 +5373,14 @@ class TDLibFunctions:
                 Chat identifier
 
             message_thread_id (``int``):
-                If not 0, a message thread identifier in which the action was performed
+                If not 0, the message thread identifier in which the action was performed
 
             action (``ChatAction``, *optional*):
                 The action description; pass null to cancel the currently active action
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -4988,7 +5401,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5007,7 +5420,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5037,7 +5450,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5062,7 +5475,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5085,7 +5498,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Sticker``)
+            :class:`~pytdbot_sync.types.Result` (``Sticker``)
         """
 
         data = {
@@ -5108,7 +5521,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``HttpUrl``)
+            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -5128,7 +5541,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``InternalLinkType``)
+            :class:`~pytdbot_sync.types.Result` (``InternalLinkType``)
         """
 
         data = {
@@ -5147,7 +5560,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``LoginUrlInfo``)
+            :class:`~pytdbot_sync.types.Result` (``LoginUrlInfo``)
         """
 
         data = {
@@ -5169,7 +5582,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``HttpUrl``)
+            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -5189,7 +5602,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5213,7 +5626,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5233,7 +5646,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5257,7 +5670,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5280,7 +5693,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chat``)
+            :class:`~pytdbot_sync.types.Result` (``Chat``)
         """
 
         data = {
@@ -5303,7 +5716,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chat``)
+            :class:`~pytdbot_sync.types.Result` (``Chat``)
         """
 
         data = {
@@ -5326,7 +5739,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chat``)
+            :class:`~pytdbot_sync.types.Result` (``Chat``)
         """
 
         data = {
@@ -5346,7 +5759,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chat``)
+            :class:`~pytdbot_sync.types.Result` (``Chat``)
         """
 
         data = {
@@ -5373,7 +5786,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chat``)
+            :class:`~pytdbot_sync.types.Result` (``Chat``)
         """
 
         data = {
@@ -5421,7 +5834,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chat``)
+            :class:`~pytdbot_sync.types.Result` (``Chat``)
         """
 
         data = {
@@ -5446,7 +5859,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chat``)
+            :class:`~pytdbot_sync.types.Result` (``Chat``)
         """
 
         data = {
@@ -5457,7 +5870,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def upgradeBasicGroupChatToSupergroupChat(self, chat_id: int) -> Result:
-        """Creates a new supergroup from an existing basic group and sends a corresponding messageChatUpgradeTo and messageChatUpgradeFrom; requires creator privileges\. Deactivates the original basic group
+        """Creates a new supergroup from an existing basic group and sends a corresponding messageChatUpgradeTo and messageChatUpgradeFrom; requires owner privileges\. Deactivates the original basic group
 
         Args:
             chat_id (``int``):
@@ -5465,7 +5878,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chat``)
+            :class:`~pytdbot_sync.types.Result` (``Chat``)
         """
 
         data = {
@@ -5484,7 +5897,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatLists``)
+            :class:`~pytdbot_sync.types.Result` (``ChatLists``)
         """
 
         data = {
@@ -5506,7 +5919,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5526,7 +5939,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatFolder``)
+            :class:`~pytdbot_sync.types.Result` (``ChatFolder``)
         """
 
         data = {
@@ -5545,7 +5958,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatFolderInfo``)
+            :class:`~pytdbot_sync.types.Result` (``ChatFolderInfo``)
         """
 
         data = {
@@ -5567,7 +5980,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatFolderInfo``)
+            :class:`~pytdbot_sync.types.Result` (``ChatFolderInfo``)
         """
 
         data = {
@@ -5592,7 +6005,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5612,7 +6025,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -5631,7 +6044,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Count``)
+            :class:`~pytdbot_sync.types.Result` (``Count``)
         """
 
         data = {
@@ -5655,7 +6068,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5671,7 +6084,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``RecommendedChatFolders``)
+            :class:`~pytdbot_sync.types.Result` (``RecommendedChatFolders``)
         """
 
         data = {
@@ -5689,7 +6102,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatFolderIcon``)
+            :class:`~pytdbot_sync.types.Result` (``ChatFolderIcon``)
         """
 
         data = {
@@ -5708,7 +6121,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -5735,7 +6148,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatFolderInviteLink``)
+            :class:`~pytdbot_sync.types.Result` (``ChatFolderInviteLink``)
         """
 
         data = {
@@ -5756,7 +6169,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatFolderInviteLinks``)
+            :class:`~pytdbot_sync.types.Result` (``ChatFolderInviteLinks``)
         """
 
         data = {
@@ -5786,7 +6199,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatFolderInviteLink``)
+            :class:`~pytdbot_sync.types.Result` (``ChatFolderInviteLink``)
         """
 
         data = {
@@ -5813,7 +6226,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5833,7 +6246,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatFolderInviteLinkInfo``)
+            :class:`~pytdbot_sync.types.Result` (``ChatFolderInviteLinkInfo``)
         """
 
         data = {
@@ -5857,7 +6270,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5877,7 +6290,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -5901,7 +6314,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5917,7 +6330,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ArchiveChatListSettings``)
+            :class:`~pytdbot_sync.types.Result` (``ArchiveChatListSettings``)
         """
 
         data = {
@@ -5935,7 +6348,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5946,7 +6359,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def setChatTitle(self, chat_id: int, title: str) -> Result:
-        """Changes the chat title\. Supported only for basic groups, supergroups and channels\. Requires can\_change\_info administrator right
+        """Changes the chat title\. Supported only for basic groups, supergroups and channels\. Requires can\_change\_info member right
 
         Args:
             chat_id (``int``):
@@ -5957,7 +6370,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5969,7 +6382,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def setChatPhoto(self, chat_id: int, photo: dict = None) -> Result:
-        """Changes the photo of a chat\. Supported only for basic groups, supergroups and channels\. Requires can\_change\_info administrator right
+        """Changes the photo of a chat\. Supported only for basic groups, supergroups and channels\. Requires can\_change\_info member right
 
         Args:
             chat_id (``int``):
@@ -5980,7 +6393,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -5994,21 +6407,21 @@ class TDLibFunctions:
     def setChatAccentColor(
         self, chat_id: int, accent_color_id: int, background_custom_emoji_id: int
     ) -> Result:
-        """Changes accent color and background custom emoji of a chat\. Supported only for channels with getOption\("channel\_custom\_accent\_color\_boost\_level\_min"\) boost level\. Requires can\_change\_info administrator right
+        """Changes accent color and background custom emoji of a channel chat\. Requires can\_change\_info administrator right
 
         Args:
             chat_id (``int``):
                 Chat identifier
 
             accent_color_id (``int``):
-                Identifier of the accent color to use
+                Identifier of the accent color to use\. The chat must have at least accentColor\.min\_channel\_chat\_boost\_level boost level to pass the corresponding color
 
             background_custom_emoji_id (``int``):
-                Identifier of a custom emoji to be shown on the reply header background; 0 if none
+                Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none\. Use chatBoostLevelFeatures\.can\_set\_background\_custom\_emoji to check whether a custom emoji can be set
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6016,6 +6429,38 @@ class TDLibFunctions:
             "chat_id": chat_id,
             "accent_color_id": accent_color_id,
             "background_custom_emoji_id": background_custom_emoji_id,
+        }
+
+        return self.invoke(data)
+
+    def setChatProfileAccentColor(
+        self,
+        chat_id: int,
+        profile_accent_color_id: int,
+        profile_background_custom_emoji_id: int,
+    ) -> Result:
+        """Changes accent color and background custom emoji for profile of a supergroup or channel chat\. Requires can\_change\_info administrator right
+
+        Args:
+            chat_id (``int``):
+                Chat identifier
+
+            profile_accent_color_id (``int``):
+                Identifier of the accent color to use for profile; pass \-1 if none\. The chat must have at least profileAccentColor\.min\_supergroup\_chat\_boost\_level for supergroups or profileAccentColor\.min\_channel\_chat\_boost\_level for channels boost level to pass the corresponding color
+
+            profile_background_custom_emoji_id (``int``):
+                Identifier of a custom emoji to be shown on the chat's profile photo background; 0 if none\. Use chatBoostLevelFeatures\.can\_set\_profile\_background\_custom\_emoji to check whether a custom emoji can be set
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setChatProfileAccentColor",
+            "chat_id": chat_id,
+            "profile_accent_color_id": profile_accent_color_id,
+            "profile_background_custom_emoji_id": profile_background_custom_emoji_id,
         }
 
         return self.invoke(data)
@@ -6034,13 +6479,38 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
             "@type": "setChatMessageAutoDeleteTime",
             "chat_id": chat_id,
             "message_auto_delete_time": message_auto_delete_time,
+        }
+
+        return self.invoke(data)
+
+    def setChatEmojiStatus(
+        self, chat_id: int, emoji_status: dict = None
+    ) -> Result:
+        """Changes the emoji status of a chat\. Use chatBoostLevelFeatures\.can\_set\_emoji\_status to check whether an emoji status can be set\. Requires can\_change\_info administrator right
+
+        Args:
+            chat_id (``int``):
+                Chat identifier
+
+            emoji_status (``emojiStatus``, *optional*):
+                New emoji status; pass null to remove emoji status
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setChatEmojiStatus",
+            "chat_id": chat_id,
+            "emoji_status": emoji_status,
         }
 
         return self.invoke(data)
@@ -6057,7 +6527,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6076,27 +6546,27 @@ class TDLibFunctions:
         background: dict = None,
         type: dict = None,
     ) -> Result:
-        """Sets the background in a specific chat\. Supported only in private and secret chats with non\-deleted users
+        """Sets the background in a specific chat\. Supported only in private and secret chats with non\-deleted users, and in chats with sufficient boost level and can\_change\_info administrator right
 
         Args:
             chat_id (``int``):
                 Chat identifier
 
             dark_theme_dimming (``int``):
-                Dimming of the background in dark themes, as a percentage; 0\-100
+                Dimming of the background in dark themes, as a percentage; 0\-100\. Applied only to Wallpaper and Fill types of background
 
             only_for_self (``bool``):
-                Pass true to set background only for self; pass false to set background for both chat users\. Background can be set for both users only by Telegram Premium users and if set background isn't of the type inputBackgroundPrevious
+                Pass true to set background only for self; pass false to set background for all chat users\. Always false for backgrounds set in boosted chats\. Background can be set for both users only by Telegram Premium users and if set background isn't of the type inputBackgroundPrevious
 
             background (``InputBackground``, *optional*):
-                The input background to use; pass null to create a new filled background
+                The input background to use; pass null to create a new filled or chat theme background
 
             type (``BackgroundType``, *optional*):
-                Background type; pass null to use default background type for the chosen background
+                Background type; pass null to use default background type for the chosen background; backgroundTypeChatTheme isn't supported for private and secret chats\. Use chatBoostLevelFeatures\.chat\_theme\_background\_count and chatBoostLevelFeatures\.can\_set\_custom\_background to check whether the background type can be set in the boosted chat
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6124,7 +6594,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6147,7 +6617,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6168,14 +6638,14 @@ class TDLibFunctions:
                 Chat identifier
 
             message_thread_id (``int``):
-                If not 0, a message thread identifier in which the draft was changed
+                If not 0, the message thread identifier in which the draft was changed
 
             draft_message (``draftMessage``, *optional*):
-                New draft message; pass null to remove the draft
+                New draft message; pass null to remove the draft\. All files in draft message content must be of the type inputFileLocal\. Media thumbnails and captions are ignored
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6201,7 +6671,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6226,7 +6696,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6240,7 +6710,7 @@ class TDLibFunctions:
     def toggleChatViewAsTopics(
         self, chat_id: int, view_as_topics: bool
     ) -> Result:
-        """Changes the view\_as\_topics setting of a forum chat
+        """Changes the view\_as\_topics setting of a forum chat or Saved Messages
 
         Args:
             chat_id (``int``):
@@ -6251,7 +6721,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6276,7 +6746,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6301,7 +6771,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6326,7 +6796,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6340,18 +6810,18 @@ class TDLibFunctions:
     def setChatAvailableReactions(
         self, chat_id: int, available_reactions: dict
     ) -> Result:
-        """Changes reactions, available in a chat\. Available for basic groups, supergroups, and channels\. Requires can\_change\_info administrator right
+        """Changes reactions, available in a chat\. Available for basic groups, supergroups, and channels\. Requires can\_change\_info member right
 
         Args:
             chat_id (``int``):
                 Identifier of the chat
 
             available_reactions (``ChatAvailableReactions``):
-                Reactions available in the chat\. All explicitly specified emoji reactions must be active\. Up to the chat's boost level custom emoji reactions can be explicitly specified
+                Reactions available in the chat\. All explicitly specified emoji reactions must be active\. In channel chats up to the chat's boost level custom emoji reactions can be explicitly specified
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6374,7 +6844,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6386,7 +6856,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def setChatDescription(self, chat_id: int, description: str) -> Result:
-        """Changes information about a chat\. Available for basic groups, supergroups, and channels\. Requires can\_change\_info administrator right
+        """Changes information about a chat\. Available for basic groups, supergroups, and channels\. Requires can\_change\_info member right
 
         Args:
             chat_id (``int``):
@@ -6397,7 +6867,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6415,14 +6885,14 @@ class TDLibFunctions:
 
         Args:
             chat_id (``int``):
-                Identifier of the channel chat\. Pass 0 to remove a link from the supergroup passed in the second argument to a linked channel chat \(requires can\_pin\_messages rights in the supergroup\)
+                Identifier of the channel chat\. Pass 0 to remove a link from the supergroup passed in the second argument to a linked channel chat \(requires can\_pin\_messages member right in the supergroup\)
 
             discussion_chat_id (``int``):
                 Identifier of a new channel's discussion group\. Use 0 to remove the discussion group\. Use the method getSuitableDiscussionChats to find all suitable groups\. Basic group chats must be first upgraded to supergroup chats\. If new chat members don't have access to old messages in the supergroup, then toggleSupergroupIsAllHistoryAvailable must be used first to change that
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6445,7 +6915,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6457,7 +6927,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def setChatSlowModeDelay(self, chat_id: int, slow_mode_delay: int) -> Result:
-        """Changes the slow mode delay of a chat\. Available only for supergroups; requires can\_restrict\_members rights
+        """Changes the slow mode delay of a chat\. Available only for supergroups; requires can\_restrict\_members right
 
         Args:
             chat_id (``int``):
@@ -6468,7 +6938,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6486,7 +6956,7 @@ class TDLibFunctions:
         disable_notification: bool,
         only_for_self: bool,
     ) -> Result:
-        """Pins a message in a chat; requires can\_pin\_messages rights or can\_edit\_messages rights in the channel
+        """Pins a message in a chat; requires can\_pin\_messages member right if the chat is a basic group or supergroup, or can\_edit\_messages administrator right if the chat is a channel
 
         Args:
             chat_id (``int``):
@@ -6503,7 +6973,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6517,7 +6987,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def unpinChatMessage(self, chat_id: int, message_id: int) -> Result:
-        """Removes a pinned message from a chat; requires can\_pin\_messages rights in the group or can\_edit\_messages rights in the channel
+        """Removes a pinned message from a chat; requires can\_pin\_messages member right if the chat is a basic group or supergroup, or can\_edit\_messages administrator right if the chat is a channel
 
         Args:
             chat_id (``int``):
@@ -6528,7 +6998,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6540,7 +7010,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def unpinAllChatMessages(self, chat_id: int) -> Result:
-        """Removes all pinned messages from a chat; requires can\_pin\_messages rights in the group or can\_edit\_messages rights in the channel
+        """Removes all pinned messages from a chat; requires can\_pin\_messages member right if the chat is a basic group or supergroup, or can\_edit\_messages administrator right if the chat is a channel
 
         Args:
             chat_id (``int``):
@@ -6548,7 +7018,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6561,7 +7031,7 @@ class TDLibFunctions:
     def unpinAllMessageThreadMessages(
         self, chat_id: int, message_thread_id: int
     ) -> Result:
-        """Removes all pinned messages from a forum topic; requires can\_pin\_messages rights in the supergroup
+        """Removes all pinned messages from a forum topic; requires can\_pin\_messages member right in the supergroup
 
         Args:
             chat_id (``int``):
@@ -6572,7 +7042,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6592,7 +7062,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6611,7 +7081,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6624,7 +7094,7 @@ class TDLibFunctions:
     def addChatMember(
         self, chat_id: int, user_id: int, forward_limit: int
     ) -> Result:
-        """Adds a new member to a chat\. Members can't be added to private or secret chats
+        """Adds a new member to a chat; requires can\_invite\_users member right\. Members can't be added to private or secret chats
 
         Args:
             chat_id (``int``):
@@ -6638,7 +7108,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6651,7 +7121,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def addChatMembers(self, chat_id: int, user_ids: list) -> Result:
-        """Adds multiple new members to a chat\. Currently, this method is only available for supergroups and channels\. This method can't be used to join a chat\. Members can't be added to a channel if it has more than 200 members
+        """Adds multiple new members to a chat; requires can\_invite\_users member right\. Currently, this method is only available for supergroups and channels\. This method can't be used to join a chat\. Members can't be added to a channel if it has more than 200 members
 
         Args:
             chat_id (``int``):
@@ -6662,7 +7132,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6676,7 +7146,7 @@ class TDLibFunctions:
     def setChatMemberStatus(
         self, chat_id: int, member_id: dict, status: dict
     ) -> Result:
-        """Changes the status of a chat member, needs appropriate privileges\. This function is currently not suitable for transferring chat ownership; use transferChatOwnership instead\. Use addChatMember or banChatMember if some additional parameters needs to be passed
+        """Changes the status of a chat member; requires can\_invite\_users member right to add a chat member, can\_promote\_members administrator right to change administrator rights of the member, and can\_restrict\_members administrator right to change restrictions of a user\. This function is currently not suitable for transferring chat ownership; use transferChatOwnership instead\. Use addChatMember or banChatMember if some additional parameters needs to be passed
 
         Args:
             chat_id (``int``):
@@ -6690,7 +7160,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6709,7 +7179,7 @@ class TDLibFunctions:
         banned_until_date: int,
         revoke_messages: bool,
     ) -> Result:
-        """Bans a member in a chat\. Members can't be banned in private or secret chats\. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc\., unless unbanned first
+        """Bans a member in a chat; requires can\_restrict\_members administrator right\. Members can't be banned in private or secret chats\. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc\., unless unbanned first
 
         Args:
             chat_id (``int``):
@@ -6726,7 +7196,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6744,7 +7214,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``CanTransferOwnershipResult``)
+            :class:`~pytdbot_sync.types.Result` (``CanTransferOwnershipResult``)
         """
 
         data = {
@@ -6756,7 +7226,7 @@ class TDLibFunctions:
     def transferChatOwnership(
         self, chat_id: int, user_id: int, password: str
     ) -> Result:
-        """Changes the owner of a chat\. The current user must be a current owner of the chat\. Use the method canTransferOwnership to check whether the ownership can be transferred from the current session\. Available only for supergroups and channel chats
+        """Changes the owner of a chat; requires owner privileges in the chat\. Use the method canTransferOwnership to check whether the ownership can be transferred from the current session\. Available only for supergroups and channel chats
 
         Args:
             chat_id (``int``):
@@ -6770,7 +7240,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6794,7 +7264,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatMember``)
+            :class:`~pytdbot_sync.types.Result` (``ChatMember``)
         """
 
         data = {
@@ -6808,7 +7278,7 @@ class TDLibFunctions:
     def searchChatMembers(
         self, chat_id: int, query: str, limit: int, filter: dict = None
     ) -> Result:
-        """Searches for a specified query in the first name, last name and usernames of the members of a specified chat\. Requires administrator rights in channels
+        """Searches for a specified query in the first name, last name and usernames of the members of a specified chat\. Requires administrator rights if the chat is a channel
 
         Args:
             chat_id (``int``):
@@ -6825,7 +7295,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatMembers``)
+            :class:`~pytdbot_sync.types.Result` (``ChatMembers``)
         """
 
         data = {
@@ -6847,7 +7317,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatAdministrators``)
+            :class:`~pytdbot_sync.types.Result` (``ChatAdministrators``)
         """
 
         data = {
@@ -6866,7 +7336,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6885,7 +7355,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``NotificationSounds``)
+            :class:`~pytdbot_sync.types.Result` (``NotificationSounds``)
         """
 
         data = {
@@ -6900,7 +7370,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``NotificationSounds``)
+            :class:`~pytdbot_sync.types.Result` (``NotificationSounds``)
         """
 
         data = {
@@ -6918,7 +7388,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``NotificationSound``)
+            :class:`~pytdbot_sync.types.Result` (``NotificationSound``)
         """
 
         data = {
@@ -6937,7 +7407,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -6961,7 +7431,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -6981,7 +7451,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ScopeNotificationSettings``)
+            :class:`~pytdbot_sync.types.Result` (``ScopeNotificationSettings``)
         """
 
         data = {
@@ -7005,7 +7475,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7021,7 +7491,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7047,7 +7517,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7071,7 +7541,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7091,7 +7561,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7118,7 +7588,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Story``)
+            :class:`~pytdbot_sync.types.Result` (``Story``)
         """
 
         data = {
@@ -7131,11 +7601,11 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def getChatsToSendStories(self) -> Result:
-        """Returns channel chats in which the current user has the right to post stories\. The chats must be rechecked with canSendStory before actually trying to post a story there
+        """Returns supergroup and channel chats in which the current user has the right to post stories\. The chats must be rechecked with canSendStory before actually trying to post a story there
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -7145,7 +7615,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def canSendStory(self, chat_id: int) -> Result:
-        """Checks whether the current user can send a story on behalf of a chat; requires can\_post\_stories rights for channel chats
+        """Checks whether the current user can send a story on behalf of a chat; requires can\_post\_stories right for supergroup and channel chats
 
         Args:
             chat_id (``int``):
@@ -7153,7 +7623,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``CanSendStoryResult``)
+            :class:`~pytdbot_sync.types.Result` (``CanSendStoryResult``)
         """
 
         data = {
@@ -7175,7 +7645,7 @@ class TDLibFunctions:
         areas: dict = None,
         caption: dict = None,
     ) -> Result:
-        """Sends a new story to a chat; requires can\_post\_stories rights for channel chats\. Returns a temporary story
+        """Sends a new story to a chat; requires can\_post\_stories right for supergroup and channel chats\. Returns a temporary story
 
         Args:
             chat_id (``int``):
@@ -7185,7 +7655,7 @@ class TDLibFunctions:
                 Content of the story
 
             privacy_settings (``StoryPrivacySettings``):
-                The privacy settings for the story
+                The privacy settings for the story; ignored for stories sent to supergroup and channel chats
 
             active_period (``int``):
                 Period after which the story is moved to archive, in seconds; must be one of 6 \* 3600, 12 \* 3600, 86400, or 2 \* 86400 for Telegram Premium users, and 86400 otherwise
@@ -7207,7 +7677,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Story``)
+            :class:`~pytdbot_sync.types.Result` (``Story``)
         """
 
         data = {
@@ -7253,7 +7723,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7268,14 +7738,11 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def setStoryPrivacySettings(
-        self, story_sender_chat_id: int, story_id: int, privacy_settings: dict
+        self, story_id: int, privacy_settings: dict
     ) -> Result:
-        """Changes privacy settings of a story\. Can be called only if story\.can\_be\_edited \=\= true
+        """Changes privacy settings of a story\. The method can be called only for stories posted on behalf of the current user and if story\.can\_be\_edited \=\= true
 
         Args:
-            story_sender_chat_id (``int``):
-                Identifier of the chat that posted the story
-
             story_id (``int``):
                 Identifier of the story
 
@@ -7284,12 +7751,11 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
             "@type": "setStoryPrivacySettings",
-            "story_sender_chat_id": story_sender_chat_id,
             "story_id": story_id,
             "privacy_settings": privacy_settings,
         }
@@ -7313,7 +7779,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7337,7 +7803,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7353,7 +7819,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chats``)
+            :class:`~pytdbot_sync.types.Result` (``Chats``)
         """
 
         data = {
@@ -7371,7 +7837,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7393,7 +7859,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7413,7 +7879,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatActiveStories``)
+            :class:`~pytdbot_sync.types.Result` (``ChatActiveStories``)
         """
 
         data = {
@@ -7440,7 +7906,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stories``)
+            :class:`~pytdbot_sync.types.Result` (``Stories``)
         """
 
         data = {
@@ -7455,7 +7921,7 @@ class TDLibFunctions:
     def getChatArchivedStories(
         self, chat_id: int, from_story_id: int, limit: int
     ) -> Result:
-        """Returns the list of all stories posted by the given chat; requires can\_edit\_stories rights for channel chats\. The stories are returned in a reverse chronological order \(i\.e\., in order of decreasing story\_id\)\. For optimal performance, the number of returned stories is chosen by TDLib
+        """Returns the list of all stories posted by the given chat; requires can\_edit\_stories right in the chat\. The stories are returned in a reverse chronological order \(i\.e\., in order of decreasing story\_id\)\. For optimal performance, the number of returned stories is chosen by TDLib
 
         Args:
             chat_id (``int``):
@@ -7469,7 +7935,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stories``)
+            :class:`~pytdbot_sync.types.Result` (``Stories``)
         """
 
         data = {
@@ -7493,7 +7959,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7516,7 +7982,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7536,7 +8002,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AvailableReactions``)
+            :class:`~pytdbot_sync.types.Result` (``AvailableReactions``)
         """
 
         data = {
@@ -7553,7 +8019,7 @@ class TDLibFunctions:
         update_recent_reactions: bool,
         reaction_type: dict = None,
     ) -> Result:
-        """Changes chosen reaction on a story
+        """Changes chosen reaction on a story that has already been sent
 
         Args:
             story_sender_chat_id (``int``):
@@ -7570,7 +8036,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7583,47 +8049,99 @@ class TDLibFunctions:
 
         return self.invoke(data)
 
-    def getStoryViewers(
+    def getStoryInteractions(
         self,
         story_id: int,
         only_contacts: bool,
+        prefer_forwards: bool,
         prefer_with_reaction: bool,
         offset: str,
         limit: int,
         query: str = None,
     ) -> Result:
-        """Returns viewers of a story\. The method can be called only for stories posted on behalf of the current user
+        """Returns interactions with a story\. The method can be called only for stories posted on behalf of the current user
 
         Args:
             story_id (``int``):
                 Story identifier
 
             only_contacts (``bool``):
-                Pass true to get only contacts; pass false to get all relevant viewers
+                Pass true to get only interactions by contacts; pass false to get all relevant interactions
+
+            prefer_forwards (``bool``):
+                Pass true to get forwards and reposts first, then reactions, then other views; pass false to get interactions sorted just by interaction date
 
             prefer_with_reaction (``bool``):
-                Pass true to get viewers with reaction first; pass false to get viewers sorted just by view\_date
+                Pass true to get interactions with reaction first; pass false to get interactions sorted just by interaction date\. Ignored if prefer\_forwards \=\= true
 
             offset (``str``):
                 Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
 
             limit (``int``):
-                The maximum number of story viewers to return
+                The maximum number of story interactions to return
 
             query (``str``, *optional*):
-                Query to search for in names and usernames of the viewers; may be empty to get all relevant viewers
+                Query to search for in names, usernames and titles; may be empty to get all relevant interactions
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StoryViewers``)
+            :class:`~pytdbot_sync.types.Result` (``StoryInteractions``)
         """
 
         data = {
-            "@type": "getStoryViewers",
+            "@type": "getStoryInteractions",
             "story_id": story_id,
             "query": query,
             "only_contacts": only_contacts,
+            "prefer_forwards": prefer_forwards,
             "prefer_with_reaction": prefer_with_reaction,
+            "offset": offset,
+            "limit": limit,
+        }
+
+        return self.invoke(data)
+
+    def getChatStoryInteractions(
+        self,
+        story_sender_chat_id: int,
+        story_id: int,
+        prefer_forwards: bool,
+        offset: str,
+        limit: int,
+        reaction_type: dict = None,
+    ) -> Result:
+        """Returns interactions with a story posted in a chat\. Can be used only if story is posted on behalf of a chat and the user is an administrator in the chat
+
+        Args:
+            story_sender_chat_id (``int``):
+                The identifier of the sender of the story
+
+            story_id (``int``):
+                Story identifier
+
+            prefer_forwards (``bool``):
+                Pass true to get forwards and reposts first, then reactions, then other views; pass false to get interactions sorted just by interaction date
+
+            offset (``str``):
+                Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
+
+            limit (``int``):
+                The maximum number of story interactions to return
+
+            reaction_type (``ReactionType``, *optional*):
+                Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``StoryInteractions``)
+        """
+
+        data = {
+            "@type": "getChatStoryInteractions",
+            "story_sender_chat_id": story_sender_chat_id,
+            "story_id": story_id,
+            "reaction_type": reaction_type,
+            "prefer_forwards": prefer_forwards,
             "offset": offset,
             "limit": limit,
         }
@@ -7650,7 +8168,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7668,7 +8186,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7697,7 +8215,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StoryPublicForwards``)
+            :class:`~pytdbot_sync.types.Result` (``PublicForwards``)
         """
 
         data = {
@@ -7710,12 +8228,54 @@ class TDLibFunctions:
 
         return self.invoke(data)
 
+    def getChatBoostLevelFeatures(self, is_channel: bool, level: int) -> Result:
+        """Returns list of features available on the specific chat boost level; this is an offline request
+
+        Args:
+            is_channel (``bool``):
+                Pass true to get the list of features for channels; pass false to get the list of features for supergroups
+
+            level (``int``):
+                Chat boost level
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``ChatBoostLevelFeatures``)
+        """
+
+        data = {
+            "@type": "getChatBoostLevelFeatures",
+            "is_channel": is_channel,
+            "level": level,
+        }
+
+        return self.invoke(data)
+
+    def getChatBoostFeatures(self, is_channel: bool) -> Result:
+        """Returns list of features available on the first 10 chat boost levels; this is an offline request
+
+        Args:
+            is_channel (``bool``):
+                Pass true to get the list of features for channels; pass false to get the list of features for supergroups
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``ChatBoostFeatures``)
+        """
+
+        data = {
+            "@type": "getChatBoostFeatures",
+            "is_channel": is_channel,
+        }
+
+        return self.invoke(data)
+
     def getAvailableChatBoostSlots(self) -> Result:
         """Returns the list of available chat boost slots for the current user
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatBoostSlots``)
+            :class:`~pytdbot_sync.types.Result` (``ChatBoostSlots``)
         """
 
         data = {
@@ -7725,15 +8285,15 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def getChatBoostStatus(self, chat_id: int) -> Result:
-        """Returns the current boost status for a channel chat
+        """Returns the current boost status for a supergroup or a channel chat
 
         Args:
             chat_id (``int``):
-                Identifier of the channel chat
+                Identifier of the chat
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatBoostStatus``)
+            :class:`~pytdbot_sync.types.Result` (``ChatBoostStatus``)
         """
 
         data = {
@@ -7755,7 +8315,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatBoostSlots``)
+            :class:`~pytdbot_sync.types.Result` (``ChatBoostSlots``)
         """
 
         data = {
@@ -7767,7 +8327,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def getChatBoostLink(self, chat_id: int) -> Result:
-        """Returns an HTTPS link to boost the specified channel chat
+        """Returns an HTTPS link to boost the specified supergroup or channel chat
 
         Args:
             chat_id (``int``):
@@ -7775,7 +8335,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatBoostLink``)
+            :class:`~pytdbot_sync.types.Result` (``ChatBoostLink``)
         """
 
         data = {
@@ -7794,7 +8354,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatBoostLinkInfo``)
+            :class:`~pytdbot_sync.types.Result` (``ChatBoostLinkInfo``)
         """
 
         data = {
@@ -7807,7 +8367,7 @@ class TDLibFunctions:
     def getChatBoosts(
         self, chat_id: int, only_gift_codes: bool, offset: str, limit: int
     ) -> Result:
-        """Returns list of boosts applied to a chat; requires administrator rights in the channel chat
+        """Returns list of boosts applied to a chat; requires administrator rights in the chat
 
         Args:
             chat_id (``int``):
@@ -7824,7 +8384,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FoundChatBoosts``)
+            :class:`~pytdbot_sync.types.Result` (``FoundChatBoosts``)
         """
 
         data = {
@@ -7838,7 +8398,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def getUserChatBoosts(self, chat_id: int, user_id: int) -> Result:
-        """Returns list of boosts applied to a chat by a given user; requires administrator rights in the channel chat; for bots only
+        """Returns list of boosts applied to a chat by a given user; requires administrator rights in the chat; for bots only
 
         Args:
             chat_id (``int``):
@@ -7849,7 +8409,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FoundChatBoosts``)
+            :class:`~pytdbot_sync.types.Result` (``FoundChatBoosts``)
         """
 
         data = {
@@ -7869,7 +8429,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AttachmentMenuBot``)
+            :class:`~pytdbot_sync.types.Result` (``AttachmentMenuBot``)
         """
 
         data = {
@@ -7896,7 +8456,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -7909,11 +8469,11 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def getThemedEmojiStatuses(self) -> Result:
-        """Returns up to 8 emoji statuses, which must be shown right after the default Premium Badge in the emoji status list
+        """Returns up to 8 emoji statuses, which must be shown right after the default Premium Badge in the emoji status list for self status
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``EmojiStatuses``)
+            :class:`~pytdbot_sync.types.Result` (``EmojiStatuses``)
         """
 
         data = {
@@ -7923,11 +8483,11 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def getRecentEmojiStatuses(self) -> Result:
-        """Returns recent emoji statuses
+        """Returns recent emoji statuses for self status
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``EmojiStatuses``)
+            :class:`~pytdbot_sync.types.Result` (``EmojiStatuses``)
         """
 
         data = {
@@ -7937,11 +8497,11 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def getDefaultEmojiStatuses(self) -> Result:
-        """Returns default emoji statuses
+        """Returns default emoji statuses for self status
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``EmojiStatuses``)
+            :class:`~pytdbot_sync.types.Result` (``EmojiStatuses``)
         """
 
         data = {
@@ -7951,15 +8511,57 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def clearRecentEmojiStatuses(self) -> Result:
-        """Clears the list of recently used emoji statuses
+        """Clears the list of recently used emoji statuses for self status
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
             "@type": "clearRecentEmojiStatuses",
+        }
+
+        return self.invoke(data)
+
+    def getThemedChatEmojiStatuses(self) -> Result:
+        """Returns up to 8 emoji statuses, which must be shown in the emoji status list for chats
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``EmojiStatuses``)
+        """
+
+        data = {
+            "@type": "getThemedChatEmojiStatuses",
+        }
+
+        return self.invoke(data)
+
+    def getDefaultChatEmojiStatuses(self) -> Result:
+        """Returns default emoji statuses for chats
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``EmojiStatuses``)
+        """
+
+        data = {
+            "@type": "getDefaultChatEmojiStatuses",
+        }
+
+        return self.invoke(data)
+
+    def getDisallowedChatEmojiStatuses(self) -> Result:
+        """Returns the list of emoji statuses, which can't be used as chat emoji status, even they are from a sticker set with is\_allowed\_as\_chat\_emoji\_status \=\= true
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``EmojiStatuses``)
+        """
+
+        data = {
+            "@type": "getDisallowedChatEmojiStatuses",
         }
 
         return self.invoke(data)
@@ -7987,7 +8589,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``File``)
+            :class:`~pytdbot_sync.types.Result` (``File``)
         """
 
         data = {
@@ -8013,7 +8615,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FileDownloadedPrefixSize``)
+            :class:`~pytdbot_sync.types.Result` (``FileDownloadedPrefixSize``)
         """
 
         data = {
@@ -8036,7 +8638,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8059,7 +8661,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -8087,7 +8689,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``File``)
+            :class:`~pytdbot_sync.types.Result` (``File``)
         """
 
         data = {
@@ -8108,7 +8710,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8135,7 +8737,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8164,7 +8766,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8190,7 +8792,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8216,7 +8818,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FilePart``)
+            :class:`~pytdbot_sync.types.Result` (``FilePart``)
         """
 
         data = {
@@ -8237,7 +8839,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8267,7 +8869,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``File``)
+            :class:`~pytdbot_sync.types.Result` (``File``)
         """
 
         data = {
@@ -8292,7 +8894,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8312,7 +8914,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8336,7 +8938,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8364,7 +8966,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8404,7 +9006,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FoundFileDownloads``)
+            :class:`~pytdbot_sync.types.Result` (``FoundFileDownloads``)
         """
 
         data = {
@@ -8427,7 +9029,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``MessageFileType``)
+            :class:`~pytdbot_sync.types.Result` (``MessageFileType``)
         """
 
         data = {
@@ -8442,11 +9044,11 @@ class TDLibFunctions:
 
         Args:
             chat_id (``int``):
-                Identifier of a chat to which the messages will be imported\. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can\_change\_info administrator right
+                Identifier of a chat to which the messages will be imported\. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can\_change\_info member right
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -8463,7 +9065,7 @@ class TDLibFunctions:
 
         Args:
             chat_id (``int``):
-                Identifier of a chat to which the messages will be imported\. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can\_change\_info administrator right
+                Identifier of a chat to which the messages will be imported\. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can\_change\_info member right
 
             message_file (``InputFile``):
                 File with messages to import\. Only inputFileLocal and inputFileGenerated are supported\. The file must not be previously uploaded
@@ -8473,7 +9075,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8494,7 +9096,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatInviteLink``)
+            :class:`~pytdbot_sync.types.Result` (``ChatInviteLink``)
         """
 
         data = {
@@ -8532,7 +9134,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatInviteLink``)
+            :class:`~pytdbot_sync.types.Result` (``ChatInviteLink``)
         """
 
         data = {
@@ -8578,7 +9180,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatInviteLink``)
+            :class:`~pytdbot_sync.types.Result` (``ChatInviteLink``)
         """
 
         data = {
@@ -8605,7 +9207,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatInviteLink``)
+            :class:`~pytdbot_sync.types.Result` (``ChatInviteLink``)
         """
 
         data = {
@@ -8625,7 +9227,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatInviteLinkCounts``)
+            :class:`~pytdbot_sync.types.Result` (``ChatInviteLinkCounts``)
         """
 
         data = {
@@ -8667,7 +9269,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatInviteLinks``)
+            :class:`~pytdbot_sync.types.Result` (``ChatInviteLinks``)
         """
 
         data = {
@@ -8702,7 +9304,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatInviteLinkMembers``)
+            :class:`~pytdbot_sync.types.Result` (``ChatInviteLinkMembers``)
         """
 
         data = {
@@ -8727,7 +9329,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatInviteLinks``)
+            :class:`~pytdbot_sync.types.Result` (``ChatInviteLinks``)
         """
 
         data = {
@@ -8752,7 +9354,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8777,7 +9379,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8797,7 +9399,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatInviteLinkInfo``)
+            :class:`~pytdbot_sync.types.Result` (``ChatInviteLinkInfo``)
         """
 
         data = {
@@ -8816,7 +9418,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Chat``)
+            :class:`~pytdbot_sync.types.Result` (``Chat``)
         """
 
         data = {
@@ -8854,7 +9456,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatJoinRequests``)
+            :class:`~pytdbot_sync.types.Result` (``ChatJoinRequests``)
         """
 
         data = {
@@ -8885,7 +9487,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8914,7 +9516,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8941,7 +9543,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``CallId``)
+            :class:`~pytdbot_sync.types.Result` (``CallId``)
         """
 
         data = {
@@ -8965,7 +9567,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -8988,7 +9590,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9027,7 +9629,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9061,7 +9663,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9088,7 +9690,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9111,7 +9713,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9131,7 +9733,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``MessageSenders``)
+            :class:`~pytdbot_sync.types.Result` (``MessageSenders``)
         """
 
         data = {
@@ -9155,7 +9757,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9169,7 +9771,7 @@ class TDLibFunctions:
     def createVideoChat(
         self, chat_id: int, title: str, start_date: int, is_rtmp_stream: bool
     ) -> Result:
-        """Creates a video chat \(a group call bound to a chat\)\. Available only for basic groups, supergroups and channels; requires can\_manage\_video\_chats rights
+        """Creates a video chat \(a group call bound to a chat\)\. Available only for basic groups, supergroups and channels; requires can\_manage\_video\_chats administrator right
 
         Args:
             chat_id (``int``):
@@ -9182,11 +9784,11 @@ class TDLibFunctions:
                 Point in time \(Unix timestamp\) when the group call is supposed to be started by an administrator; 0 to start the video chat immediately\. The date must be at least 10 seconds and at most 8 days in the future
 
             is_rtmp_stream (``bool``):
-                Pass true to create an RTMP stream instead of an ordinary video chat; requires creator privileges
+                Pass true to create an RTMP stream instead of an ordinary video chat; requires owner privileges
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``GroupCallId``)
+            :class:`~pytdbot_sync.types.Result` (``GroupCallId``)
         """
 
         data = {
@@ -9200,7 +9802,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def getVideoChatRtmpUrl(self, chat_id: int) -> Result:
-        """Returns RTMP URL for streaming to the chat; requires creator privileges
+        """Returns RTMP URL for streaming to the chat; requires owner privileges
 
         Args:
             chat_id (``int``):
@@ -9208,7 +9810,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``RtmpUrl``)
+            :class:`~pytdbot_sync.types.Result` (``RtmpUrl``)
         """
 
         data = {
@@ -9219,7 +9821,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def replaceVideoChatRtmpUrl(self, chat_id: int) -> Result:
-        """Replaces the current RTMP URL for streaming to the chat; requires creator privileges
+        """Replaces the current RTMP URL for streaming to the chat; requires owner privileges
 
         Args:
             chat_id (``int``):
@@ -9227,7 +9829,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``RtmpUrl``)
+            :class:`~pytdbot_sync.types.Result` (``RtmpUrl``)
         """
 
         data = {
@@ -9246,7 +9848,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``GroupCall``)
+            :class:`~pytdbot_sync.types.Result` (``GroupCall``)
         """
 
         data = {
@@ -9265,7 +9867,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9289,7 +9891,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9336,7 +9938,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -9369,7 +9971,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -9395,7 +9997,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9415,7 +10017,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9437,7 +10039,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9462,7 +10064,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9487,7 +10089,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9512,7 +10114,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``HttpUrl``)
+            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -9532,7 +10134,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9566,7 +10168,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9588,7 +10190,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9612,7 +10214,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9637,7 +10239,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9665,7 +10267,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9694,7 +10296,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9723,7 +10325,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9752,7 +10354,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9776,7 +10378,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9796,7 +10398,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9815,7 +10417,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9834,7 +10436,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``GroupCallStreams``)
+            :class:`~pytdbot_sync.types.Result` (``GroupCallStreams``)
         """
 
         data = {
@@ -9872,7 +10474,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FilePart``)
+            :class:`~pytdbot_sync.types.Result` (``FilePart``)
         """
 
         data = {
@@ -9900,7 +10502,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9935,7 +10537,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -9965,7 +10567,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``MessageSenders``)
+            :class:`~pytdbot_sync.types.Result` (``MessageSenders``)
         """
 
         data = {
@@ -9989,7 +10591,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10009,7 +10611,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ImportedContacts``)
+            :class:`~pytdbot_sync.types.Result` (``ImportedContacts``)
         """
 
         data = {
@@ -10024,7 +10626,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Users``)
+            :class:`~pytdbot_sync.types.Result` (``Users``)
         """
 
         data = {
@@ -10045,7 +10647,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Users``)
+            :class:`~pytdbot_sync.types.Result` (``Users``)
         """
 
         data = {
@@ -10065,7 +10667,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10080,7 +10682,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Count``)
+            :class:`~pytdbot_sync.types.Result` (``Count``)
         """
 
         data = {
@@ -10098,7 +10700,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ImportedContacts``)
+            :class:`~pytdbot_sync.types.Result` (``ImportedContacts``)
         """
 
         data = {
@@ -10113,7 +10715,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10131,7 +10733,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10146,7 +10748,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Users``)
+            :class:`~pytdbot_sync.types.Result` (``Users``)
         """
 
         data = {
@@ -10169,7 +10771,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10192,7 +10794,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10212,7 +10814,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``User``)
+            :class:`~pytdbot_sync.types.Result` (``User``)
         """
 
         data = {
@@ -10231,7 +10833,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10258,7 +10860,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatPhotos``)
+            :class:`~pytdbot_sync.types.Result` (``ChatPhotos``)
         """
 
         data = {
@@ -10290,7 +10892,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stickers``)
+            :class:`~pytdbot_sync.types.Result` (``Stickers``)
         """
 
         data = {
@@ -10323,7 +10925,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Emojis``)
+            :class:`~pytdbot_sync.types.Result` (``Emojis``)
         """
 
         data = {
@@ -10353,7 +10955,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stickers``)
+            :class:`~pytdbot_sync.types.Result` (``Stickers``)
         """
 
         data = {
@@ -10374,7 +10976,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stickers``)
+            :class:`~pytdbot_sync.types.Result` (``Stickers``)
         """
 
         data = {
@@ -10393,7 +10995,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StickerSets``)
+            :class:`~pytdbot_sync.types.Result` (``StickerSets``)
         """
 
         data = {
@@ -10420,7 +11022,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StickerSets``)
+            :class:`~pytdbot_sync.types.Result` (``StickerSets``)
         """
 
         data = {
@@ -10449,7 +11051,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``TrendingStickerSets``)
+            :class:`~pytdbot_sync.types.Result` (``TrendingStickerSets``)
         """
 
         data = {
@@ -10470,7 +11072,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StickerSets``)
+            :class:`~pytdbot_sync.types.Result` (``StickerSets``)
         """
 
         data = {
@@ -10489,7 +11091,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StickerSet``)
+            :class:`~pytdbot_sync.types.Result` (``StickerSet``)
         """
 
         data = {
@@ -10508,7 +11110,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StickerSet``)
+            :class:`~pytdbot_sync.types.Result` (``StickerSet``)
         """
 
         data = {
@@ -10535,7 +11137,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StickerSets``)
+            :class:`~pytdbot_sync.types.Result` (``StickerSets``)
         """
 
         data = {
@@ -10559,7 +11161,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StickerSets``)
+            :class:`~pytdbot_sync.types.Result` (``StickerSets``)
         """
 
         data = {
@@ -10587,7 +11189,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10608,7 +11210,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10632,7 +11234,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10652,7 +11254,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stickers``)
+            :class:`~pytdbot_sync.types.Result` (``Stickers``)
         """
 
         data = {
@@ -10674,7 +11276,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stickers``)
+            :class:`~pytdbot_sync.types.Result` (``Stickers``)
         """
 
         data = {
@@ -10697,7 +11299,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10717,7 +11319,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10732,7 +11334,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stickers``)
+            :class:`~pytdbot_sync.types.Result` (``Stickers``)
         """
 
         data = {
@@ -10750,7 +11352,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10769,7 +11371,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10788,7 +11390,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Emojis``)
+            :class:`~pytdbot_sync.types.Result` (``Emojis``)
         """
 
         data = {
@@ -10799,29 +11401,50 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def searchEmojis(
-        self, text: str, exact_match: bool, input_language_codes: list = None
+        self, text: str, input_language_codes: list = None
     ) -> Result:
-        """Searches for emojis by keywords\. Supported only if the file database is enabled
+        """Searches for emojis by keywords\. Supported only if the file database is enabled\. Order of results is unspecified
 
         Args:
             text (``str``):
                 Text to search for
-
-            exact_match (``bool``):
-                Pass true if only emojis, which exactly match the text, needs to be returned
 
             input_language_codes (``list``, *optional*):
                 List of possible IETF language tags of the user's input language; may be empty if unknown
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Emojis``)
+            :class:`~pytdbot_sync.types.Result` (``EmojiKeywords``)
         """
 
         data = {
             "@type": "searchEmojis",
             "text": text,
-            "exact_match": exact_match,
+            "input_language_codes": input_language_codes,
+        }
+
+        return self.invoke(data)
+
+    def getKeywordEmojis(
+        self, text: str, input_language_codes: list = None
+    ) -> Result:
+        """Return emojis matching the keyword\. Supported only if the file database is enabled\. Order of results is unspecified
+
+        Args:
+            text (``str``):
+                Text to search for
+
+            input_language_codes (``list``, *optional*):
+                List of possible IETF language tags of the user's input language; may be empty if unknown
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Emojis``)
+        """
+
+        data = {
+            "@type": "getKeywordEmojis",
+            "text": text,
             "input_language_codes": input_language_codes,
         }
 
@@ -10836,7 +11459,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``EmojiCategories``)
+            :class:`~pytdbot_sync.types.Result` (``EmojiCategories``)
         """
 
         data = {
@@ -10855,7 +11478,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AnimatedEmoji``)
+            :class:`~pytdbot_sync.types.Result` (``AnimatedEmoji``)
         """
 
         data = {
@@ -10874,7 +11497,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``HttpUrl``)
+            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -10893,7 +11516,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stickers``)
+            :class:`~pytdbot_sync.types.Result` (``Stickers``)
         """
 
         data = {
@@ -10908,7 +11531,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stickers``)
+            :class:`~pytdbot_sync.types.Result` (``Stickers``)
         """
 
         data = {
@@ -10922,7 +11545,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stickers``)
+            :class:`~pytdbot_sync.types.Result` (``Stickers``)
         """
 
         data = {
@@ -10936,7 +11559,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stickers``)
+            :class:`~pytdbot_sync.types.Result` (``Stickers``)
         """
 
         data = {
@@ -10950,7 +11573,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Animations``)
+            :class:`~pytdbot_sync.types.Result` (``Animations``)
         """
 
         data = {
@@ -10968,7 +11591,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -10987,7 +11610,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11002,7 +11625,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Users``)
+            :class:`~pytdbot_sync.types.Result` (``Users``)
         """
 
         data = {
@@ -11023,7 +11646,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Hashtags``)
+            :class:`~pytdbot_sync.types.Result` (``Hashtags``)
         """
 
         data = {
@@ -11043,7 +11666,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11067,7 +11690,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``WebPage``)
+            :class:`~pytdbot_sync.types.Result` (``WebPage``)
         """
 
         data = {
@@ -11090,7 +11713,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``WebPageInstantView``)
+            :class:`~pytdbot_sync.types.Result` (``WebPageInstantView``)
         """
 
         data = {
@@ -11113,7 +11736,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11133,7 +11756,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11153,11 +11776,11 @@ class TDLibFunctions:
                 Identifier of the accent color to use
 
             background_custom_emoji_id (``int``):
-                Identifier of a custom emoji to be shown on the reply header background; 0 if none
+                Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11178,11 +11801,11 @@ class TDLibFunctions:
                 Identifier of the accent color to use for profile; pass \-1 if none
 
             profile_background_custom_emoji_id (``int``):
-                Identifier of a custom emoji to be shown in the on the user's profile photo background; 0 if none
+                Identifier of a custom emoji to be shown on the user's profile photo background; 0 if none
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11205,7 +11828,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11225,7 +11848,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11244,7 +11867,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11266,7 +11889,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11286,7 +11909,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11305,7 +11928,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11324,7 +11947,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11348,7 +11971,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AuthenticationCodeInfo``)
+            :class:`~pytdbot_sync.types.Result` (``AuthenticationCodeInfo``)
         """
 
         data = {
@@ -11364,7 +11987,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AuthenticationCodeInfo``)
+            :class:`~pytdbot_sync.types.Result` (``AuthenticationCodeInfo``)
         """
 
         data = {
@@ -11382,7 +12005,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11397,7 +12020,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``UserLink``)
+            :class:`~pytdbot_sync.types.Result` (``UserLink``)
         """
 
         data = {
@@ -11415,7 +12038,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``User``)
+            :class:`~pytdbot_sync.types.Result` (``User``)
         """
 
         data = {
@@ -11442,7 +12065,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11466,7 +12089,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11489,7 +12112,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``BotCommands``)
+            :class:`~pytdbot_sync.types.Result` (``BotCommands``)
         """
 
         data = {
@@ -11512,7 +12135,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11532,7 +12155,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``BotMenuButton``)
+            :class:`~pytdbot_sync.types.Result` (``BotMenuButton``)
         """
 
         data = {
@@ -11553,7 +12176,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11574,7 +12197,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11593,7 +12216,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11612,7 +12235,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11639,7 +12262,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``CustomRequestResult``)
+            :class:`~pytdbot_sync.types.Result` (``CustomRequestResult``)
         """
 
         data = {
@@ -11668,7 +12291,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11692,7 +12315,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -11715,7 +12338,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11743,7 +12366,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11769,7 +12392,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11797,7 +12420,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11823,7 +12446,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -11851,7 +12474,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11877,7 +12500,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -11893,7 +12516,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Sessions``)
+            :class:`~pytdbot_sync.types.Result` (``Sessions``)
         """
 
         data = {
@@ -11911,7 +12534,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11926,7 +12549,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11944,7 +12567,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11968,7 +12591,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -11993,7 +12616,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12013,7 +12636,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12028,7 +12651,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ConnectedWebsites``)
+            :class:`~pytdbot_sync.types.Result` (``ConnectedWebsites``)
         """
 
         data = {
@@ -12046,7 +12669,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12061,7 +12684,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12082,7 +12705,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12110,7 +12733,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12131,7 +12754,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12155,7 +12778,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12180,7 +12803,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12191,10 +12814,60 @@ class TDLibFunctions:
 
         return self.invoke(data)
 
+    def setSupergroupCustomEmojiStickerSet(
+        self, supergroup_id: int, custom_emoji_sticker_set_id: int
+    ) -> Result:
+        """Changes the custom emoji sticker set of a supergroup; requires can\_change\_info administrator right\. The chat must have at least chatBoostFeatures\.min\_custom\_emoji\_sticker\_set\_boost\_level boost level to pass the corresponding color
+
+        Args:
+            supergroup_id (``int``):
+                Identifier of the supergroup
+
+            custom_emoji_sticker_set_id (``int``):
+                New value of the custom emoji sticker set identifier for the supergroup\. Use 0 to remove the custom emoji sticker set in the supergroup
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setSupergroupCustomEmojiStickerSet",
+            "supergroup_id": supergroup_id,
+            "custom_emoji_sticker_set_id": custom_emoji_sticker_set_id,
+        }
+
+        return self.invoke(data)
+
+    def setSupergroupUnrestrictBoostCount(
+        self, supergroup_id: int, unrestrict_boost_count: int
+    ) -> Result:
+        """Changes the number of times the supergroup must be boosted by a user to ignore slow mode and chat permission restrictions; requires can\_restrict\_members administrator right
+
+        Args:
+            supergroup_id (``int``):
+                Identifier of the supergroup
+
+            unrestrict_boost_count (``int``):
+                New value of the unrestrict\_boost\_count supergroup setting; 0\-8\. Use 0 to remove the setting
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setSupergroupUnrestrictBoostCount",
+            "supergroup_id": supergroup_id,
+            "unrestrict_boost_count": unrestrict_boost_count,
+        }
+
+        return self.invoke(data)
+
     def toggleSupergroupSignMessages(
         self, supergroup_id: int, sign_messages: bool
     ) -> Result:
-        """Toggles whether sender signature is added to sent messages in a channel; requires can\_change\_info administrator right
+        """Toggles whether sender signature is added to sent messages in a channel; requires can\_change\_info member right
 
         Args:
             supergroup_id (``int``):
@@ -12205,7 +12878,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12230,7 +12903,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12255,7 +12928,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12269,7 +12942,7 @@ class TDLibFunctions:
     def toggleSupergroupIsAllHistoryAvailable(
         self, supergroup_id: int, is_all_history_available: bool
     ) -> Result:
-        """Toggles whether the message history of a supergroup is available to new members; requires can\_change\_info administrator right
+        """Toggles whether the message history of a supergroup is available to new members; requires can\_change\_info member right
 
         Args:
             supergroup_id (``int``):
@@ -12280,7 +12953,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12305,7 +12978,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12330,7 +13003,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12355,7 +13028,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12375,7 +13048,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12399,7 +13072,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12424,7 +13097,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12455,7 +13128,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatMembers``)
+            :class:`~pytdbot_sync.types.Result` (``ChatMembers``)
         """
 
         data = {
@@ -12477,7 +13150,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12519,7 +13192,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatEvents``)
+            :class:`~pytdbot_sync.types.Result` (``ChatEvents``)
         """
 
         data = {
@@ -12546,7 +13219,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PaymentForm``)
+            :class:`~pytdbot_sync.types.Result` (``PaymentForm``)
         """
 
         data = {
@@ -12574,7 +13247,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ValidatedOrderInfo``)
+            :class:`~pytdbot_sync.types.Result` (``ValidatedOrderInfo``)
         """
 
         data = {
@@ -12618,7 +13291,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PaymentResult``)
+            :class:`~pytdbot_sync.types.Result` (``PaymentResult``)
         """
 
         data = {
@@ -12645,7 +13318,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PaymentReceipt``)
+            :class:`~pytdbot_sync.types.Result` (``PaymentReceipt``)
         """
 
         data = {
@@ -12661,7 +13334,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``OrderInfo``)
+            :class:`~pytdbot_sync.types.Result` (``OrderInfo``)
         """
 
         data = {
@@ -12675,7 +13348,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12689,7 +13362,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12707,7 +13380,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``HttpUrl``)
+            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -12722,30 +13395,11 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``User``)
+            :class:`~pytdbot_sync.types.Result` (``User``)
         """
 
         data = {
             "@type": "getSupportUser",
-        }
-
-        return self.invoke(data)
-
-    def getBackgrounds(self, for_dark_theme: bool) -> Result:
-        """Returns backgrounds installed by the user
-
-        Args:
-            for_dark_theme (``bool``):
-                Pass true to order returned backgrounds for a dark theme
-
-
-        Returns:
-            :class:`~pytdbot.types.Result` (``Backgrounds``)
-        """
-
-        data = {
-            "@type": "getBackgrounds",
-            "for_dark_theme": for_dark_theme,
         }
 
         return self.invoke(data)
@@ -12758,11 +13412,11 @@ class TDLibFunctions:
                 Background name
 
             type (``BackgroundType``):
-                Background type
+                Background type; backgroundTypeChatTheme isn't supported
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``HttpUrl``)
+            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -12782,7 +13436,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Background``)
+            :class:`~pytdbot_sync.types.Result` (``Background``)
         """
 
         data = {
@@ -12792,28 +13446,28 @@ class TDLibFunctions:
 
         return self.invoke(data)
 
-    def setBackground(
+    def setDefaultBackground(
         self, for_dark_theme: bool, background: dict = None, type: dict = None
     ) -> Result:
-        """Changes the background selected by the user; adds background to the list of installed backgrounds
+        """Sets default background for chats; adds the background to the list of installed backgrounds
 
         Args:
             for_dark_theme (``bool``):
-                Pass true if the background is changed for a dark theme
+                Pass true if the background is set for a dark theme
 
             background (``InputBackground``, *optional*):
-                The input background to use; pass null to create a new filled background or to remove the current background
+                The input background to use; pass null to create a new filled background
 
             type (``BackgroundType``, *optional*):
-                Background type; pass null to use the default type of the remote background or to remove the current background
+                Background type; pass null to use the default type of the remote background; backgroundTypeChatTheme isn't supported
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Background``)
+            :class:`~pytdbot_sync.types.Result` (``Background``)
         """
 
         data = {
-            "@type": "setBackground",
+            "@type": "setDefaultBackground",
             "background": background,
             "type": type,
             "for_dark_theme": for_dark_theme,
@@ -12821,7 +13475,45 @@ class TDLibFunctions:
 
         return self.invoke(data)
 
-    def removeBackground(self, background_id: int) -> Result:
+    def deleteDefaultBackground(self, for_dark_theme: bool) -> Result:
+        """Deletes default background for chats
+
+        Args:
+            for_dark_theme (``bool``):
+                Pass true if the background is deleted for a dark theme
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "deleteDefaultBackground",
+            "for_dark_theme": for_dark_theme,
+        }
+
+        return self.invoke(data)
+
+    def getInstalledBackgrounds(self, for_dark_theme: bool) -> Result:
+        """Returns backgrounds installed by the user
+
+        Args:
+            for_dark_theme (``bool``):
+                Pass true to order returned backgrounds for a dark theme
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Backgrounds``)
+        """
+
+        data = {
+            "@type": "getInstalledBackgrounds",
+            "for_dark_theme": for_dark_theme,
+        }
+
+        return self.invoke(data)
+
+    def removeInstalledBackground(self, background_id: int) -> Result:
         """Removes background from the list of installed backgrounds
 
         Args:
@@ -12830,26 +13522,26 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
-            "@type": "removeBackground",
+            "@type": "removeInstalledBackground",
             "background_id": background_id,
         }
 
         return self.invoke(data)
 
-    def resetBackgrounds(self) -> Result:
+    def resetInstalledBackgrounds(self) -> Result:
         """Resets list of installed backgrounds to its default value
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
-            "@type": "resetBackgrounds",
+            "@type": "resetInstalledBackgrounds",
         }
 
         return self.invoke(data)
@@ -12863,7 +13555,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``LocalizationTargetInfo``)
+            :class:`~pytdbot_sync.types.Result` (``LocalizationTargetInfo``)
         """
 
         data = {
@@ -12882,7 +13574,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``LanguagePackInfo``)
+            :class:`~pytdbot_sync.types.Result` (``LanguagePackInfo``)
         """
 
         data = {
@@ -12904,7 +13596,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``LanguagePackStrings``)
+            :class:`~pytdbot_sync.types.Result` (``LanguagePackStrings``)
         """
 
         data = {
@@ -12924,7 +13616,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12943,7 +13635,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12965,7 +13657,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -12985,7 +13677,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13009,7 +13701,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13029,7 +13721,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13051,7 +13743,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PushReceiverId``)
+            :class:`~pytdbot_sync.types.Result` (``PushReceiverId``)
         """
 
         data = {
@@ -13071,7 +13763,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13090,7 +13782,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PushReceiverId``)
+            :class:`~pytdbot_sync.types.Result` (``PushReceiverId``)
         """
 
         data = {
@@ -13109,7 +13801,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``TMeUrls``)
+            :class:`~pytdbot_sync.types.Result` (``TMeUrls``)
         """
 
         data = {
@@ -13131,7 +13823,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13151,12 +13843,101 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``UserPrivacySettingRules``)
+            :class:`~pytdbot_sync.types.Result` (``UserPrivacySettingRules``)
         """
 
         data = {
             "@type": "getUserPrivacySettingRules",
             "setting": setting,
+        }
+
+        return self.invoke(data)
+
+    def setReadDatePrivacySettings(self, settings: dict) -> Result:
+        """Changes privacy settings for message read date
+
+        Args:
+            settings (``readDatePrivacySettings``):
+                New settings
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setReadDatePrivacySettings",
+            "settings": settings,
+        }
+
+        return self.invoke(data)
+
+    def getReadDatePrivacySettings(self) -> Result:
+        """Returns privacy settings for message read date
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``ReadDatePrivacySettings``)
+        """
+
+        data = {
+            "@type": "getReadDatePrivacySettings",
+        }
+
+        return self.invoke(data)
+
+    def setNewChatPrivacySettings(self, settings: dict) -> Result:
+        """Changes privacy settings for new chat creation; for Telegram Premium users only
+
+        Args:
+            settings (``newChatPrivacySettings``):
+                New settings
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setNewChatPrivacySettings",
+            "settings": settings,
+        }
+
+        return self.invoke(data)
+
+    def getNewChatPrivacySettings(self) -> Result:
+        """Returns privacy settings for new chat creation
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``NewChatPrivacySettings``)
+        """
+
+        data = {
+            "@type": "getNewChatPrivacySettings",
+        }
+
+        return self.invoke(data)
+
+    def canSendMessageToUser(self, user_id: int, only_local: bool) -> Result:
+        """Check whether the current user can message another user or try to create a chat with them
+
+        Args:
+            user_id (``int``):
+                Identifier of the other user
+
+            only_local (``bool``):
+                Pass true to get only locally available information without sending network requests
+
+
+        Returns:
+            :class:`~pytdbot_sync.types.Result` (``CanSendMessageToUserResult``)
+        """
+
+        data = {
+            "@type": "canSendMessageToUser",
+            "user_id": user_id,
+            "only_local": only_local,
         }
 
         return self.invoke(data)
@@ -13170,7 +13951,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``OptionValue``)
+            :class:`~pytdbot_sync.types.Result` (``OptionValue``)
         """
 
         data = {
@@ -13192,7 +13973,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13212,7 +13993,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13227,7 +14008,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AccountTtl``)
+            :class:`~pytdbot_sync.types.Result` (``AccountTtl``)
         """
 
         data = {
@@ -13248,7 +14029,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13270,7 +14051,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13285,7 +14066,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``MessageAutoDeleteTime``)
+            :class:`~pytdbot_sync.types.Result` (``MessageAutoDeleteTime``)
         """
 
         data = {
@@ -13303,7 +14084,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13333,7 +14114,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13366,7 +14147,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13396,7 +14177,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13420,7 +14201,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``ChatStatistics``)
+            :class:`~pytdbot_sync.types.Result` (``ChatStatistics``)
         """
 
         data = {
@@ -13448,7 +14229,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``MessageStatistics``)
+            :class:`~pytdbot_sync.types.Result` (``MessageStatistics``)
         """
 
         data = {
@@ -13463,7 +14244,7 @@ class TDLibFunctions:
     def getMessagePublicForwards(
         self, chat_id: int, message_id: int, offset: str, limit: int
     ) -> Result:
-        """Returns forwarded copies of a channel message to different public channels\. Can be used only if message\.can\_get\_statistics \=\= true\. For optimal performance, the number of returned messages is chosen by TDLib
+        """Returns forwarded copies of a channel message to different public channels and public reposts as a story\. Can be used only if message\.can\_get\_statistics \=\= true\. For optimal performance, the number of returned messages and stories is chosen by TDLib
 
         Args:
             chat_id (``int``):
@@ -13476,11 +14257,11 @@ class TDLibFunctions:
                 Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
 
             limit (``int``):
-                The maximum number of messages to be returned; must be positive and can't be greater than 100\. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+                The maximum number of messages and stories to be returned; must be positive and can't be greater than 100\. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FoundMessages``)
+            :class:`~pytdbot_sync.types.Result` (``PublicForwards``)
         """
 
         data = {
@@ -13510,7 +14291,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StoryStatistics``)
+            :class:`~pytdbot_sync.types.Result` (``StoryStatistics``)
         """
 
         data = {
@@ -13537,7 +14318,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StatisticalGraph``)
+            :class:`~pytdbot_sync.types.Result` (``StatisticalGraph``)
         """
 
         data = {
@@ -13558,7 +14339,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StorageStatistics``)
+            :class:`~pytdbot_sync.types.Result` (``StorageStatistics``)
         """
 
         data = {
@@ -13573,7 +14354,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StorageStatisticsFast``)
+            :class:`~pytdbot_sync.types.Result` (``StorageStatisticsFast``)
         """
 
         data = {
@@ -13587,7 +14368,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``DatabaseStatistics``)
+            :class:`~pytdbot_sync.types.Result` (``DatabaseStatistics``)
         """
 
         data = {
@@ -13640,7 +14421,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StorageStatistics``)
+            :class:`~pytdbot_sync.types.Result` (``StorageStatistics``)
         """
 
         data = {
@@ -13667,7 +14448,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13686,7 +14467,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``NetworkStatistics``)
+            :class:`~pytdbot_sync.types.Result` (``NetworkStatistics``)
         """
 
         data = {
@@ -13705,7 +14486,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13720,7 +14501,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13734,7 +14515,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AutoDownloadSettingsPresets``)
+            :class:`~pytdbot_sync.types.Result` (``AutoDownloadSettingsPresets``)
         """
 
         data = {
@@ -13755,7 +14536,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13771,7 +14552,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AutosaveSettings``)
+            :class:`~pytdbot_sync.types.Result` (``AutosaveSettings``)
         """
 
         data = {
@@ -13792,7 +14573,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13808,7 +14589,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13826,7 +14607,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``BankCardInfo``)
+            :class:`~pytdbot_sync.types.Result` (``BankCardInfo``)
         """
 
         data = {
@@ -13848,7 +14629,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PassportElement``)
+            :class:`~pytdbot_sync.types.Result` (``PassportElement``)
         """
 
         data = {
@@ -13868,7 +14649,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PassportElements``)
+            :class:`~pytdbot_sync.types.Result` (``PassportElements``)
         """
 
         data = {
@@ -13890,7 +14671,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PassportElement``)
+            :class:`~pytdbot_sync.types.Result` (``PassportElement``)
         """
 
         data = {
@@ -13910,7 +14691,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13932,7 +14713,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -13952,7 +14733,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -13976,7 +14757,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AuthenticationCodeInfo``)
+            :class:`~pytdbot_sync.types.Result` (``AuthenticationCodeInfo``)
         """
 
         data = {
@@ -13992,7 +14773,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AuthenticationCodeInfo``)
+            :class:`~pytdbot_sync.types.Result` (``AuthenticationCodeInfo``)
         """
 
         data = {
@@ -14010,7 +14791,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14029,7 +14810,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``EmailAddressAuthenticationCodeInfo``)
+            :class:`~pytdbot_sync.types.Result` (``EmailAddressAuthenticationCodeInfo``)
         """
 
         data = {
@@ -14044,7 +14825,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``EmailAddressAuthenticationCodeInfo``)
+            :class:`~pytdbot_sync.types.Result` (``EmailAddressAuthenticationCodeInfo``)
         """
 
         data = {
@@ -14062,7 +14843,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14092,7 +14873,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PassportAuthorizationForm``)
+            :class:`~pytdbot_sync.types.Result` (``PassportAuthorizationForm``)
         """
 
         data = {
@@ -14119,7 +14900,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PassportElementsWithErrors``)
+            :class:`~pytdbot_sync.types.Result` (``PassportElementsWithErrors``)
         """
 
         data = {
@@ -14144,7 +14925,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14172,7 +14953,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AuthenticationCodeInfo``)
+            :class:`~pytdbot_sync.types.Result` (``AuthenticationCodeInfo``)
         """
 
         data = {
@@ -14189,7 +14970,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``AuthenticationCodeInfo``)
+            :class:`~pytdbot_sync.types.Result` (``AuthenticationCodeInfo``)
         """
 
         data = {
@@ -14207,7 +14988,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14231,7 +15012,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14259,7 +15040,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``File``)
+            :class:`~pytdbot_sync.types.Result` (``File``)
         """
 
         data = {
@@ -14280,7 +15061,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -14299,7 +15080,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``CheckStickerSetNameResult``)
+            :class:`~pytdbot_sync.types.Result` (``CheckStickerSetNameResult``)
         """
 
         data = {
@@ -14349,7 +15130,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``StickerSet``)
+            :class:`~pytdbot_sync.types.Result` (``StickerSet``)
         """
 
         data = {
@@ -14381,7 +15162,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14410,7 +15191,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14436,7 +15217,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14459,7 +15240,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14479,7 +15260,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14501,7 +15282,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14521,7 +15302,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14543,7 +15324,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14566,7 +15347,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14591,7 +15372,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14634,7 +15415,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``File``)
+            :class:`~pytdbot_sync.types.Result` (``File``)
         """
 
         data = {
@@ -14658,7 +15439,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PremiumLimit``)
+            :class:`~pytdbot_sync.types.Result` (``PremiumLimit``)
         """
 
         data = {
@@ -14677,7 +15458,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PremiumFeatures``)
+            :class:`~pytdbot_sync.types.Result` (``PremiumFeatures``)
         """
 
         data = {
@@ -14692,7 +15473,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Stickers``)
+            :class:`~pytdbot_sync.types.Result` (``Stickers``)
         """
 
         data = {
@@ -14710,7 +15491,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14725,7 +15506,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14739,7 +15520,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PremiumState``)
+            :class:`~pytdbot_sync.types.Result` (``PremiumState``)
         """
 
         data = {
@@ -14753,11 +15534,11 @@ class TDLibFunctions:
 
         Args:
             boosted_chat_id (``int``):
-                Identifier of the channel chat, which will be automatically boosted by receivers of the gift codes and which is administered by the user; 0 if none
+                Identifier of the supergroup or channel chat, which will be automatically boosted by receivers of the gift codes and which is administered by the user; 0 if none
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PremiumGiftCodePaymentOptions``)
+            :class:`~pytdbot_sync.types.Result` (``PremiumGiftCodePaymentOptions``)
         """
 
         data = {
@@ -14776,7 +15557,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PremiumGiftCodeInfo``)
+            :class:`~pytdbot_sync.types.Result` (``PremiumGiftCodeInfo``)
         """
 
         data = {
@@ -14795,7 +15576,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14808,7 +15589,7 @@ class TDLibFunctions:
     def launchPrepaidPremiumGiveaway(
         self, giveaway_id: int, parameters: dict
     ) -> Result:
-        """Launches a prepaid Telegram Premium giveaway for subscribers of channel chats; requires can\_post\_messages rights in the channels
+        """Launches a prepaid Telegram Premium giveaway
 
         Args:
             giveaway_id (``int``):
@@ -14819,7 +15600,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14838,11 +15619,11 @@ class TDLibFunctions:
                 Identifier of the channel chat which started the giveaway
 
             message_id (``int``):
-                Identifier of the giveaway message in the chat
+                Identifier of the giveaway or a giveaway winners message in the chat
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PremiumGiveawayInfo``)
+            :class:`~pytdbot_sync.types.Result` (``PremiumGiveawayInfo``)
         """
 
         data = {
@@ -14862,7 +15643,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14884,7 +15665,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14919,7 +15700,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14941,7 +15722,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -14971,7 +15752,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``FoundPositions``)
+            :class:`~pytdbot_sync.types.Result` (``FoundPositions``)
         """
 
         data = {
@@ -14996,7 +15777,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``CustomRequestResult``)
+            :class:`~pytdbot_sync.types.Result` (``CustomRequestResult``)
         """
 
         data = {
@@ -15019,7 +15800,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15039,7 +15820,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15054,7 +15835,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Countries``)
+            :class:`~pytdbot_sync.types.Result` (``Countries``)
         """
 
         data = {
@@ -15068,7 +15849,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -15086,7 +15867,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PhoneNumberInfo``)
+            :class:`~pytdbot_sync.types.Result` (``PhoneNumberInfo``)
         """
 
         data = {
@@ -15110,7 +15891,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``PhoneNumberInfo``)
+            :class:`~pytdbot_sync.types.Result` (``PhoneNumberInfo``)
         """
 
         data = {
@@ -15130,7 +15911,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``DeepLinkInfo``)
+            :class:`~pytdbot_sync.types.Result` (``DeepLinkInfo``)
         """
 
         data = {
@@ -15145,32 +15926,11 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``JsonValue``)
+            :class:`~pytdbot_sync.types.Result` (``JsonValue``)
         """
 
         data = {
             "@type": "getApplicationConfig",
-        }
-
-        return self.invoke(data)
-
-    def addApplicationChangelog(
-        self, previous_application_version: str
-    ) -> Result:
-        """Adds server\-provided application changelog as messages to the chat 777000 \(Telegram\) or as a stories; for official applications only\. Returns a 404 error if nothing changed
-
-        Args:
-            previous_application_version (``str``):
-                The previous application version
-
-
-        Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
-        """
-
-        data = {
-            "@type": "addApplicationChangelog",
-            "previous_application_version": previous_application_version,
         }
 
         return self.invoke(data)
@@ -15192,7 +15952,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15209,7 +15969,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``HttpUrl``)
+            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -15238,7 +15998,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Proxy``)
+            :class:`~pytdbot_sync.types.Result` (``Proxy``)
         """
 
         data = {
@@ -15274,7 +16034,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Proxy``)
+            :class:`~pytdbot_sync.types.Result` (``Proxy``)
         """
 
         data = {
@@ -15297,7 +16057,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15312,7 +16072,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15330,7 +16090,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15345,7 +16105,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Proxies``)
+            :class:`~pytdbot_sync.types.Result` (``Proxies``)
         """
 
         data = {
@@ -15363,7 +16123,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``HttpUrl``)
+            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -15382,7 +16142,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Seconds``)
+            :class:`~pytdbot_sync.types.Result` (``Seconds``)
         """
 
         data = {
@@ -15401,7 +16161,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15416,7 +16176,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``LogStream``)
+            :class:`~pytdbot_sync.types.Result` (``LogStream``)
         """
 
         data = {
@@ -15434,7 +16194,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15449,7 +16209,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``LogVerbosityLevel``)
+            :class:`~pytdbot_sync.types.Result` (``LogVerbosityLevel``)
         """
 
         data = {
@@ -15463,7 +16223,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``LogTags``)
+            :class:`~pytdbot_sync.types.Result` (``LogTags``)
         """
 
         data = {
@@ -15486,7 +16246,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15506,7 +16266,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``LogVerbosityLevel``)
+            :class:`~pytdbot_sync.types.Result` (``LogVerbosityLevel``)
         """
 
         data = {
@@ -15528,7 +16288,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15548,7 +16308,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``UserSupportInfo``)
+            :class:`~pytdbot_sync.types.Result` (``UserSupportInfo``)
         """
 
         data = {
@@ -15570,7 +16330,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``UserSupportInfo``)
+            :class:`~pytdbot_sync.types.Result` (``UserSupportInfo``)
         """
 
         data = {
@@ -15586,7 +16346,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Text``)
+            :class:`~pytdbot_sync.types.Result` (``Text``)
         """
 
         data = {
@@ -15600,7 +16360,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15618,7 +16378,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``TestString``)
+            :class:`~pytdbot_sync.types.Result` (``TestString``)
         """
 
         data = {
@@ -15637,7 +16397,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``TestBytes``)
+            :class:`~pytdbot_sync.types.Result` (``TestBytes``)
         """
 
         data = {
@@ -15656,7 +16416,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``TestVectorInt``)
+            :class:`~pytdbot_sync.types.Result` (``TestVectorInt``)
         """
 
         data = {
@@ -15675,7 +16435,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``TestVectorIntObject``)
+            :class:`~pytdbot_sync.types.Result` (``TestVectorIntObject``)
         """
 
         data = {
@@ -15694,7 +16454,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``TestVectorString``)
+            :class:`~pytdbot_sync.types.Result` (``TestVectorString``)
         """
 
         data = {
@@ -15713,7 +16473,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``TestVectorStringObject``)
+            :class:`~pytdbot_sync.types.Result` (``TestVectorStringObject``)
         """
 
         data = {
@@ -15732,7 +16492,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``TestInt``)
+            :class:`~pytdbot_sync.types.Result` (``TestInt``)
         """
 
         data = {
@@ -15747,7 +16507,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15779,7 +16539,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15798,7 +16558,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Ok``)
+            :class:`~pytdbot_sync.types.Result` (``Ok``)
         """
 
         data = {
@@ -15812,7 +16572,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Update``)
+            :class:`~pytdbot_sync.types.Result` (``Update``)
         """
 
         data = {
@@ -15830,7 +16590,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot.types.Result` (``Error``)
+            :class:`~pytdbot_sync.types.Result` (``Error``)
         """
 
         data = {
