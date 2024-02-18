@@ -651,7 +651,7 @@ class Update:
 
                 with update.action("record_video") as action:
                     # Anything that takes more than 4 seconds to produce
-                    time.sleep(10)
+                    asyncio.sleep(10)
                     action.setAction("upload_video") # change the action to uploading a video
 
         Or
@@ -661,7 +661,7 @@ class Update:
 
                 update.action("typing")
                 # anything that takes less than 4 seconds to produce
-                time.sleep(2)
+                asyncio.sleep(2)
                 update.reply_text("Hello?")
 
         Args:
