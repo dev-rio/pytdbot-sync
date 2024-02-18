@@ -1,4 +1,4 @@
-import pytdbot_sync_sync
+import pytdbot_sync
 
 from .handler import Handler
 from typing import Callable
