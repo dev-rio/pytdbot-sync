@@ -9,7 +9,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AuthorizationState``)
+            :class:`~pytdbot.types.Result` (``AuthorizationState``)
         """
 
         data = {
@@ -34,8 +34,6 @@ class TDLibFunctions:
         device_model: str,
         system_version: str,
         application_version: str,
-        enable_storage_optimizer: bool,
-        ignore_file_names: bool,
     ) -> Result:
         """Sets the parameters for TDLib initialization\. Works only when the current authorization state is authorizationStateWaitTdlibParameters
 
@@ -82,14 +80,9 @@ class TDLibFunctions:
             application_version (``str``):
                 Application version; must be non\-empty
 
-            enable_storage_optimizer (``bool``):
-                Pass true to automatically delete old files in background
-                
-            ignore_file_names (``bool``):
-                Pass true to ignore original file names for downloaded files\. Otherwise, downloaded files are saved under names as close as possible to the original name
-                
+
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -108,8 +101,6 @@ class TDLibFunctions:
             "device_model": device_model,
             "system_version": system_version,
             "application_version": application_version,
-            "enable_storage_optimizer": enable_storage_optimizer,
-            "ignore_file_names": ignore_file_names,
         }
 
         return self.invoke(data)
@@ -128,7 +119,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -148,7 +139,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -163,7 +154,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -181,7 +172,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -200,7 +191,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -219,7 +210,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -246,7 +237,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -263,7 +254,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -281,7 +272,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -296,7 +287,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -316,7 +307,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -343,7 +334,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -364,7 +355,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -383,7 +374,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -398,7 +389,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -412,7 +403,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -426,7 +417,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -444,7 +435,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Session``)
+            :class:`~pytdbot.types.Result` (``Session``)
         """
 
         data = {
@@ -459,7 +450,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Updates``)
+            :class:`~pytdbot.types.Result` (``Updates``)
         """
 
         data = {
@@ -477,7 +468,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -492,7 +483,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
+            :class:`~pytdbot.types.Result` (``PasswordState``)
         """
 
         data = {
@@ -529,7 +520,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
+            :class:`~pytdbot.types.Result` (``PasswordState``)
         """
 
         data = {
@@ -552,7 +543,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmailAddressAuthenticationCodeInfo``)
+            :class:`~pytdbot.types.Result` (``EmailAddressAuthenticationCodeInfo``)
         """
 
         data = {
@@ -567,7 +558,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmailAddressAuthenticationCodeInfo``)
+            :class:`~pytdbot.types.Result` (``EmailAddressAuthenticationCodeInfo``)
         """
 
         data = {
@@ -585,7 +576,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -604,7 +595,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``RecoveryEmailAddress``)
+            :class:`~pytdbot.types.Result` (``RecoveryEmailAddress``)
         """
 
         data = {
@@ -628,7 +619,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
+            :class:`~pytdbot.types.Result` (``PasswordState``)
         """
 
         data = {
@@ -648,7 +639,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
+            :class:`~pytdbot.types.Result` (``PasswordState``)
         """
 
         data = {
@@ -663,7 +654,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
+            :class:`~pytdbot.types.Result` (``PasswordState``)
         """
 
         data = {
@@ -677,7 +668,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
+            :class:`~pytdbot.types.Result` (``PasswordState``)
         """
 
         data = {
@@ -691,7 +682,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmailAddressAuthenticationCodeInfo``)
+            :class:`~pytdbot.types.Result` (``EmailAddressAuthenticationCodeInfo``)
         """
 
         data = {
@@ -709,7 +700,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -736,7 +727,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PasswordState``)
+            :class:`~pytdbot.types.Result` (``PasswordState``)
         """
 
         data = {
@@ -753,7 +744,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ResetPasswordResult``)
+            :class:`~pytdbot.types.Result` (``ResetPasswordResult``)
         """
 
         data = {
@@ -767,7 +758,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -788,7 +779,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``TemporaryPasswordState``)
+            :class:`~pytdbot.types.Result` (``TemporaryPasswordState``)
         """
 
         data = {
@@ -804,7 +795,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``TemporaryPasswordState``)
+            :class:`~pytdbot.types.Result` (``TemporaryPasswordState``)
         """
 
         data = {
@@ -818,7 +809,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``User``)
+            :class:`~pytdbot.types.Result` (``User``)
         """
 
         data = {
@@ -836,7 +827,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``User``)
+            :class:`~pytdbot.types.Result` (``User``)
         """
 
         data = {
@@ -855,7 +846,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``UserFullInfo``)
+            :class:`~pytdbot.types.Result` (``UserFullInfo``)
         """
 
         data = {
@@ -874,7 +865,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``BasicGroup``)
+            :class:`~pytdbot.types.Result` (``BasicGroup``)
         """
 
         data = {
@@ -893,7 +884,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``BasicGroupFullInfo``)
+            :class:`~pytdbot.types.Result` (``BasicGroupFullInfo``)
         """
 
         data = {
@@ -912,7 +903,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Supergroup``)
+            :class:`~pytdbot.types.Result` (``Supergroup``)
         """
 
         data = {
@@ -931,7 +922,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``SupergroupFullInfo``)
+            :class:`~pytdbot.types.Result` (``SupergroupFullInfo``)
         """
 
         data = {
@@ -950,7 +941,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``SecretChat``)
+            :class:`~pytdbot.types.Result` (``SecretChat``)
         """
 
         data = {
@@ -969,7 +960,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chat``)
+            :class:`~pytdbot.types.Result` (``Chat``)
         """
 
         data = {
@@ -991,7 +982,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -1014,7 +1005,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -1037,7 +1028,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -1057,7 +1048,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -1084,7 +1075,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -1108,7 +1099,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Messages``)
+            :class:`~pytdbot.types.Result` (``Messages``)
         """
 
         data = {
@@ -1131,7 +1122,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessageThreadInfo``)
+            :class:`~pytdbot.types.Result` (``MessageThreadInfo``)
         """
 
         data = {
@@ -1154,7 +1145,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessageReadDate``)
+            :class:`~pytdbot.types.Result` (``MessageReadDate``)
         """
 
         data = {
@@ -1177,7 +1168,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessageViewers``)
+            :class:`~pytdbot.types.Result` (``MessageViewers``)
         """
 
         data = {
@@ -1197,7 +1188,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``File``)
+            :class:`~pytdbot.types.Result` (``File``)
         """
 
         data = {
@@ -1221,7 +1212,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``File``)
+            :class:`~pytdbot.types.Result` (``File``)
         """
 
         data = {
@@ -1244,7 +1235,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -1267,7 +1258,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -1287,7 +1278,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chat``)
+            :class:`~pytdbot.types.Result` (``Chat``)
         """
 
         data = {
@@ -1306,7 +1297,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -1328,7 +1319,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -1351,7 +1342,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -1371,7 +1362,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatsNearby``)
+            :class:`~pytdbot.types.Result` (``ChatsNearby``)
         """
 
         data = {
@@ -1390,7 +1381,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -1412,7 +1403,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Count``)
+            :class:`~pytdbot.types.Result` (``Count``)
         """
 
         data = {
@@ -1435,7 +1426,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -1458,7 +1449,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -1481,7 +1472,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -1504,7 +1495,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -1524,7 +1515,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -1543,7 +1534,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -1558,7 +1549,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -1576,7 +1567,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -1598,7 +1589,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``CheckChatUsernameResult``)
+            :class:`~pytdbot.types.Result` (``CheckChatUsernameResult``)
         """
 
         data = {
@@ -1618,7 +1609,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -1637,7 +1628,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -1652,7 +1643,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -1666,7 +1657,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -1684,7 +1675,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -1718,7 +1709,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Messages``)
+            :class:`~pytdbot.types.Result` (``Messages``)
         """
 
         data = {
@@ -1745,7 +1736,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -1767,7 +1758,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -1794,7 +1785,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -1820,7 +1811,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -1842,7 +1833,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -1869,7 +1860,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -1909,7 +1900,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Messages``)
+            :class:`~pytdbot.types.Result` (``Messages``)
         """
 
         data = {
@@ -1951,7 +1942,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Messages``)
+            :class:`~pytdbot.types.Result` (``Messages``)
         """
 
         data = {
@@ -1982,7 +1973,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -2003,7 +1994,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -2057,7 +2048,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FoundChatMessages``)
+            :class:`~pytdbot.types.Result` (``FoundChatMessages``)
         """
 
         data = {
@@ -2111,7 +2102,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FoundMessages``)
+            :class:`~pytdbot.types.Result` (``FoundMessages``)
         """
 
         data = {
@@ -2150,7 +2141,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FoundMessages``)
+            :class:`~pytdbot.types.Result` (``FoundMessages``)
         """
 
         data = {
@@ -2196,7 +2187,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FoundChatMessages``)
+            :class:`~pytdbot.types.Result` (``FoundChatMessages``)
         """
 
         data = {
@@ -2228,7 +2219,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FoundMessages``)
+            :class:`~pytdbot.types.Result` (``FoundMessages``)
         """
 
         data = {
@@ -2252,7 +2243,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FoundMessages``)
+            :class:`~pytdbot.types.Result` (``FoundMessages``)
         """
 
         data = {
@@ -2272,7 +2263,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -2296,7 +2287,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Messages``)
+            :class:`~pytdbot.types.Result` (``Messages``)
         """
 
         data = {
@@ -2312,7 +2303,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Messages``)
+            :class:`~pytdbot.types.Result` (``Messages``)
         """
 
         data = {
@@ -2333,7 +2324,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -2372,7 +2363,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessagePositions``)
+            :class:`~pytdbot.types.Result` (``MessagePositions``)
         """
 
         data = {
@@ -2410,7 +2401,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessageCalendar``)
+            :class:`~pytdbot.types.Result` (``MessageCalendar``)
         """
 
         data = {
@@ -2447,7 +2438,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Count``)
+            :class:`~pytdbot.types.Result` (``Count``)
         """
 
         data = {
@@ -2488,7 +2479,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Count``)
+            :class:`~pytdbot.types.Result` (``Count``)
         """
 
         data = {
@@ -2511,7 +2502,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Messages``)
+            :class:`~pytdbot.types.Result` (``Messages``)
         """
 
         data = {
@@ -2530,7 +2521,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``SponsoredMessages``)
+            :class:`~pytdbot.types.Result` (``SponsoredMessages``)
         """
 
         data = {
@@ -2552,7 +2543,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -2577,7 +2568,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -2602,7 +2593,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -2641,7 +2632,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessageLink``)
+            :class:`~pytdbot.types.Result` (``MessageLink``)
         """
 
         data = {
@@ -2672,7 +2663,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -2693,7 +2684,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessageLinkInfo``)
+            :class:`~pytdbot.types.Result` (``MessageLinkInfo``)
         """
 
         data = {
@@ -2715,7 +2706,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FormattedText``)
+            :class:`~pytdbot.types.Result` (``FormattedText``)
         """
 
         data = {
@@ -2743,7 +2734,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FormattedText``)
+            :class:`~pytdbot.types.Result` (``FormattedText``)
         """
 
         data = {
@@ -2767,7 +2758,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -2795,7 +2786,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -2816,7 +2807,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatMessageSenders``)
+            :class:`~pytdbot.types.Result` (``ChatMessageSenders``)
         """
 
         data = {
@@ -2840,7 +2831,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -2883,7 +2874,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -2926,7 +2917,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Messages``)
+            :class:`~pytdbot.types.Result` (``Messages``)
         """
 
         data = {
@@ -2957,7 +2948,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -3005,7 +2996,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -3057,7 +3048,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Messages``)
+            :class:`~pytdbot.types.Result` (``Messages``)
         """
 
         data = {
@@ -3069,6 +3060,35 @@ class TDLibFunctions:
             "options": options,
             "send_copy": send_copy,
             "remove_caption": remove_caption,
+        }
+
+        return self.invoke(data)
+
+    def sendQuickReplyShortcutMessages(
+        self, chat_id: int, shortcut_id: int, sending_id: int
+    ) -> Result:
+        """Sends messages from a quick reply shortcut\. Requires Telegram Business subscription
+
+        Args:
+            chat_id (``int``):
+                Identifier of the chat to which to send messages\. The chat must be a private chat with a regular user
+
+            shortcut_id (``int``):
+                Unique identifier of the quick reply shortcut
+
+            sending_id (``int``):
+                Non\-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Messages``)
+        """
+
+        data = {
+            "@type": "sendQuickReplyShortcutMessages",
+            "chat_id": chat_id,
+            "shortcut_id": shortcut_id,
+            "sending_id": sending_id,
         }
 
         return self.invoke(data)
@@ -3090,7 +3110,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Messages``)
+            :class:`~pytdbot.types.Result` (``Messages``)
         """
 
         data = {
@@ -3130,7 +3150,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -3161,7 +3181,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3185,7 +3205,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3216,7 +3236,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3253,7 +3273,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -3298,7 +3318,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -3337,7 +3357,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -3374,7 +3394,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -3404,7 +3424,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -3436,7 +3456,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3476,7 +3496,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3510,7 +3530,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3539,7 +3559,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3565,7 +3585,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3593,7 +3613,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3605,12 +3625,150 @@ class TDLibFunctions:
 
         return self.invoke(data)
 
+    def checkQuickReplyShortcutName(self, name: str) -> Result:
+        """Checks validness of a name for a quick reply shortcut\. Can be called synchronously
+
+        Args:
+            name (``str``):
+                The name of the shortcut; 1\-32 characters
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "checkQuickReplyShortcutName",
+            "name": name,
+        }
+
+        return self.invoke(data)
+
+    def loadQuickReplyShortcuts(self) -> Result:
+        """Loads quick reply shortcuts created by the current user\. The loaded topics will be sent through updateQuickReplyShortcuts
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "loadQuickReplyShortcuts",
+        }
+
+        return self.invoke(data)
+
+    def setQuickReplyShortcutName(self, shortcut_id: int, name: str) -> Result:
+        """Changes name of a quick reply shortcut
+
+        Args:
+            shortcut_id (``int``):
+                Unique identifier of the quick reply shortcut
+
+            name (``str``):
+                New name for the shortcut\. Use checkQuickReplyShortcutName to check its validness
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setQuickReplyShortcutName",
+            "shortcut_id": shortcut_id,
+            "name": name,
+        }
+
+        return self.invoke(data)
+
+    def deleteQuickReplyShortcut(self, shortcut_id: int) -> Result:
+        """Deletes a quick reply shortcut
+
+        Args:
+            shortcut_id (``int``):
+                Unique identifier of the quick reply shortcut
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "deleteQuickReplyShortcut",
+            "shortcut_id": shortcut_id,
+        }
+
+        return self.invoke(data)
+
+    def reorderQuickReplyShortcuts(self, shortcut_ids: list) -> Result:
+        """Changes the order of quick reply shortcuts
+
+        Args:
+            shortcut_ids (``list``):
+                The new order of quick reply shortcuts
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "reorderQuickReplyShortcuts",
+            "shortcut_ids": shortcut_ids,
+        }
+
+        return self.invoke(data)
+
+    def loadQuickReplyShortcutMessages(self, shortcut_id: int) -> Result:
+        """Loads quick reply messages that can be sent by a given quick reply shortcut\. The loaded messages will be sent through updateQuickReplyShortcutMessages
+
+        Args:
+            shortcut_id (``int``):
+                Unique identifier of the quick reply shortcut
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "loadQuickReplyShortcutMessages",
+            "shortcut_id": shortcut_id,
+        }
+
+        return self.invoke(data)
+
+    def deleteQuickReplyShortcutMessages(
+        self, shortcut_id: int, message_ids: list
+    ) -> Result:
+        """Deletes specified quick reply messages
+
+        Args:
+            shortcut_id (``int``):
+                Unique identifier of the quick reply shortcut to which the messages belong
+
+            message_ids (``list``):
+                Unique identifiers of the messages
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "deleteQuickReplyShortcutMessages",
+            "shortcut_id": shortcut_id,
+            "message_ids": message_ids,
+        }
+
+        return self.invoke(data)
+
     def getForumTopicDefaultIcons(self) -> Result:
         """Returns list of custom emojis, which can be used as forum topic icon by all users
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stickers``)
+            :class:`~pytdbot.types.Result` (``Stickers``)
         """
 
         data = {
@@ -3634,7 +3792,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ForumTopicInfo``)
+            :class:`~pytdbot.types.Result` (``ForumTopicInfo``)
         """
 
         data = {
@@ -3674,7 +3832,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3700,7 +3858,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ForumTopic``)
+            :class:`~pytdbot.types.Result` (``ForumTopic``)
         """
 
         data = {
@@ -3723,7 +3881,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessageLink``)
+            :class:`~pytdbot.types.Result` (``MessageLink``)
         """
 
         data = {
@@ -3766,7 +3924,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ForumTopics``)
+            :class:`~pytdbot.types.Result` (``ForumTopics``)
         """
 
         data = {
@@ -3798,7 +3956,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3827,7 +3985,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3853,7 +4011,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3881,7 +4039,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3907,7 +4065,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3930,7 +4088,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -3950,7 +4108,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmojiReaction``)
+            :class:`~pytdbot.types.Result` (``EmojiReaction``)
         """
 
         data = {
@@ -3965,7 +4123,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stickers``)
+            :class:`~pytdbot.types.Result` (``Stickers``)
         """
 
         data = {
@@ -3991,7 +4149,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AvailableReactions``)
+            :class:`~pytdbot.types.Result` (``AvailableReactions``)
         """
 
         data = {
@@ -4008,7 +4166,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -4045,7 +4203,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -4076,7 +4234,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -4108,7 +4266,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -4149,7 +4307,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AddedReactions``)
+            :class:`~pytdbot.types.Result` (``AddedReactions``)
         """
 
         data = {
@@ -4172,7 +4330,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -4191,7 +4349,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``SavedMessagesTags``)
+            :class:`~pytdbot.types.Result` (``SavedMessagesTags``)
         """
 
         data = {
@@ -4213,7 +4371,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -4239,7 +4397,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FoundPosition``)
+            :class:`~pytdbot.types.Result` (``FoundPosition``)
         """
 
         data = {
@@ -4260,7 +4418,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``TextEntities``)
+            :class:`~pytdbot.types.Result` (``TextEntities``)
         """
 
         data = {
@@ -4282,7 +4440,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FormattedText``)
+            :class:`~pytdbot.types.Result` (``FormattedText``)
         """
 
         data = {
@@ -4302,7 +4460,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FormattedText``)
+            :class:`~pytdbot.types.Result` (``FormattedText``)
         """
 
         data = {
@@ -4321,7 +4479,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FormattedText``)
+            :class:`~pytdbot.types.Result` (``FormattedText``)
         """
 
         data = {
@@ -4340,7 +4498,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -4359,7 +4517,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -4378,7 +4536,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -4397,7 +4555,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -4431,7 +4589,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``LanguagePackStringValue``)
+            :class:`~pytdbot.types.Result` (``LanguagePackStringValue``)
         """
 
         data = {
@@ -4453,7 +4611,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``JsonValue``)
+            :class:`~pytdbot.types.Result` (``JsonValue``)
         """
 
         data = {
@@ -4472,7 +4630,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -4491,7 +4649,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -4518,7 +4676,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -4553,7 +4711,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessageSenders``)
+            :class:`~pytdbot.types.Result` (``MessageSenders``)
         """
 
         data = {
@@ -4584,7 +4742,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -4605,7 +4763,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -4632,7 +4790,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``LoginUrlInfo``)
+            :class:`~pytdbot.types.Result` (``LoginUrlInfo``)
         """
 
         data = {
@@ -4664,7 +4822,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
+            :class:`~pytdbot.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -4705,7 +4863,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -4747,7 +4905,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -4789,7 +4947,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``InlineQueryResults``)
+            :class:`~pytdbot.types.Result` (``InlineQueryResults``)
         """
 
         data = {
@@ -4835,7 +4993,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -4862,7 +5020,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FoundWebApp``)
+            :class:`~pytdbot.types.Result` (``FoundWebApp``)
         """
 
         data = {
@@ -4909,7 +5067,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
+            :class:`~pytdbot.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -4945,7 +5103,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
+            :class:`~pytdbot.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -4975,7 +5133,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5023,7 +5181,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``WebAppInfo``)
+            :class:`~pytdbot.types.Result` (``WebAppInfo``)
         """
 
         data = {
@@ -5048,7 +5206,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5070,7 +5228,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``SentWebAppMessage``)
+            :class:`~pytdbot.types.Result` (``SentWebAppMessage``)
         """
 
         data = {
@@ -5098,7 +5256,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``CallbackQueryAnswer``)
+            :class:`~pytdbot.types.Result` (``CallbackQueryAnswer``)
         """
 
         data = {
@@ -5138,7 +5296,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5169,7 +5327,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5195,7 +5353,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5238,7 +5396,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Message``)
+            :class:`~pytdbot.types.Result` (``Message``)
         """
 
         data = {
@@ -5281,7 +5439,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5312,7 +5470,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``GameHighScores``)
+            :class:`~pytdbot.types.Result` (``GameHighScores``)
         """
 
         data = {
@@ -5338,7 +5496,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``GameHighScores``)
+            :class:`~pytdbot.types.Result` (``GameHighScores``)
         """
 
         data = {
@@ -5361,7 +5519,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5389,7 +5547,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5410,7 +5568,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5429,7 +5587,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5459,7 +5617,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5484,7 +5642,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5507,7 +5665,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Sticker``)
+            :class:`~pytdbot.types.Result` (``Sticker``)
         """
 
         data = {
@@ -5530,7 +5688,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
+            :class:`~pytdbot.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -5550,7 +5708,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``InternalLinkType``)
+            :class:`~pytdbot.types.Result` (``InternalLinkType``)
         """
 
         data = {
@@ -5569,7 +5727,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``LoginUrlInfo``)
+            :class:`~pytdbot.types.Result` (``LoginUrlInfo``)
         """
 
         data = {
@@ -5591,7 +5749,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
+            :class:`~pytdbot.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -5611,7 +5769,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5635,7 +5793,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5655,7 +5813,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5679,7 +5837,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5702,7 +5860,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chat``)
+            :class:`~pytdbot.types.Result` (``Chat``)
         """
 
         data = {
@@ -5725,7 +5883,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chat``)
+            :class:`~pytdbot.types.Result` (``Chat``)
         """
 
         data = {
@@ -5748,7 +5906,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chat``)
+            :class:`~pytdbot.types.Result` (``Chat``)
         """
 
         data = {
@@ -5768,7 +5926,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chat``)
+            :class:`~pytdbot.types.Result` (``Chat``)
         """
 
         data = {
@@ -5795,7 +5953,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chat``)
+            :class:`~pytdbot.types.Result` (``Chat``)
         """
 
         data = {
@@ -5843,7 +6001,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chat``)
+            :class:`~pytdbot.types.Result` (``Chat``)
         """
 
         data = {
@@ -5868,7 +6026,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chat``)
+            :class:`~pytdbot.types.Result` (``Chat``)
         """
 
         data = {
@@ -5887,7 +6045,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chat``)
+            :class:`~pytdbot.types.Result` (``Chat``)
         """
 
         data = {
@@ -5906,7 +6064,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatLists``)
+            :class:`~pytdbot.types.Result` (``ChatLists``)
         """
 
         data = {
@@ -5928,7 +6086,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -5948,7 +6106,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatFolder``)
+            :class:`~pytdbot.types.Result` (``ChatFolder``)
         """
 
         data = {
@@ -5967,7 +6125,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatFolderInfo``)
+            :class:`~pytdbot.types.Result` (``ChatFolderInfo``)
         """
 
         data = {
@@ -5989,7 +6147,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatFolderInfo``)
+            :class:`~pytdbot.types.Result` (``ChatFolderInfo``)
         """
 
         data = {
@@ -6014,7 +6172,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6034,7 +6192,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -6053,7 +6211,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Count``)
+            :class:`~pytdbot.types.Result` (``Count``)
         """
 
         data = {
@@ -6077,7 +6235,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6088,12 +6246,31 @@ class TDLibFunctions:
 
         return self.invoke(data)
 
+    def toggleChatFolderTags(self, are_tags_enabled: bool) -> Result:
+        """Toggles whether chat folder tags are enabled
+
+        Args:
+            are_tags_enabled (``bool``):
+                Pass true to enable folder tags; pass false to disable them
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "toggleChatFolderTags",
+            "are_tags_enabled": are_tags_enabled,
+        }
+
+        return self.invoke(data)
+
     def getRecommendedChatFolders(self) -> Result:
         """Returns recommended chat folders for the current user
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``RecommendedChatFolders``)
+            :class:`~pytdbot.types.Result` (``RecommendedChatFolders``)
         """
 
         data = {
@@ -6111,7 +6288,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatFolderIcon``)
+            :class:`~pytdbot.types.Result` (``ChatFolderIcon``)
         """
 
         data = {
@@ -6130,7 +6307,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -6157,7 +6334,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatFolderInviteLink``)
+            :class:`~pytdbot.types.Result` (``ChatFolderInviteLink``)
         """
 
         data = {
@@ -6178,7 +6355,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatFolderInviteLinks``)
+            :class:`~pytdbot.types.Result` (``ChatFolderInviteLinks``)
         """
 
         data = {
@@ -6208,7 +6385,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatFolderInviteLink``)
+            :class:`~pytdbot.types.Result` (``ChatFolderInviteLink``)
         """
 
         data = {
@@ -6235,7 +6412,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6255,7 +6432,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatFolderInviteLinkInfo``)
+            :class:`~pytdbot.types.Result` (``ChatFolderInviteLinkInfo``)
         """
 
         data = {
@@ -6279,7 +6456,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6299,7 +6476,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -6323,7 +6500,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6339,7 +6516,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ArchiveChatListSettings``)
+            :class:`~pytdbot.types.Result` (``ArchiveChatListSettings``)
         """
 
         data = {
@@ -6357,7 +6534,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6379,7 +6556,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6402,7 +6579,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6430,7 +6607,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6462,7 +6639,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6488,7 +6665,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6513,7 +6690,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6536,7 +6713,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6575,7 +6752,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6603,7 +6780,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6626,7 +6803,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6654,7 +6831,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6680,7 +6857,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6705,7 +6882,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6730,7 +6907,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6755,7 +6932,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6780,7 +6957,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6805,7 +6982,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6830,7 +7007,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6853,7 +7030,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6876,7 +7053,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6901,7 +7078,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6924,7 +7101,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6947,7 +7124,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -6982,7 +7159,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7007,7 +7184,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7027,7 +7204,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7051,7 +7228,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7071,7 +7248,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7090,7 +7267,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7117,7 +7294,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7141,7 +7318,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7169,7 +7346,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7205,7 +7382,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7223,7 +7400,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``CanTransferOwnershipResult``)
+            :class:`~pytdbot.types.Result` (``CanTransferOwnershipResult``)
         """
 
         data = {
@@ -7249,7 +7426,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7273,7 +7450,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatMember``)
+            :class:`~pytdbot.types.Result` (``ChatMember``)
         """
 
         data = {
@@ -7304,7 +7481,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatMembers``)
+            :class:`~pytdbot.types.Result` (``ChatMembers``)
         """
 
         data = {
@@ -7326,7 +7503,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatAdministrators``)
+            :class:`~pytdbot.types.Result` (``ChatAdministrators``)
         """
 
         data = {
@@ -7345,7 +7522,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7364,7 +7541,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``NotificationSounds``)
+            :class:`~pytdbot.types.Result` (``NotificationSounds``)
         """
 
         data = {
@@ -7379,7 +7556,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``NotificationSounds``)
+            :class:`~pytdbot.types.Result` (``NotificationSounds``)
         """
 
         data = {
@@ -7397,7 +7574,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``NotificationSound``)
+            :class:`~pytdbot.types.Result` (``NotificationSound``)
         """
 
         data = {
@@ -7416,7 +7593,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7440,7 +7617,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -7460,7 +7637,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ScopeNotificationSettings``)
+            :class:`~pytdbot.types.Result` (``ScopeNotificationSettings``)
         """
 
         data = {
@@ -7484,7 +7661,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7500,7 +7677,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7526,7 +7703,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7550,7 +7727,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7570,7 +7747,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7597,7 +7774,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Story``)
+            :class:`~pytdbot.types.Result` (``Story``)
         """
 
         data = {
@@ -7614,7 +7791,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -7632,7 +7809,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``CanSendStoryResult``)
+            :class:`~pytdbot.types.Result` (``CanSendStoryResult``)
         """
 
         data = {
@@ -7686,7 +7863,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Story``)
+            :class:`~pytdbot.types.Result` (``Story``)
         """
 
         data = {
@@ -7732,7 +7909,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7760,7 +7937,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7788,7 +7965,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7812,7 +7989,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7828,7 +8005,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chats``)
+            :class:`~pytdbot.types.Result` (``Chats``)
         """
 
         data = {
@@ -7846,7 +8023,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7868,7 +8045,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7888,7 +8065,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatActiveStories``)
+            :class:`~pytdbot.types.Result` (``ChatActiveStories``)
         """
 
         data = {
@@ -7915,7 +8092,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stories``)
+            :class:`~pytdbot.types.Result` (``Stories``)
         """
 
         data = {
@@ -7944,7 +8121,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stories``)
+            :class:`~pytdbot.types.Result` (``Stories``)
         """
 
         data = {
@@ -7968,7 +8145,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -7991,7 +8168,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8011,7 +8188,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AvailableReactions``)
+            :class:`~pytdbot.types.Result` (``AvailableReactions``)
         """
 
         data = {
@@ -8045,7 +8222,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8094,7 +8271,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StoryInteractions``)
+            :class:`~pytdbot.types.Result` (``StoryInteractions``)
         """
 
         data = {
@@ -8142,7 +8319,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StoryInteractions``)
+            :class:`~pytdbot.types.Result` (``StoryInteractions``)
         """
 
         data = {
@@ -8177,7 +8354,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8195,7 +8372,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8224,7 +8401,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PublicForwards``)
+            :class:`~pytdbot.types.Result` (``PublicForwards``)
         """
 
         data = {
@@ -8249,7 +8426,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatBoostLevelFeatures``)
+            :class:`~pytdbot.types.Result` (``ChatBoostLevelFeatures``)
         """
 
         data = {
@@ -8269,7 +8446,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatBoostFeatures``)
+            :class:`~pytdbot.types.Result` (``ChatBoostFeatures``)
         """
 
         data = {
@@ -8284,7 +8461,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatBoostSlots``)
+            :class:`~pytdbot.types.Result` (``ChatBoostSlots``)
         """
 
         data = {
@@ -8302,7 +8479,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatBoostStatus``)
+            :class:`~pytdbot.types.Result` (``ChatBoostStatus``)
         """
 
         data = {
@@ -8324,7 +8501,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatBoostSlots``)
+            :class:`~pytdbot.types.Result` (``ChatBoostSlots``)
         """
 
         data = {
@@ -8344,7 +8521,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatBoostLink``)
+            :class:`~pytdbot.types.Result` (``ChatBoostLink``)
         """
 
         data = {
@@ -8363,7 +8540,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatBoostLinkInfo``)
+            :class:`~pytdbot.types.Result` (``ChatBoostLinkInfo``)
         """
 
         data = {
@@ -8393,7 +8570,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FoundChatBoosts``)
+            :class:`~pytdbot.types.Result` (``FoundChatBoosts``)
         """
 
         data = {
@@ -8418,7 +8595,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FoundChatBoosts``)
+            :class:`~pytdbot.types.Result` (``FoundChatBoosts``)
         """
 
         data = {
@@ -8438,7 +8615,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AttachmentMenuBot``)
+            :class:`~pytdbot.types.Result` (``AttachmentMenuBot``)
         """
 
         data = {
@@ -8465,7 +8642,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8482,7 +8659,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmojiStatuses``)
+            :class:`~pytdbot.types.Result` (``EmojiStatuses``)
         """
 
         data = {
@@ -8496,7 +8673,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmojiStatuses``)
+            :class:`~pytdbot.types.Result` (``EmojiStatuses``)
         """
 
         data = {
@@ -8510,7 +8687,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmojiStatuses``)
+            :class:`~pytdbot.types.Result` (``EmojiStatuses``)
         """
 
         data = {
@@ -8524,7 +8701,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8538,7 +8715,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmojiStatuses``)
+            :class:`~pytdbot.types.Result` (``EmojiStatuses``)
         """
 
         data = {
@@ -8552,7 +8729,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmojiStatuses``)
+            :class:`~pytdbot.types.Result` (``EmojiStatuses``)
         """
 
         data = {
@@ -8566,7 +8743,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmojiStatuses``)
+            :class:`~pytdbot.types.Result` (``EmojiStatuses``)
         """
 
         data = {
@@ -8598,7 +8775,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``File``)
+            :class:`~pytdbot.types.Result` (``File``)
         """
 
         data = {
@@ -8624,7 +8801,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FileDownloadedPrefixSize``)
+            :class:`~pytdbot.types.Result` (``FileDownloadedPrefixSize``)
         """
 
         data = {
@@ -8647,7 +8824,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8670,7 +8847,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -8698,7 +8875,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``File``)
+            :class:`~pytdbot.types.Result` (``File``)
         """
 
         data = {
@@ -8719,7 +8896,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8746,7 +8923,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8775,7 +8952,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8801,7 +8978,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8827,7 +9004,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FilePart``)
+            :class:`~pytdbot.types.Result` (``FilePart``)
         """
 
         data = {
@@ -8848,7 +9025,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8878,7 +9055,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``File``)
+            :class:`~pytdbot.types.Result` (``File``)
         """
 
         data = {
@@ -8903,7 +9080,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8923,7 +9100,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8947,7 +9124,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -8975,7 +9152,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9015,7 +9192,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FoundFileDownloads``)
+            :class:`~pytdbot.types.Result` (``FoundFileDownloads``)
         """
 
         data = {
@@ -9038,7 +9215,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessageFileType``)
+            :class:`~pytdbot.types.Result` (``MessageFileType``)
         """
 
         data = {
@@ -9057,7 +9234,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -9084,7 +9261,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9105,7 +9282,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatInviteLink``)
+            :class:`~pytdbot.types.Result` (``ChatInviteLink``)
         """
 
         data = {
@@ -9143,7 +9320,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatInviteLink``)
+            :class:`~pytdbot.types.Result` (``ChatInviteLink``)
         """
 
         data = {
@@ -9189,7 +9366,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatInviteLink``)
+            :class:`~pytdbot.types.Result` (``ChatInviteLink``)
         """
 
         data = {
@@ -9216,7 +9393,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatInviteLink``)
+            :class:`~pytdbot.types.Result` (``ChatInviteLink``)
         """
 
         data = {
@@ -9236,7 +9413,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatInviteLinkCounts``)
+            :class:`~pytdbot.types.Result` (``ChatInviteLinkCounts``)
         """
 
         data = {
@@ -9278,7 +9455,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatInviteLinks``)
+            :class:`~pytdbot.types.Result` (``ChatInviteLinks``)
         """
 
         data = {
@@ -9313,7 +9490,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatInviteLinkMembers``)
+            :class:`~pytdbot.types.Result` (``ChatInviteLinkMembers``)
         """
 
         data = {
@@ -9338,7 +9515,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatInviteLinks``)
+            :class:`~pytdbot.types.Result` (``ChatInviteLinks``)
         """
 
         data = {
@@ -9363,7 +9540,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9388,7 +9565,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9408,7 +9585,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatInviteLinkInfo``)
+            :class:`~pytdbot.types.Result` (``ChatInviteLinkInfo``)
         """
 
         data = {
@@ -9427,7 +9604,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Chat``)
+            :class:`~pytdbot.types.Result` (``Chat``)
         """
 
         data = {
@@ -9465,7 +9642,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatJoinRequests``)
+            :class:`~pytdbot.types.Result` (``ChatJoinRequests``)
         """
 
         data = {
@@ -9496,7 +9673,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9525,7 +9702,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9552,7 +9729,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``CallId``)
+            :class:`~pytdbot.types.Result` (``CallId``)
         """
 
         data = {
@@ -9576,7 +9753,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9599,7 +9776,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9638,7 +9815,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9672,7 +9849,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9699,7 +9876,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9722,7 +9899,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9742,7 +9919,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessageSenders``)
+            :class:`~pytdbot.types.Result` (``MessageSenders``)
         """
 
         data = {
@@ -9766,7 +9943,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9797,7 +9974,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``GroupCallId``)
+            :class:`~pytdbot.types.Result` (``GroupCallId``)
         """
 
         data = {
@@ -9819,7 +9996,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``RtmpUrl``)
+            :class:`~pytdbot.types.Result` (``RtmpUrl``)
         """
 
         data = {
@@ -9838,7 +10015,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``RtmpUrl``)
+            :class:`~pytdbot.types.Result` (``RtmpUrl``)
         """
 
         data = {
@@ -9857,7 +10034,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``GroupCall``)
+            :class:`~pytdbot.types.Result` (``GroupCall``)
         """
 
         data = {
@@ -9876,7 +10053,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9900,7 +10077,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -9947,7 +10124,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -9980,7 +10157,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -10006,7 +10183,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10026,7 +10203,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10048,7 +10225,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10073,7 +10250,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10098,7 +10275,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10123,7 +10300,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
+            :class:`~pytdbot.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -10143,7 +10320,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10177,7 +10354,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10199,7 +10376,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10223,7 +10400,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10248,7 +10425,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10276,7 +10453,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10305,7 +10482,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10334,7 +10511,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10363,7 +10540,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10387,7 +10564,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10407,7 +10584,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10426,7 +10603,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10445,7 +10622,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``GroupCallStreams``)
+            :class:`~pytdbot.types.Result` (``GroupCallStreams``)
         """
 
         data = {
@@ -10483,7 +10660,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FilePart``)
+            :class:`~pytdbot.types.Result` (``FilePart``)
         """
 
         data = {
@@ -10511,7 +10688,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10546,7 +10723,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10576,7 +10753,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessageSenders``)
+            :class:`~pytdbot.types.Result` (``MessageSenders``)
         """
 
         data = {
@@ -10600,7 +10777,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10620,7 +10797,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ImportedContacts``)
+            :class:`~pytdbot.types.Result` (``ImportedContacts``)
         """
 
         data = {
@@ -10635,7 +10812,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Users``)
+            :class:`~pytdbot.types.Result` (``Users``)
         """
 
         data = {
@@ -10656,7 +10833,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Users``)
+            :class:`~pytdbot.types.Result` (``Users``)
         """
 
         data = {
@@ -10676,7 +10853,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10691,7 +10868,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Count``)
+            :class:`~pytdbot.types.Result` (``Count``)
         """
 
         data = {
@@ -10709,7 +10886,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ImportedContacts``)
+            :class:`~pytdbot.types.Result` (``ImportedContacts``)
         """
 
         data = {
@@ -10724,7 +10901,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10742,7 +10919,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10757,7 +10934,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Users``)
+            :class:`~pytdbot.types.Result` (``Users``)
         """
 
         data = {
@@ -10780,7 +10957,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10803,7 +10980,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10823,7 +11000,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``User``)
+            :class:`~pytdbot.types.Result` (``User``)
         """
 
         data = {
@@ -10842,7 +11019,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -10869,7 +11046,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatPhotos``)
+            :class:`~pytdbot.types.Result` (``ChatPhotos``)
         """
 
         data = {
@@ -10901,7 +11078,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stickers``)
+            :class:`~pytdbot.types.Result` (``Stickers``)
         """
 
         data = {
@@ -10934,7 +11111,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Emojis``)
+            :class:`~pytdbot.types.Result` (``Emojis``)
         """
 
         data = {
@@ -10964,7 +11141,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stickers``)
+            :class:`~pytdbot.types.Result` (``Stickers``)
         """
 
         data = {
@@ -10985,7 +11162,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stickers``)
+            :class:`~pytdbot.types.Result` (``Stickers``)
         """
 
         data = {
@@ -11004,7 +11181,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StickerSets``)
+            :class:`~pytdbot.types.Result` (``StickerSets``)
         """
 
         data = {
@@ -11031,7 +11208,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StickerSets``)
+            :class:`~pytdbot.types.Result` (``StickerSets``)
         """
 
         data = {
@@ -11060,7 +11237,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``TrendingStickerSets``)
+            :class:`~pytdbot.types.Result` (``TrendingStickerSets``)
         """
 
         data = {
@@ -11081,7 +11258,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StickerSets``)
+            :class:`~pytdbot.types.Result` (``StickerSets``)
         """
 
         data = {
@@ -11100,7 +11277,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StickerSet``)
+            :class:`~pytdbot.types.Result` (``StickerSet``)
         """
 
         data = {
@@ -11119,7 +11296,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StickerSet``)
+            :class:`~pytdbot.types.Result` (``StickerSet``)
         """
 
         data = {
@@ -11146,7 +11323,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StickerSets``)
+            :class:`~pytdbot.types.Result` (``StickerSets``)
         """
 
         data = {
@@ -11170,7 +11347,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StickerSets``)
+            :class:`~pytdbot.types.Result` (``StickerSets``)
         """
 
         data = {
@@ -11198,7 +11375,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11219,7 +11396,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11243,7 +11420,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11263,7 +11440,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stickers``)
+            :class:`~pytdbot.types.Result` (``Stickers``)
         """
 
         data = {
@@ -11274,7 +11451,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def addRecentSticker(self, is_attached: bool, sticker: dict) -> Result:
-        """Manually adds a new sticker to the list of recently used stickers\. The new sticker is added to the top of the list\. If the sticker was already in the list, it is removed from the list first\. Only stickers belonging to a sticker set can be added to this list\. Emoji stickers can't be added to recent stickers
+        """Manually adds a new sticker to the list of recently used stickers\. The new sticker is added to the top of the list\. If the sticker was already in the list, it is removed from the list first\. Only stickers belonging to a sticker set or in WEBP format can be added to this list\. Emoji stickers can't be added to recent stickers
 
         Args:
             is_attached (``bool``):
@@ -11285,7 +11462,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stickers``)
+            :class:`~pytdbot.types.Result` (``Stickers``)
         """
 
         data = {
@@ -11308,7 +11485,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11328,7 +11505,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11343,7 +11520,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stickers``)
+            :class:`~pytdbot.types.Result` (``Stickers``)
         """
 
         data = {
@@ -11353,7 +11530,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def addFavoriteSticker(self, sticker: dict) -> Result:
-        """Adds a new sticker to the list of favorite stickers\. The new sticker is added to the top of the list\. If the sticker was already in the list, it is removed from the list first\. Only stickers belonging to a sticker set can be added to this list\. Emoji stickers can't be added to favorite stickers
+        """Adds a new sticker to the list of favorite stickers\. The new sticker is added to the top of the list\. If the sticker was already in the list, it is removed from the list first\. Only stickers belonging to a sticker set or in WEBP format can be added to this list\. Emoji stickers can't be added to favorite stickers
 
         Args:
             sticker (``InputFile``):
@@ -11361,7 +11538,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11380,7 +11557,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11399,7 +11576,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Emojis``)
+            :class:`~pytdbot.types.Result` (``Emojis``)
         """
 
         data = {
@@ -11423,7 +11600,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmojiKeywords``)
+            :class:`~pytdbot.types.Result` (``EmojiKeywords``)
         """
 
         data = {
@@ -11448,7 +11625,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Emojis``)
+            :class:`~pytdbot.types.Result` (``Emojis``)
         """
 
         data = {
@@ -11468,7 +11645,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmojiCategories``)
+            :class:`~pytdbot.types.Result` (``EmojiCategories``)
         """
 
         data = {
@@ -11487,7 +11664,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AnimatedEmoji``)
+            :class:`~pytdbot.types.Result` (``AnimatedEmoji``)
         """
 
         data = {
@@ -11506,7 +11683,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
+            :class:`~pytdbot.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -11525,7 +11702,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stickers``)
+            :class:`~pytdbot.types.Result` (``Stickers``)
         """
 
         data = {
@@ -11540,7 +11717,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stickers``)
+            :class:`~pytdbot.types.Result` (``Stickers``)
         """
 
         data = {
@@ -11554,7 +11731,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stickers``)
+            :class:`~pytdbot.types.Result` (``Stickers``)
         """
 
         data = {
@@ -11568,7 +11745,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stickers``)
+            :class:`~pytdbot.types.Result` (``Stickers``)
         """
 
         data = {
@@ -11582,7 +11759,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Animations``)
+            :class:`~pytdbot.types.Result` (``Animations``)
         """
 
         data = {
@@ -11600,7 +11777,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11619,7 +11796,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11634,7 +11811,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Users``)
+            :class:`~pytdbot.types.Result` (``Users``)
         """
 
         data = {
@@ -11655,7 +11832,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Hashtags``)
+            :class:`~pytdbot.types.Result` (``Hashtags``)
         """
 
         data = {
@@ -11675,7 +11852,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11699,7 +11876,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``WebPage``)
+            :class:`~pytdbot.types.Result` (``WebPage``)
         """
 
         data = {
@@ -11722,7 +11899,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``WebPageInstantView``)
+            :class:`~pytdbot.types.Result` (``WebPageInstantView``)
         """
 
         data = {
@@ -11745,7 +11922,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11765,7 +11942,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11789,7 +11966,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11814,7 +11991,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11837,7 +12014,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11857,7 +12034,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11876,7 +12053,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11898,7 +12075,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11918,7 +12095,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11937,7 +12114,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -11948,7 +12125,7 @@ class TDLibFunctions:
         return self.invoke(data)
 
     def setLocation(self, location: dict) -> Result:
-        """Changes the location of the current user\. Needs to be called if getOption\("is\_location\_visible"\) is true and location changes for more than 1 kilometer
+        """Changes the location of the current user\. Needs to be called if getOption\("is\_location\_visible"\) is true and location changes for more than 1 kilometer\. Must not be called if the user has a business location
 
         Args:
             location (``location``):
@@ -11956,12 +12133,92 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
             "@type": "setLocation",
             "location": location,
+        }
+
+        return self.invoke(data)
+
+    def setBusinessLocation(self, location: dict = None) -> Result:
+        """Changes the business location of the current user\. Requires Telegram Business subscription
+
+        Args:
+            location (``businessLocation``, *optional*):
+                The new location of the business; pass null to remove the location
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setBusinessLocation",
+            "location": location,
+        }
+
+        return self.invoke(data)
+
+    def setBusinessOpeningHours(self, opening_hours: dict = None) -> Result:
+        """Changes the business opening hours of the current user\. Requires Telegram Business subscription
+
+        Args:
+            opening_hours (``businessOpeningHours``, *optional*):
+                The new opening hours of the business; pass null to remove the opening hours
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setBusinessOpeningHours",
+            "opening_hours": opening_hours,
+        }
+
+        return self.invoke(data)
+
+    def setBusinessGreetingMessageSettings(
+        self, greeting_message_settings: dict = None
+    ) -> Result:
+        """Changes the business greeting message settings of the current user\. Requires Telegram Business subscription
+
+        Args:
+            greeting_message_settings (``businessGreetingMessageSettings``, *optional*):
+                The new settings for the greeting message of the business; pass null to disable the greeting message
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setBusinessGreetingMessageSettings",
+            "greeting_message_settings": greeting_message_settings,
+        }
+
+        return self.invoke(data)
+
+    def setBusinessAwayMessageSettings(
+        self, away_message_settings: dict = None
+    ) -> Result:
+        """Changes the business away message settings of the current user\. Requires Telegram Business subscription
+
+        Args:
+            away_message_settings (``businessAwayMessageSettings``, *optional*):
+                The new settings for the away message of the business; pass null to disable the away message
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setBusinessAwayMessageSettings",
+            "away_message_settings": away_message_settings,
         }
 
         return self.invoke(data)
@@ -11980,7 +12237,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AuthenticationCodeInfo``)
+            :class:`~pytdbot.types.Result` (``AuthenticationCodeInfo``)
         """
 
         data = {
@@ -11996,7 +12253,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AuthenticationCodeInfo``)
+            :class:`~pytdbot.types.Result` (``AuthenticationCodeInfo``)
         """
 
         data = {
@@ -12014,7 +12271,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12024,12 +12281,64 @@ class TDLibFunctions:
 
         return self.invoke(data)
 
+    def getBusinessConnectedBot(self) -> Result:
+        """Returns the business bot that is connected to the current user account\. Returns a 404 error if there is no connected bot
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``BusinessConnectedBot``)
+        """
+
+        data = {
+            "@type": "getBusinessConnectedBot",
+        }
+
+        return self.invoke(data)
+
+    def setBusinessConnectedBot(self, bot: dict) -> Result:
+        """Adds or changes business bot that is connected to the current user account
+
+        Args:
+            bot (``businessConnectedBot``):
+                Connection settings for the bot
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "setBusinessConnectedBot",
+            "bot": bot,
+        }
+
+        return self.invoke(data)
+
+    def deleteBusinessConnectedBot(self, bot_user_id: int) -> Result:
+        """Deletes the business bot that is connected to the current user account
+
+        Args:
+            bot_user_id (``int``):
+                Unique user identifier for the bot
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``Ok``)
+        """
+
+        data = {
+            "@type": "deleteBusinessConnectedBot",
+            "bot_user_id": bot_user_id,
+        }
+
+        return self.invoke(data)
+
     def getUserLink(self) -> Result:
         """Returns an HTTPS link, which can be used to get information about the current user
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``UserLink``)
+            :class:`~pytdbot.types.Result` (``UserLink``)
         """
 
         data = {
@@ -12047,7 +12356,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``User``)
+            :class:`~pytdbot.types.Result` (``User``)
         """
 
         data = {
@@ -12074,7 +12383,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12098,7 +12407,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12121,7 +12430,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``BotCommands``)
+            :class:`~pytdbot.types.Result` (``BotCommands``)
         """
 
         data = {
@@ -12144,7 +12453,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12164,7 +12473,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``BotMenuButton``)
+            :class:`~pytdbot.types.Result` (``BotMenuButton``)
         """
 
         data = {
@@ -12185,7 +12494,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12206,7 +12515,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12225,7 +12534,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12244,7 +12553,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12271,7 +12580,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``CustomRequestResult``)
+            :class:`~pytdbot.types.Result` (``CustomRequestResult``)
         """
 
         data = {
@@ -12300,7 +12609,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12324,7 +12633,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -12347,7 +12656,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12375,7 +12684,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12401,7 +12710,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12429,7 +12738,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12455,7 +12764,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -12483,7 +12792,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12509,7 +12818,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -12525,7 +12834,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Sessions``)
+            :class:`~pytdbot.types.Result` (``Sessions``)
         """
 
         data = {
@@ -12543,7 +12852,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12558,7 +12867,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12576,7 +12885,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12600,7 +12909,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12625,7 +12934,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12645,7 +12954,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12660,7 +12969,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ConnectedWebsites``)
+            :class:`~pytdbot.types.Result` (``ConnectedWebsites``)
         """
 
         data = {
@@ -12678,7 +12987,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12693,7 +13002,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12714,7 +13023,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12742,7 +13051,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12763,7 +13072,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12787,7 +13096,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12812,7 +13121,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12837,7 +13146,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12862,7 +13171,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12887,7 +13196,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12912,7 +13221,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12937,7 +13246,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12962,7 +13271,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -12987,7 +13296,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13012,7 +13321,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13037,7 +13346,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13057,7 +13366,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13081,7 +13390,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13106,7 +13415,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13137,7 +13446,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatMembers``)
+            :class:`~pytdbot.types.Result` (``ChatMembers``)
         """
 
         data = {
@@ -13159,7 +13468,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13201,7 +13510,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatEvents``)
+            :class:`~pytdbot.types.Result` (``ChatEvents``)
         """
 
         data = {
@@ -13212,6 +13521,20 @@ class TDLibFunctions:
             "limit": limit,
             "filters": filters,
             "user_ids": user_ids,
+        }
+
+        return self.invoke(data)
+
+    def getTimeZones(self) -> Result:
+        """Returns the list of supported time zones
+
+
+        Returns:
+            :class:`~pytdbot.types.Result` (``TimeZones``)
+        """
+
+        data = {
+            "@type": "getTimeZones",
         }
 
         return self.invoke(data)
@@ -13228,7 +13551,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PaymentForm``)
+            :class:`~pytdbot.types.Result` (``PaymentForm``)
         """
 
         data = {
@@ -13256,7 +13579,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ValidatedOrderInfo``)
+            :class:`~pytdbot.types.Result` (``ValidatedOrderInfo``)
         """
 
         data = {
@@ -13300,7 +13623,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PaymentResult``)
+            :class:`~pytdbot.types.Result` (``PaymentResult``)
         """
 
         data = {
@@ -13327,7 +13650,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PaymentReceipt``)
+            :class:`~pytdbot.types.Result` (``PaymentReceipt``)
         """
 
         data = {
@@ -13343,7 +13666,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``OrderInfo``)
+            :class:`~pytdbot.types.Result` (``OrderInfo``)
         """
 
         data = {
@@ -13357,7 +13680,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13371,7 +13694,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13389,7 +13712,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
+            :class:`~pytdbot.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -13404,7 +13727,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``User``)
+            :class:`~pytdbot.types.Result` (``User``)
         """
 
         data = {
@@ -13425,7 +13748,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
+            :class:`~pytdbot.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -13445,7 +13768,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Background``)
+            :class:`~pytdbot.types.Result` (``Background``)
         """
 
         data = {
@@ -13472,7 +13795,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Background``)
+            :class:`~pytdbot.types.Result` (``Background``)
         """
 
         data = {
@@ -13493,7 +13816,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13512,7 +13835,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Backgrounds``)
+            :class:`~pytdbot.types.Result` (``Backgrounds``)
         """
 
         data = {
@@ -13531,7 +13854,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13546,7 +13869,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13564,7 +13887,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``LocalizationTargetInfo``)
+            :class:`~pytdbot.types.Result` (``LocalizationTargetInfo``)
         """
 
         data = {
@@ -13583,7 +13906,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``LanguagePackInfo``)
+            :class:`~pytdbot.types.Result` (``LanguagePackInfo``)
         """
 
         data = {
@@ -13605,7 +13928,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``LanguagePackStrings``)
+            :class:`~pytdbot.types.Result` (``LanguagePackStrings``)
         """
 
         data = {
@@ -13625,7 +13948,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13644,7 +13967,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13666,7 +13989,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13686,7 +14009,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13710,7 +14033,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13730,7 +14053,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13752,7 +14075,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PushReceiverId``)
+            :class:`~pytdbot.types.Result` (``PushReceiverId``)
         """
 
         data = {
@@ -13772,7 +14095,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13791,7 +14114,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PushReceiverId``)
+            :class:`~pytdbot.types.Result` (``PushReceiverId``)
         """
 
         data = {
@@ -13810,7 +14133,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``TMeUrls``)
+            :class:`~pytdbot.types.Result` (``TMeUrls``)
         """
 
         data = {
@@ -13832,7 +14155,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13852,7 +14175,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``UserPrivacySettingRules``)
+            :class:`~pytdbot.types.Result` (``UserPrivacySettingRules``)
         """
 
         data = {
@@ -13871,7 +14194,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13886,7 +14209,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ReadDatePrivacySettings``)
+            :class:`~pytdbot.types.Result` (``ReadDatePrivacySettings``)
         """
 
         data = {
@@ -13904,7 +14227,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -13919,7 +14242,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``NewChatPrivacySettings``)
+            :class:`~pytdbot.types.Result` (``NewChatPrivacySettings``)
         """
 
         data = {
@@ -13940,7 +14263,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``CanSendMessageToUserResult``)
+            :class:`~pytdbot.types.Result` (``CanSendMessageToUserResult``)
         """
 
         data = {
@@ -13960,7 +14283,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``OptionValue``)
+            :class:`~pytdbot.types.Result` (``OptionValue``)
         """
 
         data = {
@@ -13982,7 +14305,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14002,7 +14325,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14017,7 +14340,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AccountTtl``)
+            :class:`~pytdbot.types.Result` (``AccountTtl``)
         """
 
         data = {
@@ -14038,7 +14361,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14060,7 +14383,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14075,7 +14398,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessageAutoDeleteTime``)
+            :class:`~pytdbot.types.Result` (``MessageAutoDeleteTime``)
         """
 
         data = {
@@ -14093,7 +14416,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14123,7 +14446,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14156,7 +14479,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14186,7 +14509,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14210,7 +14533,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``ChatStatistics``)
+            :class:`~pytdbot.types.Result` (``ChatStatistics``)
         """
 
         data = {
@@ -14238,7 +14561,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``MessageStatistics``)
+            :class:`~pytdbot.types.Result` (``MessageStatistics``)
         """
 
         data = {
@@ -14270,7 +14593,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PublicForwards``)
+            :class:`~pytdbot.types.Result` (``PublicForwards``)
         """
 
         data = {
@@ -14300,7 +14623,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StoryStatistics``)
+            :class:`~pytdbot.types.Result` (``StoryStatistics``)
         """
 
         data = {
@@ -14327,7 +14650,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StatisticalGraph``)
+            :class:`~pytdbot.types.Result` (``StatisticalGraph``)
         """
 
         data = {
@@ -14348,7 +14671,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StorageStatistics``)
+            :class:`~pytdbot.types.Result` (``StorageStatistics``)
         """
 
         data = {
@@ -14363,7 +14686,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StorageStatisticsFast``)
+            :class:`~pytdbot.types.Result` (``StorageStatisticsFast``)
         """
 
         data = {
@@ -14377,7 +14700,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``DatabaseStatistics``)
+            :class:`~pytdbot.types.Result` (``DatabaseStatistics``)
         """
 
         data = {
@@ -14430,7 +14753,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StorageStatistics``)
+            :class:`~pytdbot.types.Result` (``StorageStatistics``)
         """
 
         data = {
@@ -14457,7 +14780,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14476,7 +14799,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``NetworkStatistics``)
+            :class:`~pytdbot.types.Result` (``NetworkStatistics``)
         """
 
         data = {
@@ -14495,7 +14818,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14510,7 +14833,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14524,7 +14847,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AutoDownloadSettingsPresets``)
+            :class:`~pytdbot.types.Result` (``AutoDownloadSettingsPresets``)
         """
 
         data = {
@@ -14545,7 +14868,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14561,7 +14884,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AutosaveSettings``)
+            :class:`~pytdbot.types.Result` (``AutosaveSettings``)
         """
 
         data = {
@@ -14582,7 +14905,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14598,7 +14921,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14616,7 +14939,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``BankCardInfo``)
+            :class:`~pytdbot.types.Result` (``BankCardInfo``)
         """
 
         data = {
@@ -14638,7 +14961,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PassportElement``)
+            :class:`~pytdbot.types.Result` (``PassportElement``)
         """
 
         data = {
@@ -14658,7 +14981,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PassportElements``)
+            :class:`~pytdbot.types.Result` (``PassportElements``)
         """
 
         data = {
@@ -14680,7 +15003,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PassportElement``)
+            :class:`~pytdbot.types.Result` (``PassportElement``)
         """
 
         data = {
@@ -14700,7 +15023,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14722,7 +15045,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14742,7 +15065,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -14766,7 +15089,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AuthenticationCodeInfo``)
+            :class:`~pytdbot.types.Result` (``AuthenticationCodeInfo``)
         """
 
         data = {
@@ -14782,7 +15105,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AuthenticationCodeInfo``)
+            :class:`~pytdbot.types.Result` (``AuthenticationCodeInfo``)
         """
 
         data = {
@@ -14800,7 +15123,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14819,7 +15142,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmailAddressAuthenticationCodeInfo``)
+            :class:`~pytdbot.types.Result` (``EmailAddressAuthenticationCodeInfo``)
         """
 
         data = {
@@ -14834,7 +15157,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``EmailAddressAuthenticationCodeInfo``)
+            :class:`~pytdbot.types.Result` (``EmailAddressAuthenticationCodeInfo``)
         """
 
         data = {
@@ -14852,7 +15175,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14882,7 +15205,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PassportAuthorizationForm``)
+            :class:`~pytdbot.types.Result` (``PassportAuthorizationForm``)
         """
 
         data = {
@@ -14909,7 +15232,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PassportElementsWithErrors``)
+            :class:`~pytdbot.types.Result` (``PassportElementsWithErrors``)
         """
 
         data = {
@@ -14934,7 +15257,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -14962,7 +15285,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AuthenticationCodeInfo``)
+            :class:`~pytdbot.types.Result` (``AuthenticationCodeInfo``)
         """
 
         data = {
@@ -14979,7 +15302,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``AuthenticationCodeInfo``)
+            :class:`~pytdbot.types.Result` (``AuthenticationCodeInfo``)
         """
 
         data = {
@@ -14997,7 +15320,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15021,7 +15344,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15049,7 +15372,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``File``)
+            :class:`~pytdbot.types.Result` (``File``)
         """
 
         data = {
@@ -15070,7 +15393,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -15089,7 +15412,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``CheckStickerSetNameResult``)
+            :class:`~pytdbot.types.Result` (``CheckStickerSetNameResult``)
         """
 
         data = {
@@ -15139,7 +15462,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``StickerSet``)
+            :class:`~pytdbot.types.Result` (``StickerSet``)
         """
 
         data = {
@@ -15171,7 +15494,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15200,7 +15523,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15226,7 +15549,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15249,7 +15572,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15269,7 +15592,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15291,7 +15614,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15311,7 +15634,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15333,7 +15656,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15356,7 +15679,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15381,7 +15704,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15424,7 +15747,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``File``)
+            :class:`~pytdbot.types.Result` (``File``)
         """
 
         data = {
@@ -15448,7 +15771,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PremiumLimit``)
+            :class:`~pytdbot.types.Result` (``PremiumLimit``)
         """
 
         data = {
@@ -15467,7 +15790,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PremiumFeatures``)
+            :class:`~pytdbot.types.Result` (``PremiumFeatures``)
         """
 
         data = {
@@ -15482,7 +15805,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Stickers``)
+            :class:`~pytdbot.types.Result` (``Stickers``)
         """
 
         data = {
@@ -15500,7 +15823,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15515,7 +15838,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15529,7 +15852,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PremiumState``)
+            :class:`~pytdbot.types.Result` (``PremiumState``)
         """
 
         data = {
@@ -15547,7 +15870,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PremiumGiftCodePaymentOptions``)
+            :class:`~pytdbot.types.Result` (``PremiumGiftCodePaymentOptions``)
         """
 
         data = {
@@ -15566,7 +15889,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PremiumGiftCodeInfo``)
+            :class:`~pytdbot.types.Result` (``PremiumGiftCodeInfo``)
         """
 
         data = {
@@ -15585,7 +15908,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15609,7 +15932,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15632,7 +15955,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PremiumGiveawayInfo``)
+            :class:`~pytdbot.types.Result` (``PremiumGiveawayInfo``)
         """
 
         data = {
@@ -15652,7 +15975,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15674,7 +15997,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15709,7 +16032,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15731,7 +16054,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15761,7 +16084,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``FoundPositions``)
+            :class:`~pytdbot.types.Result` (``FoundPositions``)
         """
 
         data = {
@@ -15786,7 +16109,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``CustomRequestResult``)
+            :class:`~pytdbot.types.Result` (``CustomRequestResult``)
         """
 
         data = {
@@ -15809,7 +16132,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15829,7 +16152,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15844,7 +16167,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Countries``)
+            :class:`~pytdbot.types.Result` (``Countries``)
         """
 
         data = {
@@ -15858,7 +16181,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -15876,7 +16199,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PhoneNumberInfo``)
+            :class:`~pytdbot.types.Result` (``PhoneNumberInfo``)
         """
 
         data = {
@@ -15900,7 +16223,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``PhoneNumberInfo``)
+            :class:`~pytdbot.types.Result` (``PhoneNumberInfo``)
         """
 
         data = {
@@ -15920,7 +16243,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``DeepLinkInfo``)
+            :class:`~pytdbot.types.Result` (``DeepLinkInfo``)
         """
 
         data = {
@@ -15935,7 +16258,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``JsonValue``)
+            :class:`~pytdbot.types.Result` (``JsonValue``)
         """
 
         data = {
@@ -15961,7 +16284,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -15978,7 +16301,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
+            :class:`~pytdbot.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -16007,7 +16330,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Proxy``)
+            :class:`~pytdbot.types.Result` (``Proxy``)
         """
 
         data = {
@@ -16043,7 +16366,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Proxy``)
+            :class:`~pytdbot.types.Result` (``Proxy``)
         """
 
         data = {
@@ -16066,7 +16389,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -16081,7 +16404,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -16099,7 +16422,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -16114,7 +16437,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Proxies``)
+            :class:`~pytdbot.types.Result` (``Proxies``)
         """
 
         data = {
@@ -16132,7 +16455,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``HttpUrl``)
+            :class:`~pytdbot.types.Result` (``HttpUrl``)
         """
 
         data = {
@@ -16151,7 +16474,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Seconds``)
+            :class:`~pytdbot.types.Result` (``Seconds``)
         """
 
         data = {
@@ -16170,7 +16493,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -16185,7 +16508,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``LogStream``)
+            :class:`~pytdbot.types.Result` (``LogStream``)
         """
 
         data = {
@@ -16203,7 +16526,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -16218,7 +16541,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``LogVerbosityLevel``)
+            :class:`~pytdbot.types.Result` (``LogVerbosityLevel``)
         """
 
         data = {
@@ -16232,7 +16555,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``LogTags``)
+            :class:`~pytdbot.types.Result` (``LogTags``)
         """
 
         data = {
@@ -16255,7 +16578,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -16275,7 +16598,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``LogVerbosityLevel``)
+            :class:`~pytdbot.types.Result` (``LogVerbosityLevel``)
         """
 
         data = {
@@ -16297,7 +16620,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -16317,7 +16640,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``UserSupportInfo``)
+            :class:`~pytdbot.types.Result` (``UserSupportInfo``)
         """
 
         data = {
@@ -16339,7 +16662,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``UserSupportInfo``)
+            :class:`~pytdbot.types.Result` (``UserSupportInfo``)
         """
 
         data = {
@@ -16355,7 +16678,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Text``)
+            :class:`~pytdbot.types.Result` (``Text``)
         """
 
         data = {
@@ -16369,7 +16692,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -16387,7 +16710,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``TestString``)
+            :class:`~pytdbot.types.Result` (``TestString``)
         """
 
         data = {
@@ -16406,7 +16729,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``TestBytes``)
+            :class:`~pytdbot.types.Result` (``TestBytes``)
         """
 
         data = {
@@ -16425,7 +16748,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``TestVectorInt``)
+            :class:`~pytdbot.types.Result` (``TestVectorInt``)
         """
 
         data = {
@@ -16444,7 +16767,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``TestVectorIntObject``)
+            :class:`~pytdbot.types.Result` (``TestVectorIntObject``)
         """
 
         data = {
@@ -16463,7 +16786,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``TestVectorString``)
+            :class:`~pytdbot.types.Result` (``TestVectorString``)
         """
 
         data = {
@@ -16482,7 +16805,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``TestVectorStringObject``)
+            :class:`~pytdbot.types.Result` (``TestVectorStringObject``)
         """
 
         data = {
@@ -16501,7 +16824,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``TestInt``)
+            :class:`~pytdbot.types.Result` (``TestInt``)
         """
 
         data = {
@@ -16516,7 +16839,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -16548,7 +16871,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -16567,7 +16890,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Ok``)
+            :class:`~pytdbot.types.Result` (``Ok``)
         """
 
         data = {
@@ -16581,7 +16904,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Update``)
+            :class:`~pytdbot.types.Result` (``Update``)
         """
 
         data = {
@@ -16599,7 +16922,7 @@ class TDLibFunctions:
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result` (``Error``)
+            :class:`~pytdbot.types.Result` (``Error``)
         """
 
         data = {
