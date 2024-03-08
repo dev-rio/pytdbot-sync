@@ -33,8 +33,8 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                     "updateAuthorizationState", func, filters, position
-                )
+                        "updateAuthorizationState", func, filters, position
+                    )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
                     func, "updateAuthorizationState", self, position
@@ -101,7 +101,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateMessageSendAcknowledged", func, filters, position
+                        "updateMessageSendAcknowledged", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -138,8 +138,8 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateMessageSendSucceeded", func, filters, position
-                )
+                        "updateMessageSendSucceeded", func, filters, position
+                    )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
                     func, "updateMessageSendSucceeded", self, position
@@ -303,7 +303,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateMessageInteractionInfo", func, filters, position
+                        "updateMessageInteractionInfo", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -340,7 +340,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateMessageContentOpened", func, filters, position
+                        "updateMessageContentOpened", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -377,7 +377,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateMessageMentionRead", func, filters, position
+                        "updateMessageMentionRead", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -414,7 +414,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateMessageUnreadReactions", func, filters, position
+                        "updateMessageUnreadReactions", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -451,7 +451,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateMessageLiveLocationViewed", func, filters, position
+                        "updateMessageLiveLocationViewed", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -688,6 +688,76 @@ class Updates:
 
         return decorator
 
+    def on_updateChatAddedToList(
+        self: "pytdbot_sync.Client" = None,
+        filters: "pytdbot_sync.filters.Filter" = None,
+        position: int = None,
+    ) -> Callable:
+        """A chat was added to a chat list
+
+        Args:
+            filters (:class:`pytdbot_sync.filters.Filter`, *optional*):
+                An update filter
+
+            position (``int``, *optional*):
+                The function position in handlers list. Default is ``None`` (append)
+
+        Raises:
+            :py:class:`TypeError`
+        """
+
+        def decorator(func: Callable) -> Callable:
+            if hasattr(func, "_handler"):
+                return func
+            elif isinstance(self, pytdbot_sync.Client):
+                self.add_handler("updateChatAddedToList", func, filters, position)
+            elif isinstance(self, pytdbot_sync.filters.Filter):
+                func._handler = Handler(func, "updateChatAddedToList", self, position)
+            else:
+                func._handler = Handler(
+                    func, "updateChatAddedToList", filters, position
+                )
+            return func
+
+        return decorator
+
+    def on_updateChatRemovedFromList(
+        self: "pytdbot_sync.Client" = None,
+        filters: "pytdbot_sync.filters.Filter" = None,
+        position: int = None,
+    ) -> Callable:
+        """A chat was removed from a chat list
+
+        Args:
+            filters (:class:`pytdbot_sync.filters.Filter`, *optional*):
+                An update filter
+
+            position (``int``, *optional*):
+                The function position in handlers list. Default is ``None`` (append)
+
+        Raises:
+            :py:class:`TypeError`
+        """
+
+        def decorator(func: Callable) -> Callable:
+            if hasattr(func, "_handler"):
+                return func
+            elif isinstance(self, pytdbot_sync.Client):
+                self.add_handler(
+                        "updateChatRemovedFromList", func, filters, position
+                    )
+            elif isinstance(self, pytdbot_sync.filters.Filter):
+                func._handler = Handler(
+                    func, "updateChatRemovedFromList", self, position
+                )
+            else:
+                func._handler = Handler(
+                    func, "updateChatRemovedFromList", filters, position
+                )
+            return func
+
+        return decorator
+
     def on_updateChatReadInbox(
         self: "pytdbot_sync.Client" = None,
         filters: "pytdbot_sync.filters.Filter" = None,
@@ -804,7 +874,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateChatAvailableReactions", func, filters, position
+                        "updateChatAvailableReactions", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -940,7 +1010,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateChatMessageAutoDeleteTime", func, filters, position
+                        "updateChatMessageAutoDeleteTime", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -977,7 +1047,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateChatNotificationSettings", func, filters, position
+                        "updateChatNotificationSettings", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1014,7 +1084,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateChatPendingJoinRequests", func, filters, position
+                        "updateChatPendingJoinRequests", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1146,7 +1216,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateChatUnreadMentionCount", func, filters, position
+                        "updateChatUnreadMentionCount", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1183,7 +1253,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateChatUnreadReactionCount", func, filters, position
+                        "updateChatUnreadReactionCount", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1251,7 +1321,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateChatDefaultDisableNotification", func, filters, position
+                        "updateChatDefaultDisableNotification", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1288,7 +1358,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateChatHasProtectedContent", func, filters, position
+                        "updateChatHasProtectedContent", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1325,7 +1395,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateChatIsTranslatable", func, filters, position
+                        "updateChatIsTranslatable", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1362,7 +1432,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateChatIsMarkedAsUnread", func, filters, position
+                        "updateChatIsMarkedAsUnread", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1463,7 +1533,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateChatHasScheduledMessages", func, filters, position
+                        "updateChatHasScheduledMessages", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1531,7 +1601,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateChatOnlineMemberCount", func, filters, position
+                        "updateChatOnlineMemberCount", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1568,7 +1638,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateSavedMessagesTopic", func, filters, position
+                        "updateSavedMessagesTopic", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1605,7 +1675,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateSavedMessagesTopicCount", func, filters, position
+                        "updateSavedMessagesTopicCount", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1614,6 +1684,154 @@ class Updates:
             else:
                 func._handler = Handler(
                     func, "updateSavedMessagesTopicCount", filters, position
+                )
+            return func
+
+        return decorator
+
+    def on_updateQuickReplyShortcut(
+        self: "pytdbot_sync.Client" = None,
+        filters: "pytdbot_sync.filters.Filter" = None,
+        position: int = None,
+    ) -> Callable:
+        """Basic information about a quick reply shortcut has changed\. This update is guaranteed to come before the quick shortcut name is returned to the application
+
+        Args:
+            filters (:class:`pytdbot_sync.filters.Filter`, *optional*):
+                An update filter
+
+            position (``int``, *optional*):
+                The function position in handlers list. Default is ``None`` (append)
+
+        Raises:
+            :py:class:`TypeError`
+        """
+
+        def decorator(func: Callable) -> Callable:
+            if hasattr(func, "_handler"):
+                return func
+            elif isinstance(self, pytdbot_sync.Client):
+                self.add_handler(
+                        "updateQuickReplyShortcut", func, filters, position
+                    )
+            elif isinstance(self, pytdbot_sync.filters.Filter):
+                func._handler = Handler(
+                    func, "updateQuickReplyShortcut", self, position
+                )
+            else:
+                func._handler = Handler(
+                    func, "updateQuickReplyShortcut", filters, position
+                )
+            return func
+
+        return decorator
+
+    def on_updateQuickReplyShortcutDeleted(
+        self: "pytdbot_sync.Client" = None,
+        filters: "pytdbot_sync.filters.Filter" = None,
+        position: int = None,
+    ) -> Callable:
+        """A quick reply shortcut and all its messages were deleted
+
+        Args:
+            filters (:class:`pytdbot_sync.filters.Filter`, *optional*):
+                An update filter
+
+            position (``int``, *optional*):
+                The function position in handlers list. Default is ``None`` (append)
+
+        Raises:
+            :py:class:`TypeError`
+        """
+
+        def decorator(func: Callable) -> Callable:
+            if hasattr(func, "_handler"):
+                return func
+            elif isinstance(self, pytdbot_sync.Client):
+                self.add_handler(
+                        "updateQuickReplyShortcutDeleted", func, filters, position
+                    )
+            elif isinstance(self, pytdbot_sync.filters.Filter):
+                func._handler = Handler(
+                    func, "updateQuickReplyShortcutDeleted", self, position
+                )
+            else:
+                func._handler = Handler(
+                    func, "updateQuickReplyShortcutDeleted", filters, position
+                )
+            return func
+
+        return decorator
+
+    def on_updateQuickReplyShortcuts(
+        self: "pytdbot_sync.Client" = None,
+        filters: "pytdbot_sync.filters.Filter" = None,
+        position: int = None,
+    ) -> Callable:
+        """The list of quick reply shortcuts has changed
+
+        Args:
+            filters (:class:`pytdbot_sync.filters.Filter`, *optional*):
+                An update filter
+
+            position (``int``, *optional*):
+                The function position in handlers list. Default is ``None`` (append)
+
+        Raises:
+            :py:class:`TypeError`
+        """
+
+        def decorator(func: Callable) -> Callable:
+            if hasattr(func, "_handler"):
+                return func
+            elif isinstance(self, pytdbot_sync.Client):
+                self.add_handler(
+                        "updateQuickReplyShortcuts", func, filters, position
+                    )
+            elif isinstance(self, pytdbot_sync.filters.Filter):
+                func._handler = Handler(
+                    func, "updateQuickReplyShortcuts", self, position
+                )
+            else:
+                func._handler = Handler(
+                    func, "updateQuickReplyShortcuts", filters, position
+                )
+            return func
+
+        return decorator
+
+    def on_updateQuickReplyShortcutMessages(
+        self: "pytdbot_sync.Client" = None,
+        filters: "pytdbot_sync.filters.Filter" = None,
+        position: int = None,
+    ) -> Callable:
+        """The list of quick reply shortcut messages has changed
+
+        Args:
+            filters (:class:`pytdbot_sync.filters.Filter`, *optional*):
+                An update filter
+
+            position (``int``, *optional*):
+                The function position in handlers list. Default is ``None`` (append)
+
+        Raises:
+            :py:class:`TypeError`
+        """
+
+        def decorator(func: Callable) -> Callable:
+            if hasattr(func, "_handler"):
+                return func
+            elif isinstance(self, pytdbot_sync.Client):
+                self.add_handler(
+                        "updateQuickReplyShortcutMessages", func, filters, position
+                    )
+            elif isinstance(self, pytdbot_sync.filters.Filter):
+                func._handler = Handler(
+                    func, "updateQuickReplyShortcutMessages", self, position
+                )
+            else:
+                func._handler = Handler(
+                    func, "updateQuickReplyShortcutMessages", filters, position
                 )
             return func
 
@@ -1673,7 +1891,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateScopeNotificationSettings", func, filters, position
+                        "updateScopeNotificationSettings", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1774,7 +1992,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateActiveNotifications", func, filters, position
+                        "updateActiveNotifications", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -1811,7 +2029,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateHavePendingNotifications", func, filters, position
+                        "updateHavePendingNotifications", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2096,7 +2314,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateBasicGroupFullInfo", func, filters, position
+                        "updateBasicGroupFullInfo", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2133,7 +2351,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateSupergroupFullInfo", func, filters, position
+                        "updateSupergroupFullInfo", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2170,7 +2388,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateServiceNotification", func, filters, position
+                        "updateServiceNotification", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2238,7 +2456,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateFileGenerationStart", func, filters, position
+                        "updateFileGenerationStart", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2275,7 +2493,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateFileGenerationStop", func, filters, position
+                        "updateFileGenerationStop", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2343,7 +2561,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateFileAddedToDownloads", func, filters, position
+                        "updateFileAddedToDownloads", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2411,7 +2629,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateFileRemovedFromDownloads", func, filters, position
+                        "updateFileRemovedFromDownloads", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2510,7 +2728,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateGroupCallParticipant", func, filters, position
+                        "updateGroupCallParticipant", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2547,7 +2765,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateNewCallSignalingData", func, filters, position
+                        "updateNewCallSignalingData", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2584,7 +2802,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateUserPrivacySettingRules", func, filters, position
+                        "updateUserPrivacySettingRules", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2621,7 +2839,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateUnreadMessageCount", func, filters, position
+                        "updateUnreadMessageCount", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2753,7 +2971,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateStorySendSucceeded", func, filters, position
+                        "updateStorySendSucceeded", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2856,7 +3074,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateStoryListChatCount", func, filters, position
+                        "updateStoryListChatCount", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -2988,7 +3206,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateInstalledStickerSets", func, filters, position
+                        "updateInstalledStickerSets", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -3025,7 +3243,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateTrendingStickerSets", func, filters, position
+                        "updateTrendingStickerSets", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -3159,7 +3377,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateSavedNotificationSounds", func, filters, position
+                        "updateSavedNotificationSounds", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -3291,7 +3509,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateProfileAccentColors", func, filters, position
+                        "updateProfileAccentColors", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -3328,7 +3546,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateLanguagePackStrings", func, filters, position
+                        "updateLanguagePackStrings", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -3460,7 +3678,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateUnconfirmedSession", func, filters, position
+                        "updateUnconfirmedSession", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -3497,7 +3715,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateAttachmentMenuBots", func, filters, position
+                        "updateAttachmentMenuBots", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -3567,7 +3785,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateActiveEmojiReactions", func, filters, position
+                        "updateActiveEmojiReactions", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -3604,7 +3822,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateDefaultReactionType", func, filters, position
+                        "updateDefaultReactionType", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -3674,7 +3892,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateSpeechRecognitionTrial", func, filters, position
+                        "updateSpeechRecognitionTrial", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -3742,7 +3960,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateAnimatedEmojiMessageClicked", func, filters, position
+                        "updateAnimatedEmojiMessageClicked", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -3779,7 +3997,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateAnimationSearchParameters", func, filters, position
+                        "updateAnimationSearchParameters", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -3849,7 +4067,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateAddChatMembersPrivacyForbidden", func, filters, position
+                        "updateAddChatMembersPrivacyForbidden", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -3950,7 +4168,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateNewChosenInlineResult", func, filters, position
+                        "updateNewChosenInlineResult", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -4020,7 +4238,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateNewInlineCallbackQuery", func, filters, position
+                        "updateNewInlineCallbackQuery", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -4090,7 +4308,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateNewPreCheckoutQuery", func, filters, position
+                        "updateNewPreCheckoutQuery", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
@@ -4282,7 +4500,7 @@ class Updates:
                 return func
             elif isinstance(self, pytdbot_sync.Client):
                 self.add_handler(
-                    "updateNewChatJoinRequest", func, filters, position
+                        "updateNewChatJoinRequest", func, filters, position
                     )
             elif isinstance(self, pytdbot_sync.filters.Filter):
                 func._handler = Handler(
