@@ -26,7 +26,7 @@ pip install pytdbot
 ```
 To install the development version from Github, use the following command:
 ```bash
-pip install git+https://github.com/pytdbot/client.git
+pip install git+https://github.com/dev-rio/pytdbot-sync.git
 ```
 
 ### Examples
