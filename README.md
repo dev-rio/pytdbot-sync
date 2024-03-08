@@ -1,4 +1,4 @@
-# Pytdbot [![Version](https://img.shields.io/pypi/v/Pytdbot?style=flat&logo=pypi)](https://pypi.org/project/Pytdbot) [![TDLib version](https://img.shields.io/badge/TDLib-v1.8.25-blue?logo=telegram)](https://github.com/tdlib/td) [![Downloads](https://static.pepy.tech/personalized-badge/pytdbot?period=month&units=none&left_color=grey&right_color=brightgreen&left_text=Downloads)](https://pepy.tech/project/pytdbot)
+# Pytdbot [![Version](https://img.shields.io/pypi/v/Pytdbot?style=flat&logo=pypi)](https://pypi.org/project/Pytdbot) [![TDLib version](https://img.shields.io/badge/TDLib-v1.8.26-blue?logo=telegram)](https://github.com/tdlib/td) [![Downloads](https://static.pepy.tech/personalized-badge/pytdbot?period=month&units=none&left_color=grey&right_color=brightgreen&left_text=Downloads)](https://pepy.tech/project/pytdbot)
 
 Pytdbot (Python TDLib) is an asynchronous [**TDLib**](https://github.com/tdlib/td) wrapper for **Telegram** users/bots written in **Python**.  
 
@@ -7,7 +7,7 @@ Pytdbot (Python TDLib) is an asynchronous [**TDLib**](https://github.com/tdlib/t
 - Fully **asynchronous**
 - **Decorator** based update handler
 - **Bound** methods
-- Supports **userbots**, **Plugins**, [**Filters**](https://github.com/AYMENJD/sync-client/blob/ad33d05d3e48bc8842b3986613ad2d99480a1fa8/pytdbot/filters.py#L23), [**TDLib**](https://github.com/tdlib/td) functions and much more.
+- Supports **userbots**, **Plugins**, [**Filters**](https://github.com/pytdbot/client/blob/ad33d05d3e48bc8842b3986613ad2d99480a1fa8/pytdbot/filters.py#L23), [**TDLib**](https://github.com/tdlib/td) functions and much more.
 
 
 ### Requirements
@@ -26,15 +26,15 @@ pip install pytdbot
 ```
 To install the development version from Github, use the following command:
 ```bash
-pip install git+https://github.com/dev-rio/pytdbot-sync
+pip install git+https://github.com/pytdbot/client.git
 ```
 
 ### Examples
 Basic example:
 ```python
 
-from pytdbot_sync import Client, utils
-from pytdbot_sync.types import LogStreamFile, Update
+from pytdbot import Client, utils
+from pytdbot.types import LogStreamFile, Update
 
 client = Client(
     api_id=0,  
@@ -49,12 +49,12 @@ client = Client(
 
 
 @client.on_updateNewMessage()
-def print_message(c: Client, message: Update):
+async def print_message(c: Client, message: Update):
     print(message)
 
 
 @client.on_updateNewMessage()
-def simple_message(c: Client, message: Update):
+async def simple_message(c: Client, message: Update):
     if message.is_private:
         await message.reply_text('Hi! i am simple bot')
 
@@ -75,12 +75,12 @@ def simple_message(c: Client, message: Update):
 client.run()
 
 ```
-For more examples, check the [examples](https://github.com/dev-rio/pytdbot-sync/tree/main/examples) folder.
+For more examples, check the [examples](https://github.com/pytdbot/client/tree/main/examples) folder.
 
 # Thanks to
 - You for viewing or using this project.
 
-- [@levlam](https://github.com/levlam) for maintaining [TDLib](https://github.com/tdlib/td) and for the help to create [Pytdbot-Sync](https://github.com/AYMENJD/sync-client).
+- [@levlam](https://github.com/levlam) for maintaining [TDLib](https://github.com/tdlib/td) and for the help to create [Pytdbot](https://github.com/pytdbot/client).
 # License
 
-MIT [License](https://github.com/AYMENJD/sync-client/blob/main/LICENSE)
+MIT [License](https://github.com/pytdbot/client/blob/main/LICENSE)
