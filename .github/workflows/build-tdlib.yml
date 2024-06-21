@@ -1,0 +1,122 @@
+name: Build TDLib
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Pytdbot_sync
+        uses: actions/checkout@v3
+
+      - name: Clone TDLib
+        uses: actions/checkout@v3
+        with:
+          repository: tdlib/td
+          path: "td/"
+
+      - name: Install Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      # - name: Install PHP 7.4
+      #   uses: shivammathur/setup-php@v2
+      #   with:
+      #     php-version: "7.4"
+
+      # - name: Install CMake 3.25
+      #   uses: jwlawson/actions-setup-cmake@v1.12
+      #   with:
+      #     cmake-version: "3.25.1"
+
+      - name: Increase swap
+        run: |
+          free -h
+          export SWAP_PATH=$(sudo swapon --show=NAME | tail -1)
+          sudo swapoff -a
+          sudo fallocate -l 7G $SWAP_PATH
+          sudo mkswap $SWAP_PATH
+          sudo swapon $SWAP_PATH
+          free -h
+
+      - name: Install TDLib dependencies
+        id: td
+        run: |
+          sudo apt-get update
+          # sudo sudo apt-get install make zlib1g-dev libssl-dev gperf clang-6.0 libc++-dev libc++abi-dev -y
+          # rm -rf td/build
+          # mkdir td/build
+
+      - name: Setup variables
+        id: vars
+        run: |
+          cd $GITHUB_WORKSPACE/pytdbot_sync
+          mv types/ _types_/
+          echo "CURRENT_TDLIB_COMMIT_HASH=$(python -c "import json; print(json.loads(open('td_api.json').read())['commit_hash'])")" >> $GITHUB_OUTPUT
+          echo "CURRENT_TDLIB_VERSION=$(python -c "import json; print(json.loads(open('td_api.json').read())['version'])")" >> $GITHUB_OUTPUT
+
+          mv _types_/ types/
+
+          cd $GITHUB_WORKSPACE/td
+          echo "LATEST_TDLIB_COMMIT_HASH=$(git log -1 --pretty=%H)" >> $GITHUB_OUTPUT
+          echo "LATEST_TDLIB_VERSION=$(
+            cat CMakeLists.txt |
+            sed -nr 's/.*project\(TDLib VERSION (.*) LANGUAGES CXX C\).*/\1/p'
+          )" >> $GITHUB_OUTPUT
+
+      - name: TDLib version
+        run: |
+          echo "Current TDLib version: ${{ steps.vars.outputs.CURRENT_TDLIB_VERSION }} (${{ steps.vars.outputs.CURRENT_TDLIB_COMMIT_HASH }})"
+          echo "Latest TDLib version: ${{ steps.vars.outputs.LATEST_TDLIB_VERSION }} (${{ steps.vars.outputs.LATEST_TDLIB_COMMIT_HASH }})"
+
+      # - name: Compile
+      #   run: |
+      #     cd td/build
+      #     CXXFLAGS="-stdlib=libc++" CC=/usr/bin/clang-6.0 CXX=/usr/bin/clang++-6.0 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=../tdlib -DTD_ENABLE_LTO=ON -DCMAKE_AR=/usr/bin/llvm-ar-6.0 -DCMAKE_NM=/usr/bin/llvm-nm-6.0 -DCMAKE_OBJDUMP=/usr/bin/llvm-objdump-6.0 -DCMAKE_RANLIB=/usr/bin/llvm-ranlib-6.0 ..
+      #     cmake --build . --target prepare_cross_compiling
+      #     cmake --build . --target install -j45
+
+      - name: Copy TDLib TL
+        run: |
+          cp td/td/generate/scheme/td_api.tl pytdbot_sync/td_api.tl
+
+      # - name: Move libtdjson.so
+      #   run: |
+      #     mkdir -p pytdbot_sync/lib
+      #     mv td/tdlib/lib/libtdjson.so.${{ steps.vars.outputs.LATEST_TDLIB_VERSION }} pytdbot_sync/lib/libtdjson.so
+
+      - name: Generate Pytdbot_sync files
+        run: |
+          cd $GITHUB_WORKSPACE/pytdbot_sync
+          mv types/ _types_/
+          python generate_json.py "${{ steps.vars.outputs.LATEST_TDLIB_VERSION }}" "${{ steps.vars.outputs.LATEST_TDLIB_COMMIT_HASH }}"
+          python generate_files.py
+          python -m pip install black
+          python -m black "methods/tdlibfunctions.py" "handlers/updates.py"
+
+          CURRENT_VERSION=${{ steps.vars.outputs.CURRENT_TDLIB_VERSION }}
+          sed --binary -i "s/${CURRENT_VERSION//./\\.}/${{ steps.vars.outputs.LATEST_TDLIB_VERSION }}/g" ../README.md
+
+          mv _types_/ types/
+
+      - name: Commit TDLib files
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Update TDLib to ${{ steps.vars.outputs.LATEST_TDLIB_VERSION }} (tdlib/td@${{ steps.vars.outputs.LATEST_TDLIB_COMMIT_HASH }})"
+          add: '["pytdbot_sync/td_api.tl"]'
+          committer_name: GitHub Actions
+          committer_email: 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Commit generated Pytdbot_sync files
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Generate Pytdbot_sync files"
+          add: '["README.md", "pytdbot_sync/methods/tdlibfunctions.py","pytdbot_sync/handlers/updates.py", "pytdbot_sync/td_api.json",]'
+          committer_name: GitHub Actions
+          committer_email: 41898282+github-actions[bot]@users.noreply.github.com
