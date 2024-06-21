@@ -1,5 +1,5 @@
 from pytdbot_sync import Client, filters, types, utils
-import logging
+import logging, threading
 
 logging.basicConfig(
     level=logging.INFO,
@@ -7,6 +7,7 @@ logging.basicConfig(
     format="[%(levelname)s][p %(process)d %(threadName)s][%(created)f][%(filename)s:%(lineno)d][%(funcName)s]  %(message)s",
 )
 is_private_filter = filters.create(lambda _, message: message.is_private == True)
+lock = threading.Lock()
 
 client = Client(
     api_id=0,
@@ -78,21 +79,22 @@ request_buttons = types.ShowKeyboardMarkup(
 
 
 def increase_usage(by: int = 1):
-    if "x_usage" not in client.options:
-        client.call_method(
-            "setOption",
-            name="x_usage",
-            value={"@type": "optionValueInteger", "value": by},
-        )
-    else:
-        client.call_method(
-            "setOption",
-            name="x_usage",
-            value={
-                "@type": "optionValueInteger",
-                "value": client.options["x_usage"] + by,
-            },
-        )
+    with lock:
+        if "x_usage" not in client.options:
+            client.call_method(
+                "setOption",
+                name="x_usage",
+                value={"@type": "optionValueInteger", "value": by},
+            )
+        else:
+            client.call_method(
+                "setOption",
+                name="x_usage",
+                value={
+                    "@type": "optionValueInteger",
+                    "value": client.options["x_usage"] + by,
+                },
+            )
 
 
 @client.on_updateNewMessage(is_private_filter)
@@ -107,9 +109,7 @@ def start(client: Client, message: types.Update):
         )
         increase_usage()
     elif message.text == "/usage":
-        message.reply_text(
-            "*Bot usage*: {}".format(client.options.get("x_usage", 0))
-        )
+        message.reply_text("*Bot usage*: {}".format(client.options.get("x_usage", 0)))
 
 
 @client.on_updateNewMessage(is_private_filter)

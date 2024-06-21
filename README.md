@@ -1,4 +1,4 @@
-# Pytdbot [![Version](https://img.shields.io/pypi/v/Pytdbot?style=flat&logo=pypi)](https://pypi.org/project/Pytdbot) [![TDLib version](https://img.shields.io/badge/TDLib-v1.8.26-blue?logo=telegram)](https://github.com/tdlib/td) [![Downloads](https://static.pepy.tech/personalized-badge/pytdbot?period=month&units=none&left_color=grey&right_color=brightgreen&left_text=Downloads)](https://pepy.tech/project/pytdbot)
+# Pytdbot [![Version](https://img.shields.io/pypi/v/Pytdbot?style=flat&logo=pypi)](https://pypi.org/project/Pytdbot) [![TDLib version](https://img.shields.io/badge/TDLib-v1.8.31-blue?logo=telegram)](https://github.com/tdlib/td) [![Downloads](https://static.pepy.tech/personalized-badge/pytdbot?period=month&units=none&left_color=grey&right_color=brightgreen&left_text=Downloads)](https://pepy.tech/project/pytdbot)
 
 Pytdbot (Python TDLib) is an asynchronous [**TDLib**](https://github.com/tdlib/td) wrapper for **Telegram** users/bots written in **Python**.  
 
@@ -21,9 +21,6 @@ Pytdbot (Python TDLib) is an asynchronous [**TDLib**](https://github.com/tdlib/t
 > For better performance, it's recommended to install [orjson](https://github.com/ijl/orjson#install) or [ujson](https://github.com/ultrajson/ultrajson#ultrajson).
 
 You can install Pytdbot using pip:
-```bash
-pip install pytdbot
-```
 To install the development version from Github, use the following command:
 ```bash
 pip install git+https://github.com/dev-rio/pytdbot-sync.git
@@ -33,8 +30,8 @@ pip install git+https://github.com/dev-rio/pytdbot-sync.git
 Basic example:
 ```python
 
-from pytdbot import Client, utils
-from pytdbot.types import LogStreamFile, Update
+from pytdbot_sync import Client, utils
+from pytdbot_sync.types import LogStreamFile, Update
 
 client = Client(
     api_id=0,  
@@ -49,18 +46,18 @@ client = Client(
 
 
 @client.on_updateNewMessage()
-async def print_message(c: Client, message: Update):
+def print_message(c: Client, message: Update):
     print(message)
 
 
 @client.on_updateNewMessage()
-async def simple_message(c: Client, message: Update):
+def simple_message(c: Client, message: Update):
     if message.is_private:
-        await message.reply_text('Hi! i am simple bot')
+        message.reply_text('Hi! i am simple bot')
 
     if message.is_self and message.text: # Works only for userbots.
         if message.text == "!id":
-            await message.edit_text(
+            message.edit_text(
                 "\\- Current chat ID: {}\n\\- {} ID: {}".format(
                     utils.code(str(message.chat_id)),
                     utils.bold(c.me["first_name"]),
@@ -75,7 +72,7 @@ async def simple_message(c: Client, message: Update):
 client.run()
 
 ```
-For more examples, check the [examples](https://github.com/pytdbot/client/tree/main/examples) folder.
+For more examples, check the [examples](https://github.com/dev-rio/pytdbot-sync/tree/main/examples) folder.
 
 # Thanks to
 - You for viewing or using this project.

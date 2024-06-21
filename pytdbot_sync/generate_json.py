@@ -54,9 +54,9 @@ if __name__ == "__main__":
                     if name.strip() == "description":
                         description = _description.strip()
                     else:
-                        params[
-                            name.replace("param_", "").strip()
-                        ] = _description.strip()
+                        params[name.replace("param_", "").strip()] = (
+                            _description.strip()
+                        )
             elif _end := end_regex.match(line):
                 _data = {
                     "description": description,

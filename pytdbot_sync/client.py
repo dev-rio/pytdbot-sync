@@ -1,7 +1,8 @@
 import signal
 import pytdbot_sync
+import queue
 import time
-
+import threading
 from platform import python_implementation, python_version
 from os.path import join as join_path
 from pathlib import Path
@@ -13,9 +14,8 @@ from logging import getLogger, DEBUG
 from base64 import b64encode
 from deepdiff import DeepDiff
 from concurrent.futures import ThreadPoolExecutor
-from threading import Thread, current_thread, main_thread
+from threading import current_thread, main_thread
 from json import dumps
-from queue import Queue
 
 from .tdjson import TdJson
 from .handlers import Decorators, Handler
@@ -29,7 +29,7 @@ logger = getLogger(__name__)
 
 
 class Client(Decorators, Methods):
-    """Pytdbot sync, a TDLib client
+    """Pytdbot, a TDLib client
 
     Args:
         api_id (``int``):
@@ -50,14 +50,14 @@ class Client(Decorators, Methods):
         lib_path (``str``, *optional*):
             Path to TDLib library. Default is ``None`` (auto-detect)
 
-        plugins (:class:`~pytdbot_sync.types.Plugins`, *optional*):
+        plugins (:class:`~pytdbot.types.Plugins`, *optional*):
             Plugins to load
 
-        update_class (:class:`~pytdbot_sync.types.Update`, *optional*):
-            Update class to use. Default is :class:`~pytdbot_sync.types.Update`
+        update_class (:class:`~pytdbot.types.Update`, *optional*):
+            Update class to use. Default is :class:`~pytdbot.types.Update`
 
         default_parse_mode (``str``, *optional*):
-            The default ``parse_mode`` for methods: :meth:`~pytdbot_sync.Client.sendTextMessage`, :meth:`~pytdbot_sync.Client.sendPhoto`, :meth:`~pytdbot_sync.Client.sendAudio`, :meth:`~pytdbot_sync.Client.sendVideo`, :meth:`~pytdbot_sync.Client.sendDocument`, :meth:`~pytdbot_sync.Client.sendAnimation`, :meth:`~pytdbot_sync.Client.sendVoice`, :meth:`~pytdbot_sync.Client.sendCopy`, :meth:`~pytdbot_sync.Client.editTextMessage`; Default is ``None`` (Don\'t parse)
+            The default ``parse_mode`` for methods: :meth:`~pytdbot.Client.sendTextMessage`, :meth:`~pytdbot.Client.sendPhoto`, :meth:`~pytdbot.Client.sendAudio`, :meth:`~pytdbot.Client.sendVideo`, :meth:`~pytdbot.Client.sendDocument`, :meth:`~pytdbot.Client.sendAnimation`, :meth:`~pytdbot.Client.sendVoice`, :meth:`~pytdbot.Client.sendCopy`, :meth:`~pytdbot.Client.editTextMessage`; Default is ``None`` (Don\'t parse)
             Supported values: ``markdown``, ``markdownv2``, ``html``
 
         system_language_code (``str``, *optional*):
@@ -78,12 +78,6 @@ class Client(Decorators, Methods):
         use_message_database (``bool``, *optional*):
             If set to true, the library will maintain a cache of chats and messages. Implies use_chat_info_database. Default is ``True``
 
-        enable_storage_optimizer (``bool``, *optional*):
-            If set to true, old files will automatically be deleted. Default is ``True``
-
-        ignore_file_names (``bool``, *optional*):
-            If set to true, original file names will be ignored. Otherwise, downloaded files will be saved under names as close as possible to the original name. Default is ``False``
-
         options (``dict``, *optional*):
             Pass key-value dictionary to set TDLib options. Check the list of available options at https://core.telegram.org/tdlib/options
 
@@ -97,7 +91,7 @@ class Client(Decorators, Methods):
         td_verbosity (``int``, *optional*):
             Verbosity level of TDLib. Default is ``2``
 
-        td_log (:class:`~pytdbot_sync.types.LogStream`, *optional*):
+        td_log (:class:`~pytdbot.types.LogStream`, *optional*):
             Log stream. Default is ``None`` (Log to ``stdout``)
     """
 
@@ -118,8 +112,6 @@ class Client(Decorators, Methods):
         use_file_database: bool = True,
         use_chat_info_database: bool = True,
         use_message_database: bool = True,
-        enable_storage_optimizer: bool = True,
-        ignore_file_names: bool = False,
         options: dict = None,
         sleep_threshold: int = None,
         workers: int = 5,
@@ -146,17 +138,15 @@ class Client(Decorators, Methods):
         self.use_file_database = use_file_database
         self.use_chat_info_database = use_chat_info_database
         self.use_message_database = use_message_database
-        self.enable_storage_optimizer = enable_storage_optimizer
-        self.ignore_file_names = ignore_file_names
         self.td_options = options
         self.sleep_threshold = (
             sleep_threshold if isinstance(sleep_threshold, int) else 0
         )
         self.workers = ThreadPoolExecutor(
-            workers if isinstance(workers, int) and workers > 0 else 5,
-            "pytdbot_sync_worker",
+            max_workers=workers if isinstance(workers, int) and workers > 0 else 5,
+            thread_name_prefix="pytdbot_sync_worker",
         )
-        self.queue = Queue()
+        self.queue = queue.Queue()
         self.td_verbosity = td_verbosity
         self.connection_state: str = None
         self.is_running = None
@@ -170,8 +160,10 @@ class Client(Decorators, Methods):
         self._results = {}
         self._tdjson = TdJson(lib_path, td_verbosity)
         self._retry_after_prefex = "Too Many Requests: retry after "
+        self._workers_tasks = None
         self.__authorization_state = None
         self.__authorization = None
+        self.__cache = {"is_coro_filter": {}}
         self.__local_handlers = {
             "updateAuthorizationState": self.__handle_authorization_state,
             "updateMessageSendSucceeded": self.__handle_update_message_succeeded,
@@ -191,12 +183,12 @@ class Client(Decorators, Methods):
                 {"@type": "setLogStream", "log_stream": td_log.to_dict()}
             )
 
-    def __enter__(self):
+    def __aenter__(self):
         self.start()
         self.login()
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __aexit__(self, exc_type, exc_val, exc_tb):
         try:
             self.stop()
         except Exception:
@@ -208,18 +200,31 @@ class Client(Decorators, Methods):
         return self.__authorization_state
 
     def start(self, login: bool = True) -> None:
-        """Start Pytdbot sync client
+        """Start pytdbot client
 
         Args:
             login (``bool``, *optional*):
                 Login after start. Default is ``True``
         """
         if not self.is_running:
-            logger.info("Starting Pytdbot sync client...")
+            logger.info("Starting pytdbot client...")
 
-            Thread(target=self.__listen_loop, daemon=True).start()
+            if isinstance(self.workers, int):
+                self._workers_tasks = []
+                for x in range(self.workers):
+                    worker_thread = threading.Thread(target=self._queue_update_worker)
+                    worker_thread.start()
+                    self._workers_tasks.append(worker_thread)
+                self.__is_queue_worker = True
 
-            logger.info("Started with %s workers", self.workers._max_workers)
+                logger.info("Started with %s workers", self.workers)
+            else:
+                self.__is_queue_worker = False
+                self._workers_tasks = None  # تعيين None إذا لم يكن هناك عمال
+                logger.info("Started with unlimited updates processes")
+
+            listener_thread = threading.Thread(target=self.__listen_loop)
+            listener_thread.start()
 
         if login:
             self.login()
@@ -273,7 +278,7 @@ class Client(Decorators, Methods):
             func (``Callable``):
                 A callable function
 
-            filters (:class:`~pytdbot_sync.filters.Filter`, *optional*):
+            filters (:class:`~pytdbot.filters.Filter`, *optional*):
                 message filter
 
             position (``int``, *optional*):
@@ -287,7 +292,7 @@ class Client(Decorators, Methods):
         elif not isinstance(func, Callable):
             raise TypeError("func must be callable")
         elif filters is not None and not isinstance(filters, Filter):
-            raise TypeError("filters must be instance of pytdbot_sync.filters.Filter")
+            raise TypeError("filters must be instance of pytdbot.filters.Filter")
         else:
             func = Handler(func, update_type, filters, position)
             if update_type not in self._handlers:
@@ -332,7 +337,7 @@ class Client(Decorators, Methods):
         Example:
             .. code-block:: python
 
-                from pytdbot_sync import Client
+                from pytdbot import Client
 
                 with Client(...) as client:
                     res = client.invoke({"@type": "getOption", "name": "version"})
@@ -344,7 +349,7 @@ class Client(Decorators, Methods):
                 The request to be sent
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
         """
 
         result = Result(request)
@@ -356,7 +361,7 @@ class Client(Decorators, Methods):
             logger.debug(f"Sending: {dumps(result.request, indent=4)}")
 
         self.__send(result.request)
-        result.wait()
+        result
 
         if result.is_error:
             if result["code"] == 429:
@@ -368,11 +373,10 @@ class Client(Decorators, Methods):
                     logger.error(
                         f"Sleeping for {retry_after}s (Caused by {result.request['@type']})"
                     )
-
                     time.sleep(retry_after)
                     self._results[result.id] = result
                     self.__send(result.request)
-                    result.wait()
+                    result
             elif not self.use_message_database and (
                 result["code"] == 400
                 and result["message"] == "Chat not found"
@@ -386,7 +390,7 @@ class Client(Decorators, Methods):
 
                 if not load_chat.is_error:
                     logger.debug(f"Chat {chat_id} is loaded")
-                    
+
                     message_id = result.request.get("reply_to", {}).get(
                         "message_id", result.request.get("message_id", 0)
                     )
@@ -400,7 +404,7 @@ class Client(Decorators, Methods):
                     result.reset()
                     self._results[result.id] = result
                     self.__send(result.request)
-                    result.wait()
+                    result
                 else:
                     logger.error(f"Couldn't load chat {chat_id}")
 
@@ -412,7 +416,7 @@ class Client(Decorators, Methods):
         Example:
             .. code-block:: python
 
-                from pytdbot_sync import Client
+                from pytdbot import Client
 
                 with Client(...) as client:
                     res = client.call_method("getOption", name="version"})
@@ -424,7 +428,7 @@ class Client(Decorators, Methods):
                 TDLib method name
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
         """
 
         kwargs["@type"] = method
@@ -437,7 +441,7 @@ class Client(Decorators, Methods):
         Example:
             .. code-block:: python
 
-                from pytdbot_sync import Client
+                from pytdbot import Client
 
                 client = Client(...)
 
@@ -499,29 +503,24 @@ class Client(Decorators, Methods):
             request
         )  # tdjson.send is non-blocking method, So we don't need run_in_executor. This improves performance
 
-    def __receive(self, timeout: float = 2.0) -> dict:
-        # return self.loop.run_in_executor(
-        #     self._executor, self._tdjson.receive, timeout
-        # )
-        return self._tdjson.receive(timeout)
-
     def _check_init_args(self):
         if not isinstance(self.__api_id, int):
             raise TypeError("api_id must be int")
         elif not isinstance(self.__api_hash, str):
             raise TypeError("api_hash must be str")
-        elif not isinstance(self.__database_encryption_key, str) and not isinstance(
-            self.__database_encryption_key, bytes
-        ):
+        elif not isinstance(self.__database_encryption_key, (str, bytes)):
             raise TypeError("database_encryption_key must be str or bytes")
         elif not isinstance(self.files_directory, str):
             raise TypeError("files_directory must be str")
         elif not isinstance(self.td_verbosity, int):
             raise TypeError("td_verbosity must be int")
-        elif type(Update) is not type(self.update_class):
+        elif not isinstance(self.update_class, Update):
             raise TypeError(
-                "update_class must be instance of class pytdbot_sync.types.Update"
+                "update_class must be instance of class pytdbot.types.Update"
             )
+
+        if isinstance(self.workers, int) and self.workers < 1:
+            raise ValueError("workers must be greater than 0")
 
     def get_retry_after_time(self, error_message: str) -> int:
         """Get the retry after time from flood wait error message
@@ -538,7 +537,7 @@ class Client(Decorators, Methods):
             return int(error_message.removeprefix(self._retry_after_prefex))
         except Exception:
             return 0
-        
+
     def _load_plugins(self):
         count = 0
         handlers = 0
@@ -578,6 +577,7 @@ class Client(Decorators, Methods):
             ]
 
             for handler in handlers_to_load:
+                if callable(handler.func):
                     self.add_handler(
                         handler.update_type,
                         handler.func,
@@ -588,6 +588,10 @@ class Client(Decorators, Methods):
                     plugin_handlers_count += 1
 
                     logger.debug(f"Handler {handler.func} added from {module_path}")
+                else:
+                    logger.warning(
+                        f"Handler {handler.func} is not an function from module {module_path}"
+                    )
             count += 1
 
             logger.debug(
@@ -595,28 +599,36 @@ class Client(Decorators, Methods):
             )
 
         logger.info(f"From {count} plugins got {handlers} handlers")
+
+    def is_coro_filter(self, func: Callable) -> bool:
+        if func in self.__cache["is_coro_filter"]:
+            return self.__cache["is_coro_filter"][func]
+        else:
+            is_coro = callable(func)
+            self.__cache["is_coro_filter"][func] = is_coro
+            return is_coro
+
     def __listen_loop(self):
-        try:
-            self.is_running = True
-            logger.info("Listening to updates...")
+        with ThreadPoolExecutor(max_workers=1) as executor:
+            try:
+                self.is_running = True
+                logger.info("Listening to updates...")
 
-            while self.is_running:
-                update = self._tdjson.receive(100000.0)  # seconds
-                if update is None:
-                    continue
-                self._process_update(update)
+                while self.is_running:
+                    future = executor.submit(self._tdjson.receive, 100000.0)  # Seconds
+                    update = future.result()
+                    if update is None:
+                        continue
+                    self._process_update(update)
 
-        except Exception:
-            logger.exception("Exception in __listen_loop")
-        finally:
-            self.is_running = False
+            except Exception:
+                logger.exception("Exception in __listen_loop")
+            finally:
+                self.is_running = False
 
     def _process_update(self, update):
         del update["@client_id"]
 
-        if "@type" not in update:
-            logger.error(f"Unexpected update received: {update}")
-            return
         if "@extra" in update:
             if (
                 logger.root.level >= DEBUG
@@ -630,10 +642,12 @@ class Client(Decorators, Methods):
         else:
             update_handler = self.__local_handlers.get(update["@type"])
             if update_handler:
-                t = Thread(target=update_handler, args=(update,))
-                t.start()
+                update_handler(update)
 
-            self.workers.submit(self._update_worker, update)
+            if self.__is_queue_worker:
+                self.queue.put_nowait(update)
+            else:
+                self._handle_update(update)
 
     def __run_initializers(self, update):
         for initializer in self._handlers["initializer"]:
@@ -641,7 +655,10 @@ class Client(Decorators, Methods):
                 if initializer.filter is not None:
                     filter_function = initializer.filter.func
 
-                    if not filter_function(self, update):
+                    if self.is_coro_filter(filter_function):
+                        if not filter_function(self, update):
+                            continue
+                    elif not filter_function(self, update):
                         continue
 
                 initializer(self, update)
@@ -656,8 +673,10 @@ class Client(Decorators, Methods):
             try:
                 if handler.filter is not None:
                     filter_function = handler.filter.func
-
-                    if not filter_function(self, update):
+                    if self.is_coro_filter(filter_function):
+                        if not filter_function(self, update):
+                            continue
+                    elif not filter_function(self, update):
                         continue
 
                 handler(self, update)
@@ -672,7 +691,10 @@ class Client(Decorators, Methods):
                 if finalizer.filter is not None:
                     filter_function = finalizer.filter.func
 
-                    if not filter_function(self, update):
+                    if self.is_coro_filter(filter_function):
+                        if not filter_function(self, update):
+                            continue
+                    elif not filter_function(self, update):
                         continue
 
                 finalizer(self, update)
@@ -681,41 +703,41 @@ class Client(Decorators, Methods):
             except Exception:
                 logger.exception(f"Finalizer {finalizer} failed")
 
-    def _update_worker(self, update):
-        if self.is_running:
+    def _handle_update(self, update):
+        if (
+            logger.root.level >= DEBUG
+        ):  # dumping all updates can create performance issues
+            logger.debug(
+                f"Received: {dumps(update, indent=4)}",
+            )
+
+        if update["@type"] in self._handlers:
+            update = self.update_class(self, update)
+            if (
+                update["@type"] == "updateNewMessage"
+                and update["message"]["is_outgoing"]
+                and "sending_state" in update["message"]
+            ):
+                return
+
             try:
-                if "@type" not in update:
-                    return
+                self.__run_initializers(update)
+                self.__run_handlers(update)
+            except StopHandlers:
+                pass
+            finally:
+                self.__run_finalizers(update)
 
-                if (
-                    logger.root.level >= DEBUG
-                ):  # dumping all updates can create performance issues
-                    logger.debug(
-                        f"Received: {dumps(update, indent=4)}",
-                    )
-
-                if update["@type"] in self._handlers:
-
-                    update = self.update_class(self, update)
-                    if (
-                        update["@type"] == "updateNewMessage"
-                        and update["message"]["is_outgoing"]
-                        and "sending_state" in update["message"]
-                    ):
-                        return
-
-                    try:
-                        self.__run_initializers(update)
-                        self.__run_handlers(update)
-                    except StopHandlers:
-                        pass
-                    finally:
-                        self.__run_finalizers(update)
+    def _queue_update_worker(self):
+        self.is_running = True
+        while self.is_running:
+            try:
+                self._handle_update(self.queue.get())
             except Exception:
-                logger.exception("Exception in _update_worker")
+                logger.exception("Got worker exception")
 
     def set_td_parameters(self):
-        """Make a call to :meth:`~pytdbot_sync.Client.setTdlibParameters` with the current client init parameters
+        """Make a call to :meth:`~pytdbot.Client.setTdlibParameters` with the current client init parameters
 
         Raises:
             `AuthorizationError`
@@ -736,14 +758,12 @@ class Client(Decorators, Methods):
             use_message_database=self.use_message_database,
             use_secret_chats=False,
             system_version=None,
-            enable_storage_optimizer=self.enable_storage_optimizer,
-            ignore_file_names=self.ignore_file_names,
             files_directory=self.files_directory,
             database_encryption_key=b64encode(self.__database_encryption_key).decode(
                 "utf-8"
             ),
             database_directory=join_path(self.files_directory, "database"),
-            application_version=f"Pytdbot sync {pytdbot_sync.__version__}",
+            application_version=f"Pytdbot {pytdbot_sync.__version__}",
         )
         if res.is_error:
             raise AuthorizationError(res.result["message"])
@@ -842,7 +862,6 @@ class Client(Decorators, Methods):
                     logger.error(
                         f"Sleeping for {retry_after}s (Caused by {result.request['@type']})"
                     )
-
                     time.sleep(retry_after)
                     res = self.invoke(result.request)
 
@@ -873,7 +892,7 @@ class Client(Decorators, Methods):
             logger.info(
                 "Updating {} ({}) info".format(
                     self.me["first_name"],
-                str(self.me["id"])
+                    str(self.me["id"])
                     if "usernames" not in self.me
                     else "@" + self.me["usernames"]["editable_username"],
                 )
@@ -890,10 +909,10 @@ class Client(Decorators, Methods):
 
         if not isinstance(self.__token, str):
             while self.is_running:
-                user_input = input("Enter a phone number or bot token: ")
+                user_input = self.__ainput("Enter a phone number or bot token: ")
 
                 if user_input:
-                    y_n = input(f'Is "{user_input}" correct? (y/n): ')
+                    y_n = self.__ainput(f'Is "{user_input}" correct? (y/n): ')
 
                     if y_n == "" or y_n.lower() in {"y", "yes"}:
                         if ":" in user_input:
@@ -919,7 +938,7 @@ class Client(Decorators, Methods):
             return
 
         while self.is_running:
-            email_address = input("Enter your email address: ")
+            email_address = self.__ainput("Enter your email address: ")
 
             res = self.setAuthenticationEmailAddress(email_address)
             if res.is_error:
@@ -932,7 +951,7 @@ class Client(Decorators, Methods):
             return
 
         while self.is_running:
-            code = input(
+            code = self.__ainput(
                 "Enter the email authentication code you received: ",
             )
 
@@ -964,9 +983,7 @@ class Client(Decorators, Methods):
             code_type = "fragment.com SMS"
 
         while self.is_running:
-            code = input(
-                f"Enter the login code received via {code_type}: "
-            )
+            code = self.__ainput(f"Enter the login code received via {code_type}: ")
 
             res = self.checkAuthenticationCode(code=code)
             if res.is_error:
@@ -979,8 +996,8 @@ class Client(Decorators, Methods):
             return
 
         while self.is_running:
-            first_name = input("Enter your first name: ")
-            last_name = input("Enter your last name: ")
+            first_name = self.__ainput("Enter your first name: ")
+            last_name = self.__ainput("Enter your last name: ")
 
             res = self.registerUser(first_name=first_name, last_name=last_name)
             if res.is_error:
@@ -996,19 +1013,17 @@ class Client(Decorators, Methods):
             print(f"Your 2FA password hint is: {self.__authorization['password_hint']}")
 
         while self.is_running:
-            password = (
-                getpass(
-                    "Enter your 2FA password {}: ".format(
-                        "(empty to recover)"
-                        if self.__authorization["has_recovery_email_address"]
-                        else ""
-                    )
-                ),
+            password = getpass(
+                "Enter your 2FA password {}: ".format(
+                    "(empty to recover)"
+                    if self.__authorization["has_recovery_email_address"]
+                    else ""
+                )
             )
 
             if password == "":
                 if self.__authorization["has_recovery_email_address"]:
-                    y_n = input(
+                    y_n = self.__ainput(
                         "Are you sure you want to recover your 2FA password? (y/n): ",
                     )
 
@@ -1019,7 +1034,7 @@ class Client(Decorators, Methods):
                             raise AuthorizationError(res["message"])
                         else:
                             while True:
-                                recovery_code = input(
+                                recovery_code = self.__ainput(
                                     f"Enter your recovery code sent to {self.__authorization['recovery_email_address_pattern']}: "
                                 )
 
@@ -1052,26 +1067,33 @@ class Client(Decorators, Methods):
         self.is_authenticated = False
         self.is_running = False
 
-        self.workers.shutdown(wait=False, cancel_futures=True)
+        if self.__is_queue_worker:
+            for worker_task in self._workers_tasks:
+                worker_task.cancel()
 
-    def _register_signal_handlers(self):
-        def _handle_signal(sig_num, frame):
-            self.stop()
 
-        if current_thread() is main_thread():
+def _register_signal_handlers(self):
+    def _handle_signal(signum, frame):
+        self.stop()
+        for sig in {signal.SIGINT, signal.SIGTERM, signal.SIGABRT, signal.SIGSEGV}:
+            signal.signal(sig, signal.SIG_DFL)
 
-            for sig in {
-                signal.SIGINT,
-                signal.SIGTERM,
-                signal.SIGABRT,
-                signal.SIGSEGV,
-            }:
+    if current_thread() is main_thread():
+        try:
+            for sig in {signal.SIGINT, signal.SIGTERM, signal.SIGABRT, signal.SIGSEGV}:
                 signal.signal(sig, _handle_signal)
+        except NotImplementedError:  # Windows doesn't support add_signal_handler
+            pass
+
+    def __ainput(self, prompt: str):
+        return input(prompt)
 
     def _print_welcome(self):
-        print(f"Welcome to Pytdbot Sync (v{pytdbot_sync.__version__}). {pytdbot_sync.__copyright__}")
         print(
-            f"Pytdbot Sync is free software and comes with ABSOLUTELY NO WARRANTY. Licensed under the terms of {pytdbot_sync.__license__}.\n\n"
+            f"Welcome to Pytdbot (v{pytdbot_sync.__version__}). {pytdbot_sync.__copyright__}"
+        )
+        print(
+            f"Pytdbot is free software and comes with ABSOLUTELY NO WARRANTY. Licensed under the terms of {pytdbot_sync.__license__}.\n\n"
         )
 
 

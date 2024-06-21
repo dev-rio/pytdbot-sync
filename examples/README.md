@@ -1,5 +1,5 @@
 # Examples
-Here is some examples of using [Pytdbot](https://github.com/AYMENJD/sync-client)
+Here is some examples of using [Pytdbot](https://github.com/pytdbot/client)
 
 ## chatIDBot.py
 An example of a bot that prints the ID of any chat selected by the user using `request_user/chat` button.

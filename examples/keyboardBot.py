@@ -47,7 +47,7 @@ def start(c: Client, message: Update):
                 [
                     [
                         InlineKeyboardButton.url(
-                            "GitHub", "https://github.com/AYMENJD/sync-client"
+                            "GitHub", "https://github.com/pytdbot/client"
                         )
                     ]
                 ]
@@ -106,7 +106,7 @@ def callback_query(c: Client, message: Update):
                 [
                     [
                         InlineKeyboardButton.url(
-                            "GitHub", "https://github.com/AYMENJD/sync-client"
+                            "GitHub", "https://github.com/pytdbot/client"
                         )
                     ]
                 ]

@@ -1,5 +1,5 @@
 from ctypes.util import find_library
-from ctypes import c_int, c_double, c_void_p, c_char_p, CDLL
+from ctypes import c_int, c_double, c_char_p, CDLL
 from logging import getLogger
 from typing import Union
 
@@ -83,9 +83,10 @@ class TdJson:
 
         self.client_id = self._td_create_client_id()
 
-        td_version, td_commit_hash = self.execute(
-            {"@type": "getOption", "name": "version"}
-        ), self.execute({"@type": "getOption", "name": "commit_hash"})
+        td_version, td_commit_hash = (
+            self.execute({"@type": "getOption", "name": "version"}),
+            self.execute({"@type": "getOption", "name": "commit_hash"}),
+        )
 
         logger.info(
             f"Using TDLib {td_version['value']} ({td_commit_hash['value'][:9]}) with {json.__name__} encoder"

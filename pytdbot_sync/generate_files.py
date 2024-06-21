@@ -1,75 +1,69 @@
-if __name__ != "__main__":
-    exit(1)
+if __name__ == "__main__":
+    from json import loads
+    import utils
 
-from json import loads
-import utils
+    with open("td_api.json") as f:
+        data = loads(f.read())
 
+    def getP(params: dict):
+        nullable = []
+        non = []
+        for k, v in params.items():
+            name, _type = k, v["type"]
+            param = ""
 
-with open("td_api.json") as f:
-    data = loads(f.read())
+            if _type == "Bool":
+                param = f"{name}: bool"
+            elif _type.startswith("int"):
+                param = f"{name}: int"
+            elif _type == "bytes":
+                param = f"{name}: bytes"
+            elif _type.startswith("vector"):
+                param = f"{name}: list"
+            elif _type == "string":
+                param = f"{name}: str"
+            elif _type == "double":
+                param = f"{name}: float"
+            else:
+                param = f"{name}: dict"
 
+            if v["is_optional"]:
+                param += " = None"
+                nullable.append(param)
+            else:
+                non.append(param)
+        if non or nullable:
+            return ", ".join(non + nullable)
 
-def getP(params: dict):
-    nullable = []
-    non = []
-    for k, v in params.items():
-        name, _type = k, v["type"]
-        param = ""
-
+    def getType(_type):
         if _type == "Bool":
-            param = f"{name}: bool"
+            return "bool"
         elif _type.startswith("int"):
-            param = f"{name}: int"
+            return "int"
         elif _type == "bytes":
-            param = f"{name}: bytes"
+            return "bytes"
         elif _type.startswith("vector"):
-            param = f"{name}: list"
+            return "list"
         elif _type == "string":
-            param = f"{name}: str"
+            return "str"
         elif _type == "double":
-            param = f"{name}: float"
+            return "float"
         else:
-            param = f"{name}: dict"
+            return _type
 
-        if v["is_optional"]:
-            param += " = None"
-            nullable.append(param)
-        else:
-            non.append(param)
-    if non or nullable:
-        return ", ".join(non + nullable)
-
-
-def getType(_type):
-    if _type == "Bool":
-        return "bool"
-    elif _type.startswith("int"):
-        return "int"
-    elif _type == "bytes":
-        return "bytes"
-    elif _type.startswith("vector"):
-        return "list"
-    elif _type == "string":
-        return "str"
-    elif _type == "double":
-        return "float"
-    else:
-        return _type
-
-
-updates_dec = """    def on_{update_name}(
-    self: "pytdbot_sync.Client" = None,
-    filters: "pytdbot_sync.filters.Filter" = None,
-    position: int = None,
-) -> Callable:
+    updates_dec = """    def on_{update_name}(
+        self: "pytdbot.Client" = None,
+        filters: "pytdbot.filters.Filter" = None,
+        position: int = None,
+    ) -> Callable:
         \"\"\"{description}
 
         Args:
-            filters (:class:`pytdbot_sync.filters.Filter`, *optional*):
+            filters (:class:`pytdbot.filters.Filter`, *optional*):
                 An update filter
 
-            position (``int``, *optional``):
-                The function position in handlers list. Defaults to ``None`` (append)
+            position (``int``, *optional*):
+                The function position in handlers list. Default is ``None`` (append)
 
         Raises:
             :py:class:`TypeError`
@@ -78,9 +72,12 @@ updates_dec = """    def on_{update_name}(
         def decorator(func: Callable) -> Callable:
             if hasattr(func, "_handler"):
                 return func
-            elif isinstance(self, pytdbot_sync.Client):
-                self.add_handler("{update_name}", func, filters, position)
-            elif isinstance(self, pytdbot_sync.filters.Filter):
+            elif isinstance(self, pytdbot.Client):
+                if callable(func):
+                    self.add_handler("{update_name}", func, filters, position)
+                else:
+                    raise TypeError("Handler must be a callable function")
+            elif isinstance(self, pytdbot.filters.Filter):
                 func._handler = Handler(func, "{update_name}", self, position)
             else:
                 func._handler = Handler(func, "{update_name}", filters, position)
@@ -90,62 +87,57 @@ updates_dec = """    def on_{update_name}(
 
 """
 
-
-def updates():
-    with open("handlers/updates.py", "w") as f:
-        f.write(
-            'import pytdbot_sync\n\nfrom .handler import Handler\nfrom typing import Callable\nfrom logging import getLogger\n\nlogger = getLogger(__name__)\n\n\nclass Updates:\n    """Auto generated TDLib updates"""\n\n'
-        )
-        for k, v in data["updates"].items():
+    def updates():
+        with open("handlers/updates.py", "w") as f:
             f.write(
-                updates_dec.format(
-                    update_name=k, description=utils.escape_markdown(v["description"])
-                )
+                'import pytdbot\n\nfrom .handler import Handler\nfrom typing import Callable\nfrom logging import getLogger\n\nlogger = getLogger(__name__)\n\n\nclass Updates:\n    """Auto generated TDLib updates"""\n\n'
             )
-
-
-def functions():
-    with open("methods/tdlibfunctions.py", "w") as f:
-        f.write(
-            'from ..types import Result\n\nclass TDLibFunctions:\n    """Auto generated TDLib functions"""\n\n'
-        )
-        for k, v in data["functions"].items():
-            # if k.startswith("test"):
-            #     continue
-            f.write(f"    def {k}(self")
-            if p := getP(v["args"]):
-                f.write(f",{p}" + ") -> Result:\n")
-            else:
-                f.write(") -> Result:\n")
-
-            f.write(f'        """{utils.escape_markdown(v["description"])}\n\n')
-
-            if v["args"]:
-                f.write(f"        Args:\n")
-                params = dict(
-                    sorted(v["args"].items(), key=lambda x: x[1]["is_optional"])
+            for k, v in data["updates"].items():
+                f.write(
+                    updates_dec.format(
+                        update_name=k,
+                        description=utils.escape_markdown(v["description"]),
+                    )
                 )
 
-                for _k, _v in params.items():
-                    if not _v["is_optional"]:
-                        f.write(
-                            f"            {_k} (``{getType(_v['type'])}``):\n                {utils.escape_markdown(_v['description'])}\n\n"
-                        )
-                    else:
-                        f.write(
-                            f"            {_k} (``{getType(_v['type'])}``, *optional*):\n                {utils.escape_markdown(_v['description'])}\n\n"
-                        )
+    def functions():
+        with open("methods/tdlibfunctions.py", "w") as f:
             f.write(
-                '\n        Returns:\n            :class:`~pytdbot.types.Result` (``{}``)\n        """\n\n'.format(
-                    v["type"]
-                )
+                'from ..types import Result\n\nclass TDLibFunctions:\n    """Auto generated TDLib functions"""\n\n'
             )
-            f.write(f"        data = {{'@type': '{k}',")
-            for k in v["args"]:
-                f.write(f" '{k}': {k},")
-            f.write("}\n\n        return self.invoke(data)\n\n")
+            for k, v in data["functions"].items():
+                f.write(f"    def {k}(self")
+                if p := getP(v["args"]):
+                    f.write(f",{p}" + ") -> Result:\n")
+                else:
+                    f.write(") -> Result:\n")
 
+                f.write(f'        """{utils.escape_markdown(v["description"])}\n\n')
 
-if __name__ == "__main__":
+                if v["args"]:
+                    f.write(f"        Args:\n")
+                    params = dict(
+                        sorted(v["args"].items(), key=lambda x: x[1]["is_optional"])
+                    )
+
+                    for _k, _v in params.items():
+                        if not _v["is_optional"]:
+                            f.write(
+                                f"            {_k} (``{getType(_v['type'])}``):\n                {utils.escape_markdown(_v['description'])}\n\n"
+                            )
+                        else:
+                            f.write(
+                                f"            {_k} (``{getType(_v['type'])}``, *optional*):\n                {utils.escape_markdown(_v['description'])}\n\n"
+                            )
+                f.write(
+                    '\n        Returns:\n            :class:`~pytdbot.types.Result` (``{}``)\n        """\n\n'.format(
+                        v["type"]
+                    )
+                )
+                f.write(f"        data = {{'@type': '{k}',")
+                for k in v["args"]:
+                    f.write(f" '{k}': {k},")
+                f.write("}\n\n        return self.invoke(data)\n\n")
+
     updates()
     functions()

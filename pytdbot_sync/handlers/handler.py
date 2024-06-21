@@ -18,7 +18,9 @@ class Handler:
         self.filter = filter
         self.position = position
 
-    def __call__(self, client: "pytdbot_sync.Client", update: "pytdbot_sync.types.Update"):
+    def __call__(
+        self, client: "pytdbot_sync.Client", update: "pytdbot_sync.types.Update"
+    ):
         return self.func(client, update)
 
     def __str__(self) -> str:

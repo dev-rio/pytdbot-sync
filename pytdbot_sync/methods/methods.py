@@ -95,11 +95,11 @@ class Methods(TDLibFunctions):
             load_replied_message (``bool``, *optional*):
                 If True, the replied message(``reply_to_message_id``) will be reloaded. Default is ``None``
 
-            reply_markup (:class:`~pytdbot_sync.types.InlineKeyboardMarkup` | :class:`~pytdbot_sync.types.ShowKeyboardMarkup` | :class:`~pytdbot_sync.types.ForceReply` | :class:`~pytdbot_sync.types.RemoveKeyboard`, *optional*):
+            reply_markup (:class:`~pytdbot.types.InlineKeyboardMarkup` | :class:`~pytdbot.types.ShowKeyboardMarkup` | :class:`~pytdbot.types.ForceReply` | :class:`~pytdbot.types.RemoveKeyboard`, *optional*):
                 The message reply markup
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
         """
 
         parse_mode = parse_mode or self.default_parse_mode
@@ -174,7 +174,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result.wait()
+        new_result
         return new_result
 
     def sendAnimation(
@@ -207,10 +207,10 @@ class Methods(TDLibFunctions):
             chat_id (``int``):
                 Target chat
 
-            animation (:class:`~pytdbot_sync.types.InputFileRemote` | :class:`~pytdbot_sync.types.InputFileLocal` | ``str``):
+            animation (:class:`~pytdbot.types.InputFileRemote` | :class:`~pytdbot.types.InputFileLocal` | ``str``):
                 Animation to send
 
-            thumbnail (:class:`~pytdbot_sync.types.InputThumbnail`, *optional*):
+            thumbnail (:class:`~pytdbot.types.InputThumbnail`, *optional*):
                 Thumbnail of the animation to send
 
             caption (``str``, *optional*):
@@ -258,11 +258,11 @@ class Methods(TDLibFunctions):
             load_replied_message (``bool``, *optional*):
                 If True, the replied message(``reply_to_message_id``) will be reloaded. Default is ``None``
 
-            reply_markup (:class:`~pytdbot_sync.types.InlineKeyboardMarkup` | :class:`~pytdbot_sync.types.ShowKeyboardMarkup` | :class:`~pytdbot_sync.types.ForceReply` | :class:`~pytdbot_sync.types.RemoveKeyboard`, *optional*):
+            reply_markup (:class:`~pytdbot.types.InlineKeyboardMarkup` | :class:`~pytdbot.types.ShowKeyboardMarkup` | :class:`~pytdbot.types.ForceReply` | :class:`~pytdbot.types.RemoveKeyboard`, *optional*):
                 The message reply markup
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
 
         """
 
@@ -282,7 +282,7 @@ class Methods(TDLibFunctions):
             else:
                 caption = {"@type": "formattedText", "text": caption, "entities": []}
 
-        if load_replied_message == None and not self.use_message_database:
+        if load_replied_message is None and not self.use_message_database:
             load_replied_message = True
 
         if (
@@ -349,7 +349,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result.wait()
+        new_result
         return new_result
 
     def sendAudio(
@@ -380,10 +380,10 @@ class Methods(TDLibFunctions):
             chat_id (``int``):
                 Target chat
 
-            audio (:class:`~pytdbot_sync.types.InputFileRemote` | :class:`~pytdbot_sync.types.InputFileLocal` | ``str``):
+            audio (:class:`~pytdbot.types.InputFileRemote` | :class:`~pytdbot.types.InputFileLocal` | ``str``):
                 Audio to send
 
-            album_cover_thumbnail (:class:`~pytdbot_sync.types.InputThumbnail`, *optional*):
+            album_cover_thumbnail (:class:`~pytdbot.types.InputThumbnail`, *optional*):
                 Thumbnail of the album cover to be set
 
             caption (``str``, *optional*):
@@ -425,12 +425,12 @@ class Methods(TDLibFunctions):
             load_replied_message (``bool``, *optional*):
                 If True, the replied message(``reply_to_message_id``) will be reloaded. Default is ``None``
 
-            reply_markup (:class:`~pytdbot_sync.types.InlineKeyboardMarkup` | :class:`~pytdbot_sync.types.ShowKeyboardMarkup` | :class:`~pytdbot_sync.types.ForceReply` | :class:`~pytdbot_sync.types.RemoveKeyboard`, *optional*):
+            reply_markup (:class:`~pytdbot.types.InlineKeyboardMarkup` | :class:`~pytdbot.types.ShowKeyboardMarkup` | :class:`~pytdbot.types.ForceReply` | :class:`~pytdbot.types.RemoveKeyboard`, *optional*):
                 The message reply markup
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
 
         """
 
@@ -450,7 +450,7 @@ class Methods(TDLibFunctions):
             else:
                 caption = {"@type": "formattedText", "text": caption, "entities": []}
 
-        if load_replied_message == None and not self.use_message_database:
+        if load_replied_message is None and not self.use_message_database:
             load_replied_message = True
 
         if (
@@ -508,16 +508,16 @@ class Methods(TDLibFunctions):
             raise ValueError("audio must be InputFile or str")
 
         if isinstance(album_cover_thumbnail, InputThumbnail):
-            data["input_message_content"][
-                "album_cover_thumbnail"
-            ] = album_cover_thumbnail.to_dict()
+            data["input_message_content"]["album_cover_thumbnail"] = (
+                album_cover_thumbnail.to_dict()
+            )
 
         res = self.invoke(data)
         if res.is_error:
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result.wait()
+        new_result
         return new_result
 
     def sendDocument(
@@ -546,10 +546,10 @@ class Methods(TDLibFunctions):
             chat_id (``int``):
                 Target chat
 
-            document (:class:`~pytdbot_sync.types.InputFileRemote` | :class:`~pytdbot_sync.types.InputFileLocal` | ``str``):
+            document (:class:`~pytdbot.types.InputFileRemote` | :class:`~pytdbot.types.InputFileLocal` | ``str``):
                 Document to send
 
-            thumbnail (:class:`~pytdbot_sync.types.InputThumbnail`, *optional*):
+            thumbnail (:class:`~pytdbot.types.InputThumbnail`, *optional*):
                 Thumbnail of the document to be set
 
             caption (``str``, *optional*):
@@ -585,12 +585,12 @@ class Methods(TDLibFunctions):
             load_replied_message (``bool``, *optional*):
                 If True, the replied message(``reply_to_message_id``) will be reloaded. Default is ``None``
 
-            reply_markup (:class:`~pytdbot_sync.types.InlineKeyboardMarkup` | :class:`~pytdbot_sync.types.ShowKeyboardMarkup` | :class:`~pytdbot_sync.types.ForceReply` | :class:`~pytdbot_sync.types.RemoveKeyboard`, *optional*):
+            reply_markup (:class:`~pytdbot.types.InlineKeyboardMarkup` | :class:`~pytdbot.types.ShowKeyboardMarkup` | :class:`~pytdbot.types.ForceReply` | :class:`~pytdbot.types.RemoveKeyboard`, *optional*):
                 The message reply markup
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
         """
 
         parse_mode = parse_mode or self.default_parse_mode
@@ -609,7 +609,7 @@ class Methods(TDLibFunctions):
             else:
                 caption = {"@type": "formattedText", "text": caption, "entities": []}
 
-        if load_replied_message == None and not self.use_message_database:
+        if load_replied_message is None and not self.use_message_database:
             load_replied_message = True
 
         if (
@@ -672,7 +672,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result.wait()
+        new_result
         return new_result
 
     def sendPhoto(
@@ -705,10 +705,10 @@ class Methods(TDLibFunctions):
             chat_id (``int``):
                 Target chat
 
-            photo (:class:`~pytdbot_sync.types.InputFileRemote` | :class:`~pytdbot_sync.types.InputFileLocal` | ``str``):
+            photo (:class:`~pytdbot.types.InputFileRemote` | :class:`~pytdbot.types.InputFileLocal` | ``str``):
                 Photo to send
 
-            thumbnail (:class:`~pytdbot_sync.types.InputThumbnail`, *optional*):
+            thumbnail (:class:`~pytdbot.types.InputThumbnail`, *optional*):
                 Thumbnail of the photo to be set
 
             caption (``str``, *optional*):
@@ -756,12 +756,12 @@ class Methods(TDLibFunctions):
             load_replied_message (``bool``, *optional*):
                 If True, the replied message(``reply_to_message_id``) will be reloaded. Default is ``None``
 
-            reply_markup (:class:`~pytdbot_sync.types.InlineKeyboardMarkup` | :class:`~pytdbot_sync.types.ShowKeyboardMarkup` | :class:`~pytdbot_sync.types.ForceReply` | :class:`~pytdbot_sync.types.RemoveKeyboard`, *optional*):
+            reply_markup (:class:`~pytdbot.types.InlineKeyboardMarkup` | :class:`~pytdbot.types.ShowKeyboardMarkup` | :class:`~pytdbot.types.ForceReply` | :class:`~pytdbot.types.RemoveKeyboard`, *optional*):
                 The message reply markup
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
         """
 
         parse_mode = parse_mode or self.default_parse_mode
@@ -780,7 +780,7 @@ class Methods(TDLibFunctions):
             else:
                 caption = {"@type": "formattedText", "text": caption, "entities": []}
 
-        if load_replied_message == None and not self.use_message_database:
+        if load_replied_message is None and not self.use_message_database:
             load_replied_message = True
 
         if (
@@ -847,7 +847,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result.wait()
+        new_result
         return new_result
 
     def sendVideo(
@@ -882,10 +882,10 @@ class Methods(TDLibFunctions):
             chat_id (``int``):
                 Target chat
 
-            video (:class:`~pytdbot_sync.types.InputFileRemote` | :class:`~pytdbot_sync.types.InputFileLocal` | ``str``):
+            video (:class:`~pytdbot.types.InputFileRemote` | :class:`~pytdbot.types.InputFileLocal` | ``str``):
                 Video to send
 
-            thumbnail (:class:`~pytdbot_sync.types.InputThumbnail`, *optional*):
+            thumbnail (:class:`~pytdbot.types.InputThumbnail`, *optional*):
                 Thumbnail of the video to be set
 
             caption (``str``, *optional*):
@@ -939,12 +939,12 @@ class Methods(TDLibFunctions):
             load_replied_message (``bool``, *optional*):
                 If True, the replied message(``reply_to_message_id``) will be reloaded. Default is ``None``
 
-            reply_markup (:class:`~pytdbot_sync.types.InlineKeyboardMarkup` | :class:`~pytdbot_sync.types.ShowKeyboardMarkup` | :class:`~pytdbot_sync.types.ForceReply` | :class:`~pytdbot_sync.types.RemoveKeyboard`, *optional*):
+            reply_markup (:class:`~pytdbot.types.InlineKeyboardMarkup` | :class:`~pytdbot.types.ShowKeyboardMarkup` | :class:`~pytdbot.types.ForceReply` | :class:`~pytdbot.types.RemoveKeyboard`, *optional*):
                 The message reply markup
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
         """
 
         parse_mode = parse_mode or self.default_parse_mode
@@ -963,7 +963,7 @@ class Methods(TDLibFunctions):
             else:
                 caption = {"@type": "formattedText", "text": caption, "entities": []}
 
-        if load_replied_message == None and not self.use_message_database:
+        if load_replied_message is None and not self.use_message_database:
             load_replied_message = True
 
         if (
@@ -1032,7 +1032,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result.wait()
+        new_result
         return new_result
 
     def sendVideoNote(
@@ -1059,10 +1059,10 @@ class Methods(TDLibFunctions):
             chat_id (``int``):
                 Target chat
 
-            video_note (:class:`~pytdbot_sync.types.InputFileRemote` | :class:`~pytdbot_sync.types.InputFileLocal` | ``str``):
+            video_note (:class:`~pytdbot.types.InputFileRemote` | :class:`~pytdbot.types.InputFileLocal` | ``str``):
                 Video note to send
 
-            thumbnail (:class:`~pytdbot_sync.types.InputThumbnail`, *optional*):
+            thumbnail (:class:`~pytdbot.types.InputThumbnail`, *optional*):
                 Thumbnail of the video note to be set
 
             duration (``int``, *optional*):
@@ -1092,16 +1092,16 @@ class Methods(TDLibFunctions):
             load_replied_message (``bool``, *optional*):
                 If True, the replied message(``reply_to_message_id``) will be reloaded. Default is ``None``
 
-            reply_markup (:class:`~pytdbot_sync.types.InlineKeyboardMarkup` | :class:`~pytdbot_sync.types.ShowKeyboardMarkup` | :class:`~pytdbot_sync.types.ForceReply` | :class:`~pytdbot_sync.types.RemoveKeyboard`, *optional*):
+            reply_markup (:class:`~pytdbot.types.InlineKeyboardMarkup` | :class:`~pytdbot.types.ShowKeyboardMarkup` | :class:`~pytdbot.types.ForceReply` | :class:`~pytdbot.types.RemoveKeyboard`, *optional*):
                 The message reply markup
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
 
         """
 
-        if load_replied_message == None and not self.use_message_database:
+        if load_replied_message is None and not self.use_message_database:
             load_replied_message = True
 
         if (
@@ -1164,7 +1164,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result.wait()
+        new_result
         return new_result
 
     def sendVoice(
@@ -1193,7 +1193,7 @@ class Methods(TDLibFunctions):
             chat_id (``int``):
                 Target chat
 
-            voice (:class:`~pytdbot_sync.types.InputFileRemote` | :class:`~pytdbot_sync.types.InputFileLocal` | ``str``):
+            voice (:class:`~pytdbot.types.InputFileRemote` | :class:`~pytdbot.types.InputFileLocal` | ``str``):
                 Voice to send
 
             caption (``str``, *optional*):
@@ -1232,12 +1232,12 @@ class Methods(TDLibFunctions):
             load_replied_message (``bool``, *optional*):
                 If True, the replied message(``reply_to_message_id``) will be reloaded. Default is ``None``
 
-            reply_markup (:class:`~pytdbot_sync.types.InlineKeyboardMarkup` | :class:`~pytdbot_sync.types.ShowKeyboardMarkup` | :class:`~pytdbot_sync.types.ForceReply` | :class:`~pytdbot_sync.types.RemoveKeyboard`, *optional*):
+            reply_markup (:class:`~pytdbot.types.InlineKeyboardMarkup` | :class:`~pytdbot.types.ShowKeyboardMarkup` | :class:`~pytdbot.types.ForceReply` | :class:`~pytdbot.types.RemoveKeyboard`, *optional*):
                 The message reply markup
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
         """
 
         parse_mode = parse_mode or self.default_parse_mode
@@ -1256,7 +1256,7 @@ class Methods(TDLibFunctions):
             else:
                 caption = {"@type": "formattedText", "text": caption, "entities": []}
 
-        if load_replied_message == None and not self.use_message_database:
+        if load_replied_message is None and not self.use_message_database:
             load_replied_message = True
 
         if (
@@ -1319,7 +1319,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result.wait()
+        new_result
         return new_result
 
     def sendSticker(
@@ -1347,13 +1347,13 @@ class Methods(TDLibFunctions):
             chat_id (``int``):
                 Target chat
 
-            sticker (:class:`~pytdbot_sync.types.InputFileRemote` | :class:`~pytdbot_sync.types.InputFileLocal` | ``str``):
+            sticker (:class:`~pytdbot.types.InputFileRemote` | :class:`~pytdbot.types.InputFileLocal` | ``str``):
                 Sticker to send
 
             emoji (``str``, *optional*):
                 Emoji associated with the sticker
 
-            thumbnail (:class:`~pytdbot_sync.types.InputThumbnail`, *optional*):
+            thumbnail (:class:`~pytdbot.types.InputThumbnail`, *optional*):
                 Sticker thumbnail
 
             width (``int``, *optional*):
@@ -1383,15 +1383,15 @@ class Methods(TDLibFunctions):
             load_replied_message (``bool``, *optional*):
                 If True, the replied message(``reply_to_message_id``) will be reloaded. Default is ``None``
 
-            reply_markup (:class:`~pytdbot_sync.types.InlineKeyboardMarkup` | :class:`~pytdbot_sync.types.ShowKeyboardMarkup` | :class:`~pytdbot_sync.types.ForceReply` | :class:`~pytdbot_sync.types.RemoveKeyboard`, *optional*):
+            reply_markup (:class:`~pytdbot.types.InlineKeyboardMarkup` | :class:`~pytdbot.types.ShowKeyboardMarkup` | :class:`~pytdbot.types.ForceReply` | :class:`~pytdbot.types.RemoveKeyboard`, *optional*):
                 The message reply markup
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
         """
 
-        if load_replied_message == None and not self.use_message_database:
+        if load_replied_message is None and not self.use_message_database:
             load_replied_message = True
 
         if (
@@ -1455,7 +1455,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result.wait()
+        new_result
         return new_result
 
     def sendCopy(
@@ -1526,7 +1526,7 @@ class Methods(TDLibFunctions):
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
         """
 
         parse_mode = parse_mode if parse_mode is not None else self.default_parse_mode
@@ -1551,7 +1551,7 @@ class Methods(TDLibFunctions):
                     "entities": [],
                 }
 
-        if load_replied_message == None and not self.use_message_database:
+        if load_replied_message is None and not self.use_message_database:
             load_replied_message = True
 
         if (
@@ -1596,7 +1596,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result.wait()
+        new_result
         return new_result
 
     def forwardMessage(
@@ -1626,7 +1626,7 @@ class Methods(TDLibFunctions):
                 If True, disable notification for the message. Default is ``False``
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
         """
         data = {
             "@type": "sendMessage",
@@ -1647,7 +1647,7 @@ class Methods(TDLibFunctions):
             return res
         new_result = Result(data)
         self._results[f"{res.result['id']}{res.result['chat_id']}"] = new_result
-        new_result.wait()
+        new_result
         return new_result
 
     def editTextMessage(
@@ -1697,12 +1697,12 @@ class Methods(TDLibFunctions):
             show_above_text (``bool``, *optional*):
                 True, if link preview must be shown above message text; otherwise, the link preview will be shown below the message text; ignored in secret chats. Default is ``None``
 
-            reply_markup (:class:`~pytdbot_sync.types.InlineKeyboardMarkup` | :class:`~pytdbot_sync.types.ShowKeyboardMarkup` | :class:`~pytdbot_sync.types.ForceReply` | :class:`~pytdbot_sync.types.RemoveKeyboard`, *optional*):
+            reply_markup (:class:`~pytdbot.types.InlineKeyboardMarkup` | :class:`~pytdbot.types.ShowKeyboardMarkup` | :class:`~pytdbot.types.ForceReply` | :class:`~pytdbot.types.RemoveKeyboard`, *optional*):
                 The message reply markup
 
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
         """
 
         if not self.use_message_database:
@@ -1764,7 +1764,7 @@ class Methods(TDLibFunctions):
                 Text parse mode. Currently supported: markdown, markdownv2 and html. Default is "markdownv2"
 
         Returns:
-            :class:`~pytdbot_sync.types.Result`
+            :class:`~pytdbot.types.Result`
         """
         if not text or not parse_mode:
             return

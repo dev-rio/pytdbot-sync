@@ -23,7 +23,6 @@ class InputFileGenerated(InputFile):
         conversion: str,
         expected_size: int = 0,
     ) -> None:
-
         self.original_path = original_path
         if isinstance(self.original_path, PosixPath):
             self.original_path = str(self.original_path.resolve())

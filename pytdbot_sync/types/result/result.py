@@ -1,7 +1,7 @@
-from os import urandom
-from binascii import hexlify
+import os
 from threading import Event
-from ujson import dumps
+from json import dumps
+import binascii
 
 RETRY_AFTER_PREFEX = "Too Many Requests: retry after "
 
@@ -12,15 +12,15 @@ class Result:
     Args:
         request (``dict``):
             The request object
-
     """
 
     def __init__(
         self,
         request: dict,
     ) -> None:
-        self.id = hexlify(urandom(9)).decode()
+        self.id = binascii.hexlify(os.urandom(9)).decode()
         request["@extra"] = {"id": self.id}
+
         self.request = request
         self.is_processed = False
         self.is_error = False
@@ -31,7 +31,7 @@ class Result:
         self._event = Event()
 
     def __str__(self):
-        if self.result == {}:
+        if not self.is_processed:
             return "result not processed yet"
         else:
             return dumps(self.result, indent=4)
@@ -51,12 +51,10 @@ class Result:
     def __iter__(self):
         return iter(self.result.items())
 
-    def __await__(self):
-        return self.wait().__await__()
-
-    def wait(self, timeout: int = None) -> bool:
+    def wait(self) -> bool:
         """Wait for the result"""
-        return self._event.wait(timeout)
+        self._event.wait()
+        return True
 
     def set_result(self, result: dict) -> None:
         """Set the result

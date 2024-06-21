@@ -13,24 +13,24 @@ with open("requirements.txt", "r") as f:
 
 
 setup(
-    name="Pytdbot_sync",
+    name="Pytdbot-sync",
     version=version,
-    description="Easy-to-use asynchronous TDLib wrapper for Python.",
+    description="Easy-to-use synchronous TDLib wrapper for Python.",
     long_description=readme,
     long_description_content_type="text/markdown",
     author="AYMEN Mohammed",
     author_email="let.me.code.safe@gmail.com",
-    url="https://github.com/pytdbot/client",
+    url="https://github.com/dev-rio/pytdbot-sync",
     license="MIT",
     python_requires=">=3.9",
     install_requires=requirements,
     project_urls={
-        "Source": "https://github.com/pytdbot/client",
-        "Tracker": "https://github.com/pytdbot/client/issues",
+        "Source": "https://github.com/dev-rio/pytdbot-sync",
+        "Tracker": "https://github.com/dev-rio/pytdbot-sync/issues",
     },
     packages=find_packages(exclude=["examples"]),
     package_data={
-        "pytdbot_sync": ["td_api.*"],
+        "pytdbot-sync": ["lib/*.so", "td_api.*"],
     },
     keywords=[
         "telegram",
